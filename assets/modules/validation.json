@@ -1,0 +1,38 @@
+{
+  "gallery": {
+    "reachablePortals": 4,
+    "navigationRadius": 0.24,
+    "navigationHeight": 1.8,
+    "navigationGridMeters": 0.2,
+    "reachableGridCells": 12770,
+    "floorAnchorsChecked": 8,
+    "boundsInsideCell": true,
+    "roomCorridorFloorContinuous": true,
+    "portalClearWidth": 2.4,
+    "portalClearHeight": 2.4
+  },
+  "offset": {
+    "reachablePortals": 4,
+    "navigationRadius": 0.24,
+    "navigationHeight": 1.8,
+    "navigationGridMeters": 0.2,
+    "reachableGridCells": 12495,
+    "floorAnchorsChecked": 8,
+    "boundsInsideCell": true,
+    "roomCorridorFloorContinuous": true,
+    "portalClearWidth": 2.4,
+    "portalClearHeight": 2.4
+  },
+  "pillars": {
+    "reachablePortals": 4,
+    "navigationRadius": 0.24,
+    "navigationHeight": 1.8,
+    "navigationGridMeters": 0.2,
+    "reachableGridCells": 12918,
+    "floorAnchorsChecked": 8,
+    "boundsInsideCell": true,
+    "roomCorridorFloorContinuous": true,
+    "portalClearWidth": 2.4,
+    "portalClearHeight": 2.4
+  }
+}

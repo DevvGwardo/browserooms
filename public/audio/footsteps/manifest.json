@@ -1,0 +1,116 @@
+{
+  "version": 1,
+  "sampleRate": 44100,
+  "clips": [
+    {
+      "file": "carpet-01.wav",
+      "sourcePeak": 0.38653,
+      "sourceStart": 0.34846,
+      "sourceEnd": 0.639,
+      "duration": 0.29054,
+      "peakOffset": 0.03807,
+      "peakDbFS": -13.34,
+      "rmsDbFS": -30.34
+    },
+    {
+      "file": "carpet-02.wav",
+      "sourcePeak": 0.8915,
+      "sourceStart": 0.84633,
+      "sourceEnd": 1.13376,
+      "duration": 0.28744,
+      "peakOffset": 0.04517,
+      "peakDbFS": -14.19,
+      "rmsDbFS": -29.94
+    },
+    {
+      "file": "carpet-03.wav",
+      "sourcePeak": 1.37603,
+      "sourceStart": 1.32508,
+      "sourceEnd": 1.60338,
+      "duration": 0.2783,
+      "peakOffset": 0.05095,
+      "peakDbFS": -14.27,
+      "rmsDbFS": -29.73
+    },
+    {
+      "file": "carpet-04.wav",
+      "sourcePeak": 1.83073,
+      "sourceStart": 1.78569,
+      "sourceEnd": 2.07506,
+      "duration": 0.28937,
+      "peakOffset": 0.04503,
+      "peakDbFS": -14.08,
+      "rmsDbFS": -30.21
+    },
+    {
+      "file": "carpet-05.wav",
+      "sourcePeak": 2.31941,
+      "sourceStart": 2.2868,
+      "sourceEnd": 2.56025,
+      "duration": 0.27345,
+      "peakOffset": 0.03261,
+      "peakDbFS": -14.98,
+      "rmsDbFS": -29.94
+    },
+    {
+      "file": "carpet-06.wav",
+      "sourcePeak": 2.80111,
+      "sourceStart": 2.76846,
+      "sourceEnd": 3.04186,
+      "duration": 0.2734,
+      "peakOffset": 0.03265,
+      "peakDbFS": -13.68,
+      "rmsDbFS": -30.24
+    },
+    {
+      "file": "carpet-07.wav",
+      "sourcePeak": 3.28261,
+      "sourceStart": 3.24884,
+      "sourceEnd": 3.51923,
+      "duration": 0.27039,
+      "peakOffset": 0.03376,
+      "peakDbFS": -13.06,
+      "rmsDbFS": -30.54
+    },
+    {
+      "file": "carpet-08.wav",
+      "sourcePeak": 3.75587,
+      "sourceStart": 3.72358,
+      "sourceEnd": 3.98424,
+      "duration": 0.26066,
+      "peakOffset": 0.03229,
+      "peakDbFS": -12.71,
+      "rmsDbFS": -30.55
+    },
+    {
+      "file": "carpet-09.wav",
+      "sourcePeak": 4.21261,
+      "sourceStart": 4.18068,
+      "sourceEnd": 4.45145,
+      "duration": 0.27077,
+      "peakOffset": 0.03193,
+      "peakDbFS": -13.77,
+      "rmsDbFS": -30.09
+    },
+    {
+      "file": "carpet-10.wav",
+      "sourcePeak": 4.69032,
+      "sourceStart": 4.65896,
+      "sourceEnd": 4.9151,
+      "duration": 0.25615,
+      "peakOffset": 0.03136,
+      "peakDbFS": -12.49,
+      "rmsDbFS": -30.53
+    },
+    {
+      "file": "carpet-11.wav",
+      "sourcePeak": 5.13991,
+      "sourceStart": 5.10748,
+      "sourceEnd": 5.39991,
+      "duration": 0.29243,
+      "peakOffset": 0.03243,
+      "peakDbFS": -13.1,
+      "rmsDbFS": -30.89
+    }
+  ]
+}

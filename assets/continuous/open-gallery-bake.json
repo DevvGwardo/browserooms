@@ -1,0 +1,165 @@
+{
+  "id": "open-gallery",
+  "seconds": 40.74,
+  "atlases": [
+    {
+      "file": "open-gallery-walls.hdr",
+      "resolution": [
+        2048,
+        2048
+      ],
+      "maximum": 2.577899694442749,
+      "meanNonBlack": [
+        0.21001345003119062,
+        0.1916147223253339,
+        0.1508321904754115
+      ],
+      "nonBlackPixels": 3333828,
+      "fileBytes": 9623925,
+      "family": "walls",
+      "gpuHalfFloatRgbaBytes": 33554432
+    },
+    {
+      "file": "open-gallery-floor.hdr",
+      "resolution": [
+        1024,
+        1024
+      ],
+      "maximum": 0.49223023653030396,
+      "meanNonBlack": [
+        0.3372954189545113,
+        0.31417561309753717,
+        0.2618474737541177
+      ],
+      "nonBlackPixels": 1023586,
+      "fileBytes": 2445171,
+      "family": "floor",
+      "gpuHalfFloatRgbaBytes": 8388608
+    },
+    {
+      "file": "open-gallery-ceiling.hdr",
+      "resolution": [
+        1024,
+        1024
+      ],
+      "maximum": 0.7571704983711243,
+      "meanNonBlack": [
+        0.11952422767496321,
+        0.10104325962933153,
+        0.06039390080885427
+      ],
+      "nonBlackPixels": 990950,
+      "fileBytes": 2271207,
+      "family": "ceiling",
+      "gpuHalfFloatRgbaBytes": 8388608
+    },
+    {
+      "file": "open-gallery-details.hdr",
+      "resolution": [
+        1024,
+        1024
+      ],
+      "maximum": 0.2652217447757721,
+      "meanNonBlack": [
+        0.0399878757645538,
+        0.035240274477945414,
+        0.021896499121522466
+      ],
+      "nonBlackPixels": 640420,
+      "fileBytes": 2349906,
+      "family": "details",
+      "gpuHalfFloatRgbaBytes": 8388608
+    }
+  ],
+  "geometryBytes": 4424620,
+  "vertices": 93938,
+  "triangles": 56195,
+  "drawCalls": 5,
+  "meshes": {
+    "details": {
+      "vertices": 27434,
+      "triangles": 22943,
+      "bounds": {
+        "min": [
+          -18.0,
+          0.0,
+          -18.0
+        ],
+        "max": [
+          18.0,
+          1.1825000047683716,
+          18.0
+        ]
+      },
+      "planarUVMaxError": null
+    },
+    "walls": {
+      "vertices": 1700,
+      "triangles": 850,
+      "bounds": {
+        "min": [
+          -18.0,
+          0.0,
+          -18.0
+        ],
+        "max": [
+          18.0,
+          3.0,
+          18.0
+        ]
+      },
+      "planarUVMaxError": null
+    },
+    "floor": {
+      "vertices": 4,
+      "triangles": 2,
+      "bounds": {
+        "min": [
+          -18.0,
+          0.0,
+          -18.0
+        ],
+        "max": [
+          18.0,
+          0.0,
+          18.0
+        ]
+      },
+      "planarUVMaxError": 0.0
+    },
+    "ceiling": {
+      "vertices": 64484,
+      "triangles": 32242,
+      "bounds": {
+        "min": [
+          -18.0,
+          3.0,
+          -18.0
+        ],
+        "max": [
+          18.0,
+          3.002000093460083,
+          18.0
+        ]
+      },
+      "planarUVMaxError": 5.960464477539063e-08
+    },
+    "ceiling-lights": {
+      "vertices": 316,
+      "triangles": 158,
+      "bounds": {
+        "min": [
+          -17.993000030517578,
+          3.000999927520752,
+          -15.593000411987305
+        ],
+        "max": [
+          15.593000411987305,
+          3.000999927520752,
+          17.39299964904785
+        ]
+      },
+      "planarUVMaxError": null
+    }
+  }
+}

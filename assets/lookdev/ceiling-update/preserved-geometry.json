@@ -1,0 +1,140 @@
+{
+  "walls": {
+    "extras": {
+      "surface": "walls",
+      "surfaceFamily": "walls",
+      "radiance": "walls-light.hdr"
+    },
+    "transform": {
+      "translation": [
+        -6.607500076293945,
+        1.5,
+        -11.859999656677246
+      ]
+    },
+    "primitives": [
+      {
+        "attributes": {
+          "POSITION": {
+            "sha256": "be3a5511e6d2d25b206bcc757bd0759df6ffdd7d7f96ec7be9995f45a81cf106",
+            "count": 3528,
+            "type": "VEC3",
+            "componentType": 5126
+          },
+          "NORMAL": {
+            "sha256": "5429c4268d5bd3ec8bcd4a8a479cc3904c816b268ce6b34ba8c89773168626b8",
+            "count": 3528,
+            "type": "VEC3",
+            "componentType": 5126
+          },
+          "TEXCOORD_0": {
+            "sha256": "802bf2143ae572dc466d5df584b58e7af4390f4610c421d1d49de98aba7204ad",
+            "count": 3528,
+            "type": "VEC2",
+            "componentType": 5126
+          },
+          "TEXCOORD_1": {
+            "sha256": "f81283935ec3ba48c0bff05259057a09810a781620fba9b0557ae9415eafd00a",
+            "count": 3528,
+            "type": "VEC2",
+            "componentType": 5126
+          }
+        },
+        "indices": {
+          "sha256": "605dd6fa74135bf34ddd3248ed5d3203fad5a219239ca406922a2e1cc897da34",
+          "count": 5292,
+          "type": "SCALAR",
+          "componentType": 5123
+        }
+      }
+    ]
+  },
+  "floor": {
+    "extras": {
+      "surface": "floor",
+      "surfaceFamily": "floor",
+      "radiance": "floor-light.hdr"
+    },
+    "transform": {},
+    "primitives": [
+      {
+        "attributes": {
+          "POSITION": {
+            "sha256": "d93b1465fba9765d0cda2d7a137feed82009811598e4c69692cc06372e0bfda8",
+            "count": 20,
+            "type": "VEC3",
+            "componentType": 5126
+          },
+          "NORMAL": {
+            "sha256": "2a1d92a09be231490e31e3f6d228de32a7b2eb7b6dfc6cd78e7109494fc9afe4",
+            "count": 20,
+            "type": "VEC3",
+            "componentType": 5126
+          },
+          "TEXCOORD_0": {
+            "sha256": "948b7541b358f5c9f21e6ff61741d283c6d14a84910399c6285dc2855ed70556",
+            "count": 20,
+            "type": "VEC2",
+            "componentType": 5126
+          },
+          "TEXCOORD_1": {
+            "sha256": "93369d1c79d760c006fb0847345f074f4bc829d0d622ab046894537bc22e867c",
+            "count": 20,
+            "type": "VEC2",
+            "componentType": 5126
+          }
+        },
+        "indices": {
+          "sha256": "14487d2e9c074c17573aff8e3a4fe0b83a01793a8535123fdbc4c966ce385918",
+          "count": 30,
+          "type": "SCALAR",
+          "componentType": 5123
+        }
+      }
+    ]
+  },
+  "details": {
+    "extras": {
+      "surface": "details",
+      "surfaceFamily": "details",
+      "radiance": "details-radiance.hdr"
+    },
+    "transform": {
+      "translation": [
+        -12.005999565124512,
+        0.052000001072883606,
+        -11.859999656677246
+      ]
+    },
+    "primitives": [
+      {
+        "attributes": {
+          "POSITION": {
+            "sha256": "8688b350b02072c1fa9f1e325d44d0fd5e26f0faf0a17a0f52fa24e3b1b689a5",
+            "count": 43381,
+            "type": "VEC3",
+            "componentType": 5126
+          },
+          "NORMAL": {
+            "sha256": "f218951c8c11a2e0265b0865b3e6826c324e7108c4fbe4130844349b716fdb44",
+            "count": 43381,
+            "type": "VEC3",
+            "componentType": 5126
+          },
+          "TEXCOORD_0": {
+            "sha256": "3acda564b56bca66935a6f7d114a562ad2fe9e0919000c24bd6c40bd25f608c7",
+            "count": 43381,
+            "type": "VEC2",
+            "componentType": 5126
+          }
+        },
+        "indices": {
+          "sha256": "62ae91bffbd8383b8d830c364c48c8ee645290938701f4c95010b38fb49ff402",
+          "count": 92745,
+          "type": "SCALAR",
+          "componentType": 5123
+        }
+      }
+    ]
+  }
+}

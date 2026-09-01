@@ -1,0 +1,21 @@
+{
+  "mode": "cdp",
+  "artifactType": "mp4",
+  "tabId": 1485270686,
+  "sessionId": "bc-tab-3561",
+  "startedAt": "2026-08-31T20:30:34.911Z",
+  "stoppedAt": "2026-08-31T20:30:59.737Z",
+  "durationMs": 24826.09745800495,
+  "frameRate": 25,
+  "frameCount": 621,
+  "sourceFrameCount": 1489,
+  "encodedSourceFrameCount": 621,
+  "coalescedFrameCount": 868,
+  "droppedFrameCount": 0,
+  "achievedSourceFrameRate": 59.97720755421772,
+  "width": 1162,
+  "height": 654,
+  "sourceWidth": 2357,
+  "sourceHeight": 1270,
+  "mimeType": "video/mp4"
+}

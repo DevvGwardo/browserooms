@@ -1,0 +1,17 @@
+{
+  "public/reference/wall-albedo.png": "d9c92b9f1fa85684c4680b8c340bbfa4af30bef3464b256231d2ba8c4fcdcb1e",
+  "public/reference/wall-normal.png": "f967ec9df6cd65e7ff783d86de92c7385458019eb2119dafc3599b2a8243a62f",
+  "public/reference/wall-roughness.png": "ca472634be88e1be0df9822a919275f653b454005a6a8f76ee6fbcf5473cb7a5",
+  "public/reference/carpet-albedo.png": "1334de1174bdf776712ce4df240522b8f19ad94a4e5e38130958d7c16683342a",
+  "public/reference/carpet-normal.png": "748f7fa1bdda8c276cfc632aee8451031d4b5e110c4e2b64a85ff166465ca180",
+  "public/reference/carpet-roughness.png": "bbafcc49b89d31f7f4950cc9caca3d45357de83daeb88ad1e075765978556d9d",
+  "public/reference/walls-light.hdr": "0e1d3c13ed5ed30d35665dadcae22986390d439037cb3050984e8c3f43bfa029",
+  "public/reference/floor-light.hdr": "65bc6401205a6d1d67e7dda4f1550802edde0c6b1a2af892d1741cbe53c1da38",
+  "public/reference/details-radiance.hdr": "7b856ab68494bf2810a351153770d972eecdada5dc2bb09cdc1b261b3816d75e",
+  "public/reference/reflection.hdr": "c7cc572c6702a7e8d4087abf065a714a255be21756a89030818375e0ae198c59",
+  "public/reference/seam-lighting.bin": "5577e906b1988edad36e0c70e9f3ff849a5bea8fbbbdf327982e7635d60480ea",
+  "public/reference/reference.glb": "5147f229654aa079a3e0d27ba40f6ae0654b96075b7739c301102f010465b00d",
+  "public/reference/modules.json": "56ea2378463b94e77ece38c941d18604e5ac86372f5dc32e3dae9f5622f8e222",
+  "assets/lookdev/reference-export.blend": "a63510865b6f50590c9366bdf8885e4c5917994d7421a369a933c0ffeec2b65b",
+  "assets/lookdev/reference-final-retained-wallpaper.blend": "f5afcdb8449a452044cdcb687803ec7905ea24f5a311128c36705a01db1c97a1"
+}

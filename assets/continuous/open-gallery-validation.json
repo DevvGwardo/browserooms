@@ -1,0 +1,256 @@
+{
+  "crossings": [
+    {
+      "face": "west",
+      "offset": -14,
+      "reachable": true
+    },
+    {
+      "face": "west",
+      "offset": -6,
+      "reachable": true
+    },
+    {
+      "face": "west",
+      "offset": 0,
+      "reachable": true
+    },
+    {
+      "face": "west",
+      "offset": 6,
+      "reachable": true
+    },
+    {
+      "face": "west",
+      "offset": 14,
+      "reachable": true
+    },
+    {
+      "face": "west",
+      "offset": -13.56,
+      "reachable": true
+    },
+    {
+      "face": "west",
+      "offset": 13.56,
+      "reachable": true
+    },
+    {
+      "face": "east",
+      "offset": -14,
+      "reachable": true
+    },
+    {
+      "face": "east",
+      "offset": -6,
+      "reachable": true
+    },
+    {
+      "face": "east",
+      "offset": 0,
+      "reachable": true
+    },
+    {
+      "face": "east",
+      "offset": 6,
+      "reachable": true
+    },
+    {
+      "face": "east",
+      "offset": 14,
+      "reachable": true
+    },
+    {
+      "face": "east",
+      "offset": -13.56,
+      "reachable": true
+    },
+    {
+      "face": "east",
+      "offset": 13.56,
+      "reachable": true
+    },
+    {
+      "face": "north",
+      "offset": -14,
+      "reachable": true
+    },
+    {
+      "face": "north",
+      "offset": -6,
+      "reachable": true
+    },
+    {
+      "face": "north",
+      "offset": 0,
+      "reachable": true
+    },
+    {
+      "face": "north",
+      "offset": 6,
+      "reachable": true
+    },
+    {
+      "face": "north",
+      "offset": 14,
+      "reachable": true
+    },
+    {
+      "face": "north",
+      "offset": -13.56,
+      "reachable": true
+    },
+    {
+      "face": "north",
+      "offset": 13.56,
+      "reachable": true
+    },
+    {
+      "face": "south",
+      "offset": -14,
+      "reachable": true
+    },
+    {
+      "face": "south",
+      "offset": -6,
+      "reachable": true
+    },
+    {
+      "face": "south",
+      "offset": 0,
+      "reachable": true
+    },
+    {
+      "face": "south",
+      "offset": 6,
+      "reachable": true
+    },
+    {
+      "face": "south",
+      "offset": 14,
+      "reachable": true
+    },
+    {
+      "face": "south",
+      "offset": -13.56,
+      "reachable": true
+    },
+    {
+      "face": "south",
+      "offset": 13.56,
+      "reachable": true
+    }
+  ],
+  "reachableSamples": 30490,
+  "allFreeSamples": 30490,
+  "navigationRadius": 0.24,
+  "navigationGridMeters": 0.2,
+  "fullSquareFloorArea": 1296,
+  "floorCornersCovered": true,
+  "ceilingHeights": [
+    3,
+    3.001,
+    3.002
+  ],
+  "isolatedWalkablePockets": 0,
+  "boundaryWallThickness": 0.2,
+  "boundaryColliderHalfWidth": 0.115,
+  "outletTrianglesEach": 6569,
+  "sourceGalleryCompositionRetained": true,
+  "export": {
+    "geometryBytes": 4424620,
+    "vertices": 93938,
+    "triangles": 56195,
+    "drawCalls": 5,
+    "meshes": {
+      "details": {
+        "vertices": 27434,
+        "triangles": 22943,
+        "bounds": {
+          "min": [
+            -18.0,
+            0.0,
+            -18.0
+          ],
+          "max": [
+            18.0,
+            1.1825000047683716,
+            18.0
+          ]
+        },
+        "planarUVMaxError": null
+      },
+      "walls": {
+        "vertices": 1700,
+        "triangles": 850,
+        "bounds": {
+          "min": [
+            -18.0,
+            0.0,
+            -18.0
+          ],
+          "max": [
+            18.0,
+            3.0,
+            18.0
+          ]
+        },
+        "planarUVMaxError": null
+      },
+      "floor": {
+        "vertices": 4,
+        "triangles": 2,
+        "bounds": {
+          "min": [
+            -18.0,
+            0.0,
+            -18.0
+          ],
+          "max": [
+            18.0,
+            0.0,
+            18.0
+          ]
+        },
+        "planarUVMaxError": 0.0
+      },
+      "ceiling": {
+        "vertices": 64484,
+        "triangles": 32242,
+        "bounds": {
+          "min": [
+            -18.0,
+            3.0,
+            -18.0
+          ],
+          "max": [
+            18.0,
+            3.002000093460083,
+            18.0
+          ]
+        },
+        "planarUVMaxError": 5.960464477539063e-08
+      },
+      "ceiling-lights": {
+        "vertices": 316,
+        "triangles": 158,
+        "bounds": {
+          "min": [
+            -17.993000030517578,
+            3.000999927520752,
+            -15.593000411987305
+          ],
+          "max": [
+            15.593000411987305,
+            3.000999927520752,
+            17.39299964904785
+          ]
+        },
+        "planarUVMaxError": null
+      }
+    }
+  },
+  "floorAnchorsChecked": 4,
+  "minimumColliderY": 0.0,
+  "colliderToGlbAabbMaximumErrorMeters": 1.9073486328125e-06
+}

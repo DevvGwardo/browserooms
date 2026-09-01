@@ -1,0 +1,56 @@
+{
+  "gallery": {
+    "exportedBounds": {
+      "min": [
+        -16.0,
+        0.0,
+        -16.0
+      ],
+      "max": [
+        16.0,
+        3.01200008392334,
+        16.0
+      ]
+    },
+    "fourRotationsPortalAligned": true,
+    "meshFamilies": 4,
+    "colliderCount": 39,
+    "anchorCount": 13
+  },
+  "offset": {
+    "exportedBounds": {
+      "min": [
+        -16.0,
+        0.0,
+        -16.0
+      ],
+      "max": [
+        16.0,
+        3.01200008392334,
+        16.0
+      ]
+    },
+    "fourRotationsPortalAligned": true,
+    "meshFamilies": 4,
+    "colliderCount": 38,
+    "anchorCount": 13
+  },
+  "pillars": {
+    "exportedBounds": {
+      "min": [
+        -16.0,
+        0.0,
+        -16.0
+      ],
+      "max": [
+        16.0,
+        3.01200008392334,
+        16.0
+      ]
+    },
+    "fourRotationsPortalAligned": true,
+    "meshFamilies": 4,
+    "colliderCount": 42,
+    "anchorCount": 13
+  }
+}

@@ -1,0 +1,607 @@
+{
+  "protectedHashesUnchanged": true,
+  "protectedFiles": 15,
+  "geometryAttributeBytesUnchanged": [
+    "walls",
+    "floor",
+    "details"
+  ],
+  "triangles": 48241,
+  "drawCallsPerRoom": 5,
+  "poweredPanelFaces": 47,
+  "fixtureIdsAndHorizontalCentersUnchanged": true,
+  "render": {
+    "exportedBounds": {
+      "min": [
+        -16.0,
+        0.0,
+        -16.0
+      ],
+      "max": [
+        16.0,
+        3.002000093460083,
+        16.0
+      ]
+    },
+    "importedMeshes": 5,
+    "replay": "Exported GLB, saved albedo times E/pi and vertex tint; unchanged saved detail radiance. Display-only panel radiance. No fresh lighting solution.",
+    "renders": [
+      "front-reference.png",
+      "upward-ceiling.png"
+    ]
+  },
+  "refinement": {
+    "cells": 864,
+    "mainCells": 800,
+    "poweredPanels": 47,
+    "mainPoweredPanels": 31,
+    "unpoweredPanels": 18,
+    "fixtures": [
+      {
+        "id": "light-000",
+        "position": [
+          -15.25,
+          2.401,
+          -0.6075
+        ],
+        "oldArea": 0.5307265520095825,
+        "area": 0.583686,
+        "physicalStrength": 7.274137834514893
+      },
+      {
+        "id": "light-001",
+        "position": [
+          -15.25,
+          2.401,
+          0.6075
+        ],
+        "oldArea": 0.5307265520095825,
+        "area": 0.583686,
+        "physicalStrength": 7.274137834514893
+      },
+      {
+        "id": "light-002",
+        "position": [
+          -13.25,
+          2.401,
+          -0.6075
+        ],
+        "oldArea": 0.5307265520095825,
+        "area": 0.583686,
+        "physicalStrength": 7.274137834514893
+      },
+      {
+        "id": "light-003",
+        "position": [
+          -13.25,
+          2.401,
+          0.6075
+        ],
+        "oldArea": 0.5307265520095825,
+        "area": 0.583686,
+        "physicalStrength": 7.274137834514893
+      },
+      {
+        "id": "light-004",
+        "position": [
+          -10.2,
+          3.001,
+          -11.7
+        ],
+        "oldArea": 0.6393156051635742,
+        "area": 0.6949960000000002,
+        "physicalStrength": 7.359070903010366
+      },
+      {
+        "id": "light-005",
+        "position": [
+          -10.2,
+          3.001,
+          -8.1
+        ],
+        "oldArea": 0.6393156051635742,
+        "area": 0.6949960000000013,
+        "physicalStrength": 7.3590709030103545
+      },
+      {
+        "id": "light-006",
+        "position": [
+          -10.2,
+          3.001,
+          -4.5
+        ],
+        "oldArea": 0.6393156051635742,
+        "area": 0.6949960000000002,
+        "physicalStrength": 7.359070903010366
+      },
+      {
+        "id": "light-007",
+        "position": [
+          -10.2,
+          3.001,
+          -0.9
+        ],
+        "oldArea": 0.6393161416053772,
+        "area": 0.6949960000000006,
+        "physicalStrength": 7.359077077915575
+      },
+      {
+        "id": "light-008",
+        "position": [
+          -10.2,
+          3.001,
+          2.7
+        ],
+        "oldArea": 0.6393160820007324,
+        "area": 0.6949960000000007,
+        "physicalStrength": 7.359076391814995
+      },
+      {
+        "id": "light-009",
+        "position": [
+          -10.2,
+          3.001,
+          9.9
+        ],
+        "oldArea": 0.6393156051635742,
+        "area": 0.6949960000000002,
+        "physicalStrength": 7.359070903010366
+      },
+      {
+        "id": "light-010",
+        "position": [
+          -6.6,
+          3.001,
+          -11.7
+        ],
+        "oldArea": 0.6393156051635742,
+        "area": 0.6949959999999996,
+        "physicalStrength": 7.359070903010372
+      },
+      {
+        "id": "light-011",
+        "position": [
+          -6.6,
+          3.001,
+          -8.1
+        ],
+        "oldArea": 0.6393156051635742,
+        "area": 0.6949960000000007,
+        "physicalStrength": 7.359070903010361
+      },
+      {
+        "id": "light-012",
+        "position": [
+          -6.6,
+          3.001,
+          -4.5
+        ],
+        "oldArea": 0.6393156051635742,
+        "area": 0.6949959999999996,
+        "physicalStrength": 7.359070903010372
+      },
+      {
+        "id": "light-013",
+        "position": [
+          -6.6,
+          3.001,
+          -0.9
+        ],
+        "oldArea": 0.6393161416053772,
+        "area": 0.6949960000000001,
+        "physicalStrength": 7.359077077915581
+      },
+      {
+        "id": "light-014",
+        "position": [
+          -6.6,
+          3.001,
+          2.7
+        ],
+        "oldArea": 0.6393160820007324,
+        "area": 0.6949960000000002,
+        "physicalStrength": 7.359076391815001
+      },
+      {
+        "id": "light-015",
+        "position": [
+          -6.6,
+          3.001,
+          9.9
+        ],
+        "oldArea": 0.6393156051635742,
+        "area": 0.6949959999999996,
+        "physicalStrength": 7.359070903010372
+      },
+      {
+        "id": "light-016",
+        "position": [
+          -3.0,
+          3.001,
+          -11.7
+        ],
+        "oldArea": 0.6393156051635742,
+        "area": 0.6949959999999996,
+        "physicalStrength": 7.359070903010372
+      },
+      {
+        "id": "light-017",
+        "position": [
+          -3.0,
+          3.001,
+          -8.1
+        ],
+        "oldArea": 0.6393156051635742,
+        "area": 0.6949960000000007,
+        "physicalStrength": 7.359070903010361
+      },
+      {
+        "id": "light-018",
+        "position": [
+          -3.0,
+          3.001,
+          -4.5
+        ],
+        "oldArea": 0.6393160820007324,
+        "area": 0.6949959999999996,
+        "physicalStrength": 7.359076391815006
+      },
+      {
+        "id": "light-019",
+        "position": [
+          -3.0,
+          3.001,
+          -0.9
+        ],
+        "oldArea": 0.6393158435821533,
+        "area": 0.6949960000000001,
+        "physicalStrength": 7.359073647412685
+      },
+      {
+        "id": "light-020",
+        "position": [
+          -3.0,
+          3.001,
+          2.7
+        ],
+        "oldArea": 0.6393158435821533,
+        "area": 0.6949960000000002,
+        "physicalStrength": 7.359073647412683
+      },
+      {
+        "id": "light-021",
+        "position": [
+          -3.0,
+          3.001,
+          6.3
+        ],
+        "oldArea": 0.6393165588378906,
+        "area": 0.6949959999999996,
+        "physicalStrength": 7.359081880619641
+      },
+      {
+        "id": "light-022",
+        "position": [
+          -3.0,
+          3.001,
+          9.9
+        ],
+        "oldArea": 0.6393156051635742,
+        "area": 0.6949959999999996,
+        "physicalStrength": 7.359070903010372
+      },
+      {
+        "id": "light-023",
+        "position": [
+          -0.6075,
+          2.401,
+          -14.75
+        ],
+        "oldArea": 0.5307273864746094,
+        "area": 0.583686,
+        "physicalStrength": 7.2741492716920995
+      },
+      {
+        "id": "light-024",
+        "position": [
+          -0.6075,
+          2.401,
+          -12.75
+        ],
+        "oldArea": 0.530726432800293,
+        "area": 0.583686,
+        "physicalStrength": 7.274136200632435
+      },
+      {
+        "id": "light-025",
+        "position": [
+          -0.6075,
+          2.401,
+          13.25
+        ],
+        "oldArea": 0.530726432800293,
+        "area": 0.583686,
+        "physicalStrength": 7.274136200632435
+      },
+      {
+        "id": "light-026",
+        "position": [
+          -0.6075,
+          2.401,
+          15.25
+        ],
+        "oldArea": 0.5307254791259766,
+        "area": 0.583686,
+        "physicalStrength": 7.274123129572771
+      },
+      {
+        "id": "light-027",
+        "position": [
+          0.6,
+          3.001,
+          -11.7
+        ],
+        "oldArea": 0.6393156051635742,
+        "area": 0.6949959999999995,
+        "physicalStrength": 7.359070903010373
+      },
+      {
+        "id": "light-028",
+        "position": [
+          0.6,
+          3.001,
+          -8.1
+        ],
+        "oldArea": 0.6393156051635742,
+        "area": 0.6949960000000006,
+        "physicalStrength": 7.359070903010362
+      },
+      {
+        "id": "light-029",
+        "position": [
+          0.6,
+          3.001,
+          6.3
+        ],
+        "oldArea": 0.6393165588378906,
+        "area": 0.6949959999999995,
+        "physicalStrength": 7.359081880619642
+      },
+      {
+        "id": "light-030",
+        "position": [
+          0.6075,
+          2.401,
+          -14.75
+        ],
+        "oldArea": 0.5307273864746094,
+        "area": 0.583686,
+        "physicalStrength": 7.2741492716920995
+      },
+      {
+        "id": "light-031",
+        "position": [
+          0.6075,
+          2.401,
+          -12.75
+        ],
+        "oldArea": 0.530726432800293,
+        "area": 0.583686,
+        "physicalStrength": 7.274136200632435
+      },
+      {
+        "id": "light-032",
+        "position": [
+          0.6075,
+          2.401,
+          13.25
+        ],
+        "oldArea": 0.530726432800293,
+        "area": 0.583686,
+        "physicalStrength": 7.274136200632435
+      },
+      {
+        "id": "light-033",
+        "position": [
+          0.6075,
+          2.401,
+          15.25
+        ],
+        "oldArea": 0.5307254791259766,
+        "area": 0.583686,
+        "physicalStrength": 7.274123129572771
+      },
+      {
+        "id": "light-034",
+        "position": [
+          4.2,
+          3.001,
+          -11.7
+        ],
+        "oldArea": 0.6393156051635742,
+        "area": 0.6949959999999994,
+        "physicalStrength": 7.359070903010375
+      },
+      {
+        "id": "light-035",
+        "position": [
+          4.2,
+          3.001,
+          -8.1
+        ],
+        "oldArea": 0.6393156051635742,
+        "area": 0.6949960000000005,
+        "physicalStrength": 7.3590709030103625
+      },
+      {
+        "id": "light-036",
+        "position": [
+          4.2,
+          3.001,
+          -4.5
+        ],
+        "oldArea": 0.6393160820007324,
+        "area": 0.6949959999999994,
+        "physicalStrength": 7.359076391815009
+      },
+      {
+        "id": "light-037",
+        "position": [
+          7.8,
+          3.001,
+          -11.7
+        ],
+        "oldArea": 0.6393156051635742,
+        "area": 0.6949959999999996,
+        "physicalStrength": 7.359070903010372
+      },
+      {
+        "id": "light-038",
+        "position": [
+          7.8,
+          3.001,
+          -8.1
+        ],
+        "oldArea": 0.6393156051635742,
+        "area": 0.6949960000000007,
+        "physicalStrength": 7.359070903010361
+      },
+      {
+        "id": "light-039",
+        "position": [
+          7.8,
+          3.001,
+          -4.5
+        ],
+        "oldArea": 0.6393160820007324,
+        "area": 0.6949959999999996,
+        "physicalStrength": 7.359076391815006
+      },
+      {
+        "id": "light-040",
+        "position": [
+          11.4,
+          3.001,
+          -11.7
+        ],
+        "oldArea": 0.6393156051635742,
+        "area": 0.6949959999999992,
+        "physicalStrength": 7.359070903010377
+      },
+      {
+        "id": "light-041",
+        "position": [
+          11.4,
+          3.001,
+          -8.1
+        ],
+        "oldArea": 0.6393156051635742,
+        "area": 0.6949960000000002,
+        "physicalStrength": 7.359070903010366
+      },
+      {
+        "id": "light-042",
+        "position": [
+          11.4,
+          3.001,
+          -4.5
+        ],
+        "oldArea": 0.6393156051635742,
+        "area": 0.6949959999999992,
+        "physicalStrength": 7.359070903010377
+      },
+      {
+        "id": "light-043",
+        "position": [
+          12.75,
+          2.401,
+          -0.6075
+        ],
+        "oldArea": 0.5307265520095825,
+        "area": 0.583686,
+        "physicalStrength": 7.274137834514893
+      },
+      {
+        "id": "light-044",
+        "position": [
+          12.75,
+          2.401,
+          0.6075
+        ],
+        "oldArea": 0.5307265520095825,
+        "area": 0.583686,
+        "physicalStrength": 7.274137834514893
+      },
+      {
+        "id": "light-045",
+        "position": [
+          14.75,
+          2.401,
+          -0.6075
+        ],
+        "oldArea": 0.5307265520095825,
+        "area": 0.583686,
+        "physicalStrength": 7.274137834514893
+      },
+      {
+        "id": "light-046",
+        "position": [
+          14.75,
+          2.401,
+          0.6075
+        ],
+        "oldArea": 0.5307265520095825,
+        "area": 0.583686,
+        "physicalStrength": 7.274137834514893
+      }
+    ],
+    "gridWidthMeters": 0.014,
+    "mainTileMeters": [
+      1.2,
+      0.6
+    ],
+    "tileTextureMeters": 1.2,
+    "mainHeights": {
+      "grid": 3.0,
+      "tile": 3.002,
+      "emitter": 3.001
+    },
+    "corridorHeights": {
+      "grid": 2.4,
+      "tile": 2.402,
+      "emitter": 2.401
+    },
+    "physicalEmissionBaseStrength": 8.0,
+    "displayRadiance": [
+      3.6,
+      3.55,
+      2.85
+    ],
+    "tileTintRange": [
+      0.982,
+      1.0
+    ],
+    "gridTint": 0.977,
+    "offDiffuserTint": 0.93,
+    "seconds": 20.61,
+    "checkpoint": "assets/lookdev/ceiling-update/refined-ceiling.blend",
+    "lightmapPass": "DIFFUSE DIRECT+INDIRECT without COLOR; E/pi, OIDN HDR",
+    "oldGeometryAttributeBytesUnchanged": [
+      "walls",
+      "floor",
+      "details"
+    ],
+    "navigation": {
+      "reachablePortals": 4,
+      "navigationRadius": 0.24,
+      "navigationHeight": 1.8,
+      "navigationGridMeters": 0.2,
+      "reachableGridCells": 12983,
+      "floorAnchorsChecked": 8,
+      "boundsInsideCell": true,
+      "roomCorridorFloorContinuous": true,
+      "portalClearWidth": 2.4,
+      "portalClearHeight": 2.4
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "assets/backrooms.blend": "67ff008d10ca53fa7fc977f3f4460a17c9f3c2e81d1a02bc64460936d44633f3",
+  "assets/modules/gallery.blend": "88d6ea603c89eef297400c67a6c6858d781e749732991893cfeccb0db2df8a63",
+  "scripts/bake_scene.py": "18781e2c4081203a171d92804f8cbf858e2679a168c12f25a7fb3e31d843c425",
+  "scripts/make_surface_detail.py": "4aa8a33d5de0d04b18ffc40665918b3c0b145280f278f4adf53f73aff97f0621",
+  "scripts/bake_continuous_floor.py": "cef0884f48bf94ada6d7b56e50965d8d737402f54a3213166b6da0a49e60ce56",
+  "assets/browser-yellow-detail.png": "737d2bb1b6f1167abb45bbc030ecef7546dce2a4e22b71b087136dfc1b8cf4d5",
+  "assets/browser-desktop.png": "876b4415ad11b4ed5e0276e02628de90c3e5c5093fed4b938db9accabd084f71",
+  "public/textures/wallpaper-detail.png": "b2533cd90e12e41349e52d582d650a85e51210023391b265d9597631f9fbec76",
+  "public/textures/carpet-detail.png": "c9641d4a161d3737d6f1a33033faeb37e0a88b19d8d653371d95545ac9dc94d6",
+  "public/continuous/open-columns-ceiling.hdr": "5440b24a912ff400d3dedc21b1da8321e3788146088b1c8e01c9c633d6e30065",
+  "public/continuous/open-gallery-ceiling.hdr": "405f3ceb461981a8476eda50e274854b896ce50a3efb43c93762da08f4a21b29",
+  "public/continuous/open-offset-ceiling.hdr": "65deaa1f86019be466e385197e53dd29f3c1d68405fc3bb0785c292ff29f061b",
+  "public/continuous/open-columns.glb": "0a5aa39c1070788f94537f3eb1937a58340b1a3a382ceae3f45a43efda1fc479",
+  "public/continuous/open-gallery.glb": "ca77b834583f3a3303aca886f9f700b1d283b8bef3ff16e51aa01741b687b018",
+  "public/continuous/open-offset.glb": "5c6888793544085213283a43ecd7b57ad21cc1a8ae3fa1386a4aa5a7cf2b13ac"
+}

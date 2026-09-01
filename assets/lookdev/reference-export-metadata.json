@@ -1,0 +1,1198 @@
+{
+  "version": 1,
+  "cellSize": 32,
+  "templates": [
+    {
+      "id": "reference",
+      "geometry": "reference.glb",
+      "radiance": [
+        {
+          "file": "walls-light.hdr",
+          "family": "walls",
+          "flipY": false,
+          "resolution": 2048
+        },
+        {
+          "file": "floor-light.hdr",
+          "family": "floor",
+          "flipY": false,
+          "resolution": 1024
+        },
+        {
+          "file": "ceiling-radiance.hdr",
+          "family": "ceiling",
+          "flipY": false,
+          "resolution": 2048
+        },
+        {
+          "file": "details-radiance.hdr",
+          "family": "details",
+          "flipY": false,
+          "resolution": 1024
+        }
+      ],
+      "colliders": [
+        {
+          "min": [
+            -12.0,
+            0.0,
+            -12.0
+          ],
+          "max": [
+            -1.2150001525878906,
+            3.0,
+            -11.719999313354492
+          ]
+        },
+        {
+          "min": [
+            -12.0,
+            0.0,
+            -12.0
+          ],
+          "max": [
+            -11.719999313354492,
+            3.0,
+            -1.2150001525878906
+          ]
+        },
+        {
+          "min": [
+            -12.0,
+            0.0,
+            11.719999313354492
+          ],
+          "max": [
+            -1.2150001525878906,
+            3.0,
+            12.0
+          ]
+        },
+        {
+          "min": [
+            11.719999313354492,
+            0.0,
+            -12.0
+          ],
+          "max": [
+            12.0,
+            3.0,
+            -1.2150001525878906
+          ]
+        },
+        {
+          "min": [
+            -16.0,
+            0.0,
+            -1.4950000047683716
+          ],
+          "max": [
+            -12.0,
+            2.440000057220459,
+            -1.215000033378601
+          ]
+        },
+        {
+          "min": [
+            -16.0,
+            0.0,
+            1.215000033378601
+          ],
+          "max": [
+            -12.0,
+            2.440000057220459,
+            1.4950000047683716
+          ]
+        },
+        {
+          "min": [
+            -1.4950000047683716,
+            0.0,
+            -16.0
+          ],
+          "max": [
+            -1.215000033378601,
+            2.440000057220459,
+            -12.0
+          ]
+        },
+        {
+          "min": [
+            1.215000033378601,
+            0.0,
+            -16.0
+          ],
+          "max": [
+            1.4950000047683716,
+            2.440000057220459,
+            -12.0
+          ]
+        },
+        {
+          "min": [
+            -12.0,
+            2.4000000953674316,
+            -1.215000033378601
+          ],
+          "max": [
+            -11.719999313354492,
+            3.0,
+            1.215000033378601
+          ]
+        },
+        {
+          "min": [
+            -1.215000033378601,
+            2.4000000953674316,
+            -12.0
+          ],
+          "max": [
+            1.215000033378601,
+            3.0,
+            -11.719999313354492
+          ]
+        },
+        {
+          "min": [
+            1.2150001525878906,
+            0.0,
+            -12.0
+          ],
+          "max": [
+            12.0,
+            3.0,
+            -11.719999313354492
+          ]
+        },
+        {
+          "min": [
+            -12.0,
+            0.0,
+            1.2150001525878906
+          ],
+          "max": [
+            -11.719999313354492,
+            3.0,
+            12.0
+          ]
+        },
+        {
+          "min": [
+            1.2150001525878906,
+            0.0,
+            11.719999313354492
+          ],
+          "max": [
+            12.0,
+            3.0,
+            12.0
+          ]
+        },
+        {
+          "min": [
+            11.719999313354492,
+            0.0,
+            1.2150001525878906
+          ],
+          "max": [
+            12.0,
+            3.0,
+            12.0
+          ]
+        },
+        {
+          "min": [
+            12.0,
+            0.0,
+            -1.4950000047683716
+          ],
+          "max": [
+            16.0,
+            2.440000057220459,
+            -1.215000033378601
+          ]
+        },
+        {
+          "min": [
+            12.0,
+            0.0,
+            1.215000033378601
+          ],
+          "max": [
+            16.0,
+            2.440000057220459,
+            1.4950000047683716
+          ]
+        },
+        {
+          "min": [
+            -1.4950000047683716,
+            0.0,
+            12.0
+          ],
+          "max": [
+            -1.215000033378601,
+            2.440000057220459,
+            16.0
+          ]
+        },
+        {
+          "min": [
+            1.215000033378601,
+            0.0,
+            12.0
+          ],
+          "max": [
+            1.4950000047683716,
+            2.440000057220459,
+            16.0
+          ]
+        },
+        {
+          "min": [
+            11.719999313354492,
+            2.4000000953674316,
+            -1.215000033378601
+          ],
+          "max": [
+            12.0,
+            3.0,
+            1.215000033378601
+          ]
+        },
+        {
+          "min": [
+            -1.215000033378601,
+            2.4000000953674316,
+            11.719999313354492
+          ],
+          "max": [
+            1.215000033378601,
+            3.0,
+            12.0
+          ]
+        },
+        {
+          "min": [
+            -1.399999976158142,
+            0.0,
+            -2.5
+          ],
+          "max": [
+            2.4000000953674316,
+            3.0,
+            2.9000000953674316
+          ]
+        },
+        {
+          "min": [
+            -8.600000381469727,
+            0.0,
+            3.2900002002716064
+          ],
+          "max": [
+            -3.000000238418579,
+            1.1399999856948853,
+            3.509999990463257
+          ]
+        },
+        {
+          "min": [
+            5.650000095367432,
+            0.0,
+            -4.199999809265137
+          ],
+          "max": [
+            5.950000286102295,
+            3.0,
+            2.200000047683716
+          ]
+        },
+        {
+          "min": [
+            5.699999809265137,
+            0.0,
+            -4.139999866485596
+          ],
+          "max": [
+            9.300000190734863,
+            3.0,
+            -3.859999895095825
+          ]
+        },
+        {
+          "min": [
+            -5.550000190734863,
+            0.0,
+            -7.539999961853027
+          ],
+          "max": [
+            1.9500000476837158,
+            3.0,
+            -7.260000228881836
+          ]
+        },
+        {
+          "min": [
+            -9.024999618530273,
+            0.0,
+            -3.825000047683716
+          ],
+          "max": [
+            -8.375,
+            3.0,
+            -3.174999952316284
+          ]
+        },
+        {
+          "min": [
+            7.750000476837158,
+            0.0,
+            -9.550000190734863
+          ],
+          "max": [
+            8.450000762939453,
+            3.0,
+            -8.84999942779541
+          ]
+        }
+      ],
+      "rooms": [
+        {
+          "id": "main",
+          "bounds": {
+            "min": [
+              -11.7,
+              0,
+              -11.7
+            ],
+            "max": [
+              11.7,
+              3,
+              11.7
+            ]
+          }
+        },
+        {
+          "id": "north-vestibule",
+          "bounds": {
+            "min": [
+              -1.2,
+              0,
+              -16.0
+            ],
+            "max": [
+              1.2,
+              2.4,
+              -12.0
+            ]
+          }
+        },
+        {
+          "id": "east-vestibule",
+          "bounds": {
+            "min": [
+              12.0,
+              0,
+              -1.2
+            ],
+            "max": [
+              16.0,
+              2.4,
+              1.2
+            ]
+          }
+        },
+        {
+          "id": "south-vestibule",
+          "bounds": {
+            "min": [
+              -1.2,
+              0,
+              12.0
+            ],
+            "max": [
+              1.2,
+              2.4,
+              16.0
+            ]
+          }
+        },
+        {
+          "id": "west-vestibule",
+          "bounds": {
+            "min": [
+              -16.0,
+              0,
+              -1.2
+            ],
+            "max": [
+              -12.0,
+              2.4,
+              1.2
+            ]
+          }
+        }
+      ],
+      "anchors": [
+        {
+          "id": "north-floor",
+          "roomId": "north-vestibule",
+          "kind": "floor",
+          "position": [
+            0.0,
+            0,
+            -14.0
+          ],
+          "yaw": 0,
+          "clearance": [
+            1.0,
+            2.0,
+            1.0
+          ]
+        },
+        {
+          "id": "north-ceiling",
+          "roomId": "north-vestibule",
+          "kind": "ceiling",
+          "position": [
+            0.0,
+            2.4,
+            -14.0
+          ],
+          "yaw": 0,
+          "clearance": [
+            0.5,
+            0.2,
+            0.5
+          ]
+        },
+        {
+          "id": "east-floor",
+          "roomId": "east-vestibule",
+          "kind": "floor",
+          "position": [
+            14.0,
+            0,
+            0.0
+          ],
+          "yaw": 0,
+          "clearance": [
+            1.0,
+            2.0,
+            1.0
+          ]
+        },
+        {
+          "id": "east-ceiling",
+          "roomId": "east-vestibule",
+          "kind": "ceiling",
+          "position": [
+            14.0,
+            2.4,
+            0.0
+          ],
+          "yaw": 0,
+          "clearance": [
+            0.5,
+            0.2,
+            0.5
+          ]
+        },
+        {
+          "id": "south-floor",
+          "roomId": "south-vestibule",
+          "kind": "floor",
+          "position": [
+            0.0,
+            0,
+            14.0
+          ],
+          "yaw": 0,
+          "clearance": [
+            1.0,
+            2.0,
+            1.0
+          ]
+        },
+        {
+          "id": "south-ceiling",
+          "roomId": "south-vestibule",
+          "kind": "ceiling",
+          "position": [
+            0.0,
+            2.4,
+            14.0
+          ],
+          "yaw": 0,
+          "clearance": [
+            0.5,
+            0.2,
+            0.5
+          ]
+        },
+        {
+          "id": "west-floor",
+          "roomId": "west-vestibule",
+          "kind": "floor",
+          "position": [
+            -14.0,
+            0,
+            0.0
+          ],
+          "yaw": 0,
+          "clearance": [
+            1.0,
+            2.0,
+            1.0
+          ]
+        },
+        {
+          "id": "west-ceiling",
+          "roomId": "west-vestibule",
+          "kind": "ceiling",
+          "position": [
+            -14.0,
+            2.4,
+            0.0
+          ],
+          "yaw": 0,
+          "clearance": [
+            0.5,
+            0.2,
+            0.5
+          ]
+        },
+        {
+          "id": "main-floor-0",
+          "roomId": "main",
+          "kind": "floor",
+          "position": [
+            -9,
+            0,
+            10.4
+          ],
+          "yaw": 0,
+          "clearance": [
+            1.2,
+            2,
+            1.2
+          ]
+        },
+        {
+          "id": "main-floor-1",
+          "roomId": "main",
+          "kind": "floor",
+          "position": [
+            9.8,
+            0,
+            9.8
+          ],
+          "yaw": 0,
+          "clearance": [
+            1.2,
+            2,
+            1.2
+          ]
+        },
+        {
+          "id": "main-floor-2",
+          "roomId": "main",
+          "kind": "floor",
+          "position": [
+            -9.8,
+            0,
+            -9.8
+          ],
+          "yaw": 0,
+          "clearance": [
+            1.2,
+            2,
+            1.2
+          ]
+        },
+        {
+          "id": "main-floor-3",
+          "roomId": "main",
+          "kind": "floor",
+          "position": [
+            9.8,
+            0,
+            -9.8
+          ],
+          "yaw": 0,
+          "clearance": [
+            1.2,
+            2,
+            1.2
+          ]
+        },
+        {
+          "id": "main-west-wall",
+          "roomId": "main",
+          "kind": "wall",
+          "position": [
+            -11.718,
+            1.8,
+            3.6
+          ],
+          "yaw": -1.5707963267948966,
+          "clearance": [
+            0.6,
+            0.6,
+            0.15
+          ]
+        }
+      ],
+      "lights": [
+        {
+          "id": "light-000",
+          "position": [
+            -15.25,
+            2.417,
+            -0.6075
+          ]
+        },
+        {
+          "id": "light-001",
+          "position": [
+            -15.25,
+            2.417,
+            0.6075
+          ]
+        },
+        {
+          "id": "light-002",
+          "position": [
+            -13.25,
+            2.417,
+            -0.6075
+          ]
+        },
+        {
+          "id": "light-003",
+          "position": [
+            -13.25,
+            2.417,
+            0.6075
+          ]
+        },
+        {
+          "id": "light-004",
+          "position": [
+            -10.2,
+            2.995,
+            -11.7
+          ]
+        },
+        {
+          "id": "light-005",
+          "position": [
+            -10.2,
+            2.995,
+            -8.1
+          ]
+        },
+        {
+          "id": "light-006",
+          "position": [
+            -10.2,
+            2.995,
+            -4.5
+          ]
+        },
+        {
+          "id": "light-007",
+          "position": [
+            -10.2,
+            2.995,
+            -0.9
+          ]
+        },
+        {
+          "id": "light-008",
+          "position": [
+            -10.2,
+            2.995,
+            2.7
+          ]
+        },
+        {
+          "id": "light-009",
+          "position": [
+            -10.2,
+            2.995,
+            9.9
+          ]
+        },
+        {
+          "id": "light-010",
+          "position": [
+            -6.6,
+            2.995,
+            -11.7
+          ]
+        },
+        {
+          "id": "light-011",
+          "position": [
+            -6.6,
+            2.995,
+            -8.1
+          ]
+        },
+        {
+          "id": "light-012",
+          "position": [
+            -6.6,
+            2.995,
+            -4.5
+          ]
+        },
+        {
+          "id": "light-013",
+          "position": [
+            -6.6,
+            2.995,
+            -0.9
+          ]
+        },
+        {
+          "id": "light-014",
+          "position": [
+            -6.6,
+            2.995,
+            2.7
+          ]
+        },
+        {
+          "id": "light-015",
+          "position": [
+            -6.6,
+            2.995,
+            9.9
+          ]
+        },
+        {
+          "id": "light-016",
+          "position": [
+            -3.0,
+            2.995,
+            -11.7
+          ]
+        },
+        {
+          "id": "light-017",
+          "position": [
+            -3.0,
+            2.995,
+            -8.1
+          ]
+        },
+        {
+          "id": "light-018",
+          "position": [
+            -3.0,
+            2.995,
+            -4.5
+          ]
+        },
+        {
+          "id": "light-019",
+          "position": [
+            -3.0,
+            2.995,
+            -0.9
+          ]
+        },
+        {
+          "id": "light-020",
+          "position": [
+            -3.0,
+            2.995,
+            2.7
+          ]
+        },
+        {
+          "id": "light-021",
+          "position": [
+            -3.0,
+            2.995,
+            6.3
+          ]
+        },
+        {
+          "id": "light-022",
+          "position": [
+            -3.0,
+            2.995,
+            9.9
+          ]
+        },
+        {
+          "id": "light-023",
+          "position": [
+            -0.6075,
+            2.417,
+            -14.75
+          ]
+        },
+        {
+          "id": "light-024",
+          "position": [
+            -0.6075,
+            2.417,
+            -12.75
+          ]
+        },
+        {
+          "id": "light-025",
+          "position": [
+            -0.6075,
+            2.417,
+            13.25
+          ]
+        },
+        {
+          "id": "light-026",
+          "position": [
+            -0.6075,
+            2.417,
+            15.25
+          ]
+        },
+        {
+          "id": "light-027",
+          "position": [
+            0.6,
+            2.995,
+            -11.7
+          ]
+        },
+        {
+          "id": "light-028",
+          "position": [
+            0.6,
+            2.995,
+            -8.1
+          ]
+        },
+        {
+          "id": "light-029",
+          "position": [
+            0.6,
+            2.995,
+            6.3
+          ]
+        },
+        {
+          "id": "light-030",
+          "position": [
+            0.6075,
+            2.417,
+            -14.75
+          ]
+        },
+        {
+          "id": "light-031",
+          "position": [
+            0.6075,
+            2.417,
+            -12.75
+          ]
+        },
+        {
+          "id": "light-032",
+          "position": [
+            0.6075,
+            2.417,
+            13.25
+          ]
+        },
+        {
+          "id": "light-033",
+          "position": [
+            0.6075,
+            2.417,
+            15.25
+          ]
+        },
+        {
+          "id": "light-034",
+          "position": [
+            4.2,
+            2.995,
+            -11.7
+          ]
+        },
+        {
+          "id": "light-035",
+          "position": [
+            4.2,
+            2.995,
+            -8.1
+          ]
+        },
+        {
+          "id": "light-036",
+          "position": [
+            4.2,
+            2.995,
+            -4.5
+          ]
+        },
+        {
+          "id": "light-037",
+          "position": [
+            7.8,
+            2.995,
+            -11.7
+          ]
+        },
+        {
+          "id": "light-038",
+          "position": [
+            7.8,
+            2.995,
+            -8.1
+          ]
+        },
+        {
+          "id": "light-039",
+          "position": [
+            7.8,
+            2.995,
+            -4.5
+          ]
+        },
+        {
+          "id": "light-040",
+          "position": [
+            11.4,
+            2.995,
+            -11.7
+          ]
+        },
+        {
+          "id": "light-041",
+          "position": [
+            11.4,
+            2.995,
+            -8.1
+          ]
+        },
+        {
+          "id": "light-042",
+          "position": [
+            11.4,
+            2.995,
+            -4.5
+          ]
+        },
+        {
+          "id": "light-043",
+          "position": [
+            12.75,
+            2.417,
+            -0.6075
+          ]
+        },
+        {
+          "id": "light-044",
+          "position": [
+            12.75,
+            2.417,
+            0.6075
+          ]
+        },
+        {
+          "id": "light-045",
+          "position": [
+            14.75,
+            2.417,
+            -0.6075
+          ]
+        },
+        {
+          "id": "light-046",
+          "position": [
+            14.75,
+            2.417,
+            0.6075
+          ]
+        }
+      ],
+      "spawn": {
+        "position": [
+          -4.2,
+          1.65,
+          10
+        ],
+        "yaw": -0.38,
+        "pitch": -0.025
+      }
+    }
+  ],
+  "materials": {
+    "walls": {
+      "kind": "pbr",
+      "family": "walls",
+      "albedo": "wall-albedo.png",
+      "normal": "wall-normal.png",
+      "roughness": "wall-roughness.png",
+      "lightmap": "walls-light.hdr",
+      "normalScale": 1,
+      "roughnessFactor": 1,
+      "sheen": 0
+    },
+    "floor": {
+      "kind": "pbr",
+      "family": "floor",
+      "albedo": "carpet-albedo.png",
+      "normal": "carpet-normal.png",
+      "roughness": "carpet-roughness.png",
+      "lightmap": "floor-light.hdr",
+      "normalScale": 1,
+      "roughnessFactor": 1,
+      "sheen": 0.15
+    },
+    "ceiling": {
+      "kind": "radiance",
+      "family": "ceiling",
+      "radiance": "ceiling-radiance.hdr"
+    },
+    "details": {
+      "kind": "radiance",
+      "family": "details",
+      "radiance": "details-radiance.hdr"
+    }
+  },
+  "bake": {
+    "sourceSnapshot": "reference-final-retained-wallpaper.blend",
+    "wallMaterial": "Wallpaper - replace with supplied material",
+    "engine": "Cycles",
+    "device": "Metal",
+    "samples": 192,
+    "diffuseBounces": 8,
+    "totalBounces": 12,
+    "camera": {
+      "verticalFovDegrees": 51.48141671246568,
+      "exposureStops": 1.0,
+      "viewTransform": "AgX",
+      "look": "Medium High Contrast"
+    },
+    "pbrLighting": "DIFFUSE DIRECT+INDIRECT, no COLOR: unit-albedo outgoing diffuse E/pi. THREE.lightMapIntensity=pi; no environment diffuse.",
+    "uv": "PBR TEXCOORD_0=SurfaceUV physically tiled; TEXCOORD_1=LightmapUV. Radiance TEXCOORD_0=LightmapUV. glTF V=1-Blender V; all surface textures flipY=false.",
+    "normal": "OpenGL tangent-space +Y, baked shader normal including source strength; runtime normalScale=1.",
+    "colorSpace": "Albedo PNG sRGB; normal/roughness PNG Non-Color; light/radiance HDR scene-linear Rec.709 RGBE.",
+    "physicalTileMeters": {
+      "walls": 0.5,
+      "floor": 1.2
+    },
+    "validation": {
+      "reachablePortals": 4,
+      "navigationRadius": 0.24,
+      "navigationHeight": 1.8,
+      "navigationGridMeters": 0.2,
+      "reachableGridCells": 12983,
+      "floorAnchorsChecked": 8,
+      "boundsInsideCell": true,
+      "roomCorridorFloorContinuous": true,
+      "portalClearWidth": 2.4,
+      "portalClearHeight": 2.4
+    },
+    "tileTextures": [
+      {
+        "file": "wall-albedo.png",
+        "resolution": [
+          2048,
+          2048
+        ],
+        "maximum": 0.6023238301277161,
+        "meanNonBlack": [
+          0.5932683944702148,
+          0.5522083640098572,
+          0.4038836658000946
+        ],
+        "nonBlackPixels": 4194304,
+        "fileBytes": 5628736
+      },
+      {
+        "file": "wall-normal.png",
+        "resolution": [
+          2048,
+          2048
+        ],
+        "maximum": 1.0000100135803223,
+        "meanNonBlack": [
+          0.5000012516975403,
+          0.5000020861625671,
+          0.9999999403953552
+        ],
+        "nonBlackPixels": 4194304,
+        "fileBytes": 15941978
+      },
+      {
+        "file": "wall-roughness.png",
+        "resolution": [
+          2048,
+          2048
+        ],
+        "maximum": 0.8400000929832458,
+        "meanNonBlack": [
+          0.8091541528701782,
+          0.8091541528701782,
+          0.8091541528701782
+        ],
+        "nonBlackPixels": 4194304,
+        "fileBytes": 115256
+      },
+      {
+        "file": "carpet-albedo.png",
+        "resolution": [
+          1024,
+          1024
+        ],
+        "maximum": 0.3952191472053528,
+        "meanNonBlack": [
+          0.33279484510421753,
+          0.2951555550098419,
+          0.20599381625652313
+        ],
+        "nonBlackPixels": 1048576,
+        "fileBytes": 4168042
+      },
+      {
+        "file": "carpet-normal.png",
+        "resolution": [
+          1024,
+          1024
+        ],
+        "maximum": 1.0000100135803223,
+        "meanNonBlack": [
+          0.4986231029033661,
+          0.4984560012817383,
+          0.9998223781585693
+        ],
+        "nonBlackPixels": 1048576,
+        "fileBytes": 5311605
+      },
+      {
+        "file": "carpet-roughness.png",
+        "resolution": [
+          1024,
+          1024
+        ],
+        "maximum": 0.9035742878913879,
+        "meanNonBlack": [
+          0.8527156710624695,
+          0.8527156710624695,
+          0.8527156710624695
+        ],
+        "nonBlackPixels": 1048576,
+        "fileBytes": 2371152
+      }
+    ]
+  },
+  "environment": "reflection.hdr"
+}

@@ -1,0 +1,77 @@
+{
+  "version": 1,
+  "clips": [
+    {
+      "file": "heavy-01.wav",
+      "duration": 1.251701,
+      "source": "../footsteps/carpet-01.wav",
+      "pitchRatio": 0.64,
+      "tempoRatio": 0.94,
+      "bodyHz": 65,
+      "attackMs": 32,
+      "roomTailSeconds": 0.76,
+      "rmsDbFS": -27.0,
+      "peakDbFS": -11.96
+    },
+    {
+      "file": "heavy-02.wav",
+      "duration": 1.367619,
+      "source": "../footsteps/carpet-03.wav",
+      "pitchRatio": 0.69,
+      "tempoRatio": 0.91,
+      "bodyHz": 80,
+      "attackMs": 39,
+      "roomTailSeconds": 0.91,
+      "rmsDbFS": -27.7,
+      "peakDbFS": -12.53
+    },
+    {
+      "file": "heavy-03.wav",
+      "duration": 1.314444,
+      "source": "../footsteps/carpet-05.wav",
+      "pitchRatio": 0.61,
+      "tempoRatio": 0.97,
+      "bodyHz": 60,
+      "attackMs": 43,
+      "roomTailSeconds": 0.83,
+      "rmsDbFS": -26.8,
+      "peakDbFS": -11.64
+    },
+    {
+      "file": "heavy-04.wav",
+      "duration": 1.481837,
+      "source": "../footsteps/carpet-07.wav",
+      "pitchRatio": 0.67,
+      "tempoRatio": 0.9,
+      "bodyHz": 74,
+      "attackMs": 35,
+      "roomTailSeconds": 1.02,
+      "rmsDbFS": -27.4,
+      "peakDbFS": -11.44
+    },
+    {
+      "file": "heavy-05.wav",
+      "duration": 1.351905,
+      "source": "../footsteps/carpet-09.wav",
+      "pitchRatio": 0.63,
+      "tempoRatio": 0.95,
+      "bodyHz": 69,
+      "attackMs": 41,
+      "roomTailSeconds": 0.88,
+      "rmsDbFS": -27.8,
+      "peakDbFS": -12.46
+    },
+    {
+      "file": "heavy-06.wav",
+      "duration": 1.1822,
+      "source": "../footsteps/carpet-11.wav",
+      "pitchRatio": 0.71,
+      "tempoRatio": 0.92,
+      "bodyHz": 86,
+      "attackMs": 28,
+      "roomTailSeconds": 0.72,
+      "rmsDbFS": -26.9,
+      "peakDbFS": -11.48
+    }
+  ]
+}

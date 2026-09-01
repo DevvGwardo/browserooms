@@ -1,0 +1,561 @@
+{
+  "templates": {
+    "open-gallery": {
+      "changedColliderIndices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "collidersMatchedToGlbWallFaces": 18,
+      "renderedWallFacesCovered": 850,
+      "colliderToGlbAabbMaximumErrorMeters": 1.9073486328125e-06,
+      "horizontalSkirtingAllowanceMeters": 0.015,
+      "roomsUnchanged": true,
+      "anchorsUnchanged": true,
+      "navigation": {
+        "crossings": [
+          {
+            "face": "west",
+            "offset": -14,
+            "reachable": true
+          },
+          {
+            "face": "west",
+            "offset": -6,
+            "reachable": true
+          },
+          {
+            "face": "west",
+            "offset": 0,
+            "reachable": true
+          },
+          {
+            "face": "west",
+            "offset": 6,
+            "reachable": true
+          },
+          {
+            "face": "west",
+            "offset": 14,
+            "reachable": true
+          },
+          {
+            "face": "west",
+            "offset": -13.56,
+            "reachable": true
+          },
+          {
+            "face": "west",
+            "offset": 13.56,
+            "reachable": true
+          },
+          {
+            "face": "east",
+            "offset": -14,
+            "reachable": true
+          },
+          {
+            "face": "east",
+            "offset": -6,
+            "reachable": true
+          },
+          {
+            "face": "east",
+            "offset": 0,
+            "reachable": true
+          },
+          {
+            "face": "east",
+            "offset": 6,
+            "reachable": true
+          },
+          {
+            "face": "east",
+            "offset": 14,
+            "reachable": true
+          },
+          {
+            "face": "east",
+            "offset": -13.56,
+            "reachable": true
+          },
+          {
+            "face": "east",
+            "offset": 13.56,
+            "reachable": true
+          },
+          {
+            "face": "north",
+            "offset": -14,
+            "reachable": true
+          },
+          {
+            "face": "north",
+            "offset": -6,
+            "reachable": true
+          },
+          {
+            "face": "north",
+            "offset": 0,
+            "reachable": true
+          },
+          {
+            "face": "north",
+            "offset": 6,
+            "reachable": true
+          },
+          {
+            "face": "north",
+            "offset": 14,
+            "reachable": true
+          },
+          {
+            "face": "north",
+            "offset": -13.56,
+            "reachable": true
+          },
+          {
+            "face": "north",
+            "offset": 13.56,
+            "reachable": true
+          },
+          {
+            "face": "south",
+            "offset": -14,
+            "reachable": true
+          },
+          {
+            "face": "south",
+            "offset": -6,
+            "reachable": true
+          },
+          {
+            "face": "south",
+            "offset": 0,
+            "reachable": true
+          },
+          {
+            "face": "south",
+            "offset": 6,
+            "reachable": true
+          },
+          {
+            "face": "south",
+            "offset": 14,
+            "reachable": true
+          },
+          {
+            "face": "south",
+            "offset": -13.56,
+            "reachable": true
+          },
+          {
+            "face": "south",
+            "offset": 13.56,
+            "reachable": true
+          }
+        ],
+        "reachableSamples": 30490,
+        "allFreeSamples": 30490,
+        "navigationRadius": 0.24,
+        "navigationGridMeters": 0.2,
+        "fullSquareFloorArea": 1296,
+        "floorCornersCovered": true,
+        "ceilingHeights": [
+          3,
+          3.001,
+          3.002
+        ],
+        "isolatedWalkablePockets": 0,
+        "boundaryWallThickness": 0.2,
+        "boundaryColliderHalfWidth": 0.115,
+        "outletTrianglesEach": 6569,
+        "floorAnchorsChecked": 4,
+        "minimumColliderY": 0.0,
+        "sourceGalleryCompositionRetained": true
+      }
+    },
+    "open-offset": {
+      "changedColliderIndices": [],
+      "collidersMatchedToGlbWallFaces": 17,
+      "renderedWallFacesCovered": 154,
+      "colliderToGlbAabbMaximumErrorMeters": 3.8146972691777137e-07,
+      "horizontalSkirtingAllowanceMeters": 0.015,
+      "roomsUnchanged": true,
+      "anchorsUnchanged": true,
+      "navigation": {
+        "crossings": [
+          {
+            "face": "west",
+            "offset": -14,
+            "reachable": true
+          },
+          {
+            "face": "west",
+            "offset": -6,
+            "reachable": true
+          },
+          {
+            "face": "west",
+            "offset": 0,
+            "reachable": true
+          },
+          {
+            "face": "west",
+            "offset": 6,
+            "reachable": true
+          },
+          {
+            "face": "west",
+            "offset": 14,
+            "reachable": true
+          },
+          {
+            "face": "west",
+            "offset": -13.56,
+            "reachable": true
+          },
+          {
+            "face": "west",
+            "offset": 13.56,
+            "reachable": true
+          },
+          {
+            "face": "east",
+            "offset": -14,
+            "reachable": true
+          },
+          {
+            "face": "east",
+            "offset": -6,
+            "reachable": true
+          },
+          {
+            "face": "east",
+            "offset": 0,
+            "reachable": true
+          },
+          {
+            "face": "east",
+            "offset": 6,
+            "reachable": true
+          },
+          {
+            "face": "east",
+            "offset": 14,
+            "reachable": true
+          },
+          {
+            "face": "east",
+            "offset": -13.56,
+            "reachable": true
+          },
+          {
+            "face": "east",
+            "offset": 13.56,
+            "reachable": true
+          },
+          {
+            "face": "north",
+            "offset": -14,
+            "reachable": true
+          },
+          {
+            "face": "north",
+            "offset": -6,
+            "reachable": true
+          },
+          {
+            "face": "north",
+            "offset": 0,
+            "reachable": true
+          },
+          {
+            "face": "north",
+            "offset": 6,
+            "reachable": true
+          },
+          {
+            "face": "north",
+            "offset": 14,
+            "reachable": true
+          },
+          {
+            "face": "north",
+            "offset": -13.56,
+            "reachable": true
+          },
+          {
+            "face": "north",
+            "offset": 13.56,
+            "reachable": true
+          },
+          {
+            "face": "south",
+            "offset": -14,
+            "reachable": true
+          },
+          {
+            "face": "south",
+            "offset": -6,
+            "reachable": true
+          },
+          {
+            "face": "south",
+            "offset": 0,
+            "reachable": true
+          },
+          {
+            "face": "south",
+            "offset": 6,
+            "reachable": true
+          },
+          {
+            "face": "south",
+            "offset": 14,
+            "reachable": true
+          },
+          {
+            "face": "south",
+            "offset": -13.56,
+            "reachable": true
+          },
+          {
+            "face": "south",
+            "offset": 13.56,
+            "reachable": true
+          }
+        ],
+        "reachableSamples": 30765,
+        "allFreeSamples": 30765,
+        "navigationRadius": 0.24,
+        "navigationGridMeters": 0.2,
+        "fullSquareFloorArea": 1296,
+        "floorCornersCovered": true,
+        "ceilingHeights": [
+          3,
+          3.001,
+          3.002
+        ],
+        "isolatedWalkablePockets": 0,
+        "boundaryWallThickness": 0.2,
+        "boundaryColliderHalfWidth": 0.115,
+        "outletTrianglesEach": 6569,
+        "floorAnchorsChecked": 4,
+        "minimumColliderY": 0,
+        "sourceGalleryCompositionRetained": false
+      }
+    },
+    "open-columns": {
+      "changedColliderIndices": [],
+      "collidersMatchedToGlbWallFaces": 21,
+      "renderedWallFacesCovered": 194,
+      "colliderToGlbAabbMaximumErrorMeters": 3.8146972691777137e-07,
+      "horizontalSkirtingAllowanceMeters": 0.015,
+      "roomsUnchanged": true,
+      "anchorsUnchanged": true,
+      "navigation": {
+        "crossings": [
+          {
+            "face": "west",
+            "offset": -14,
+            "reachable": true
+          },
+          {
+            "face": "west",
+            "offset": -6,
+            "reachable": true
+          },
+          {
+            "face": "west",
+            "offset": 0,
+            "reachable": true
+          },
+          {
+            "face": "west",
+            "offset": 6,
+            "reachable": true
+          },
+          {
+            "face": "west",
+            "offset": 14,
+            "reachable": true
+          },
+          {
+            "face": "west",
+            "offset": -13.56,
+            "reachable": true
+          },
+          {
+            "face": "west",
+            "offset": 13.56,
+            "reachable": true
+          },
+          {
+            "face": "east",
+            "offset": -14,
+            "reachable": true
+          },
+          {
+            "face": "east",
+            "offset": -6,
+            "reachable": true
+          },
+          {
+            "face": "east",
+            "offset": 0,
+            "reachable": true
+          },
+          {
+            "face": "east",
+            "offset": 6,
+            "reachable": true
+          },
+          {
+            "face": "east",
+            "offset": 14,
+            "reachable": true
+          },
+          {
+            "face": "east",
+            "offset": -13.56,
+            "reachable": true
+          },
+          {
+            "face": "east",
+            "offset": 13.56,
+            "reachable": true
+          },
+          {
+            "face": "north",
+            "offset": -14,
+            "reachable": true
+          },
+          {
+            "face": "north",
+            "offset": -6,
+            "reachable": true
+          },
+          {
+            "face": "north",
+            "offset": 0,
+            "reachable": true
+          },
+          {
+            "face": "north",
+            "offset": 6,
+            "reachable": true
+          },
+          {
+            "face": "north",
+            "offset": 14,
+            "reachable": true
+          },
+          {
+            "face": "north",
+            "offset": -13.56,
+            "reachable": true
+          },
+          {
+            "face": "north",
+            "offset": 13.56,
+            "reachable": true
+          },
+          {
+            "face": "south",
+            "offset": -14,
+            "reachable": true
+          },
+          {
+            "face": "south",
+            "offset": -6,
+            "reachable": true
+          },
+          {
+            "face": "south",
+            "offset": 0,
+            "reachable": true
+          },
+          {
+            "face": "south",
+            "offset": 6,
+            "reachable": true
+          },
+          {
+            "face": "south",
+            "offset": 14,
+            "reachable": true
+          },
+          {
+            "face": "south",
+            "offset": -13.56,
+            "reachable": true
+          },
+          {
+            "face": "south",
+            "offset": 13.56,
+            "reachable": true
+          }
+        ],
+        "reachableSamples": 30984,
+        "allFreeSamples": 30984,
+        "navigationRadius": 0.24,
+        "navigationGridMeters": 0.2,
+        "fullSquareFloorArea": 1296,
+        "floorCornersCovered": true,
+        "ceilingHeights": [
+          3,
+          3.001,
+          3.002
+        ],
+        "isolatedWalkablePockets": 0,
+        "boundaryWallThickness": 0.2,
+        "boundaryColliderHalfWidth": 0.115,
+        "outletTrianglesEach": 6569,
+        "floorAnchorsChecked": 4,
+        "minimumColliderY": 0,
+        "sourceGalleryCompositionRetained": false
+      }
+    }
+  },
+  "onlyManifestColliderFieldsChanged": true,
+  "coordinatorFieldsPreserved": true,
+  "unchangedGeneratedFiles": {
+    "/Users/vogel/dev/browser-backrooms/assets/continuous/open-columns-source-front.png": "a0b3659d346a90ac3310a9c58f94df73e0bea0828d9e8cfb453d5b2d0e526d2b",
+    "/Users/vogel/dev/browser-backrooms/assets/continuous/open-gallery-saved-front.png": "25f79ec2fe9d3ea8f314a41505f3d4d56c5ea7dca0144ba6da30d3888c3f1a67",
+    "/Users/vogel/dev/browser-backrooms/assets/continuous/open-gallery.blend": "948c463a1c4cecb87ecb01037b1f5eba23a98c282ef5af1781eb271c99ff0b45",
+    "/Users/vogel/dev/browser-backrooms/assets/continuous/open-offset.blend": "7009a88e184ba00e3688cf4d0750ced07b52653351f991a5fd8db5409b40db24",
+    "/Users/vogel/dev/browser-backrooms/assets/continuous/boundary-eye-level.png": "6fca8e5aee6a94bad4022bb4121c45dc140831686195d0d0467a95d1967b680e",
+    "/Users/vogel/dev/browser-backrooms/assets/continuous/boundary-overview.png": "38cad2aece6f0c9adcab3a6574073c3c00ff69f229589d53b8b97fddcdcc88a8",
+    "/Users/vogel/dev/browser-backrooms/assets/continuous/open-gallery-source-front.png": "56b581e25ded03dd4e5877c4d11193eb36cf4a87cff9d38ba8b593e6c647b8df",
+    "/Users/vogel/dev/browser-backrooms/assets/continuous/open-offset-saved-front.png": "b62824175e85571754f95c2bf2b3149ece9ba0b98bc31fa73a85e32a14578ae4",
+    "/Users/vogel/dev/browser-backrooms/assets/continuous/reflection.exr": "92e705b04915a36e046a5145c1840d6dd557493b61d3534e18571cfadb08d3ab",
+    "/Users/vogel/dev/browser-backrooms/assets/continuous/open-columns.blend": "5238745151a98b24801a5e8a1302757f2c803fc6062798c6e3cd0cdddf13e4f5",
+    "/Users/vogel/dev/browser-backrooms/assets/continuous/browser-front.png": "abb33554ca38ea3ca618f997febbca7aa7a0ac7d8fd051374bd2bd75b8deb666",
+    "/Users/vogel/dev/browser-backrooms/assets/continuous/open-columns-saved-front.png": "917a2c67c82f6d4be13305fbe1ab4ce87445afd9e4e905900808a5daa999b318",
+    "/Users/vogel/dev/browser-backrooms/assets/continuous/open-offset-source-front.png": "e6dd03b41166d60dee69c967b186562a57b5a8244f4d5469581f374bc0e72d7d",
+    "/Users/vogel/dev/browser-backrooms/public/continuous/edge-ceiling.bin": "32db493a10ea5cde2425e47cdac873e9590c4c4590c66132e3bbf6864f5586bd",
+    "/Users/vogel/dev/browser-backrooms/public/continuous/open-gallery-ceiling.hdr": "405f3ceb461981a8476eda50e274854b896ce50a3efb43c93762da08f4a21b29",
+    "/Users/vogel/dev/browser-backrooms/public/continuous/open-gallery-details.hdr": "579fa29edc06625026d2f7c27de4d45a85733cb5940693e29c524d3e084a1a16",
+    "/Users/vogel/dev/browser-backrooms/public/continuous/open-offset-floor.hdr": "4041d8ef27234239726ee2bd5a8edfa5483518ee0f1faeb2071b8733945708d7",
+    "/Users/vogel/dev/browser-backrooms/public/continuous/open-columns.glb": "0a5aa39c1070788f94537f3eb1937a58340b1a3a382ceae3f45a43efda1fc479",
+    "/Users/vogel/dev/browser-backrooms/public/continuous/reflection.hdr": "9a25665256bd0c3bc3110ad5a86a177d4858bea190838369cfbc75b39058831c",
+    "/Users/vogel/dev/browser-backrooms/public/continuous/edge-walls.bin": "1c870971b1c2b5503fc398b43e8543e1b53ae93091b599186eba712b3eefcdf6",
+    "/Users/vogel/dev/browser-backrooms/public/continuous/open-gallery.glb": "ca77b834583f3a3303aca886f9f700b1d283b8bef3ff16e51aa01741b687b018",
+    "/Users/vogel/dev/browser-backrooms/public/continuous/open-gallery-floor.hdr": "308d211bb189bd7f37a8bbbb3750c5f512fb040d2342fd1f4d6dd10010fea109",
+    "/Users/vogel/dev/browser-backrooms/public/continuous/open-columns-floor.hdr": "04bcc9af3cc1f3279a0aca0f1a393da0b52b97815b7e017ebe6c13b6ffb48586",
+    "/Users/vogel/dev/browser-backrooms/public/continuous/edge-floor.bin": "7cae076928f5b9b04c3e6babbefbda26c8928dbadbcdd805f8638f6bf1b8c5ea",
+    "/Users/vogel/dev/browser-backrooms/public/continuous/open-gallery-walls.hdr": "a42a0cf7bb52ed9a1ffe48e52fd9ca391e6b21734969af5d806027fb9fbf31d5",
+    "/Users/vogel/dev/browser-backrooms/public/continuous/open-columns-walls.hdr": "f2724adc8e959a3204d50b2d5c32c35d1e26f845cf4cc8f985f560ed83909306",
+    "/Users/vogel/dev/browser-backrooms/public/continuous/open-offset.glb": "5c6888793544085213283a43ecd7b57ad21cc1a8ae3fa1386a4aa5a7cf2b13ac",
+    "/Users/vogel/dev/browser-backrooms/public/continuous/open-offset-details.hdr": "fbe838ee7b58714f462577f3e95ba6f0f30eef4c180ea7c1921a7938c1c9f1b4",
+    "/Users/vogel/dev/browser-backrooms/public/continuous/open-offset-ceiling.hdr": "65deaa1f86019be466e385197e53dd29f3c1d68405fc3bb0785c292ff29f061b",
+    "/Users/vogel/dev/browser-backrooms/public/continuous/open-offset-walls.hdr": "82dc280da95f37e611362431bb8d6b1d139a5da99a9d6dabe203fa23a3048cc5",
+    "/Users/vogel/dev/browser-backrooms/public/continuous/open-columns-details.hdr": "95e6970596f8cd750fd2420ac47fadfbe0bed01c1322044b19779293b3a1bee2",
+    "/Users/vogel/dev/browser-backrooms/public/continuous/open-columns-ceiling.hdr": "5440b24a912ff400d3dedc21b1da8321e3788146088b1c8e01c9c633d6e30065"
+  }
+}

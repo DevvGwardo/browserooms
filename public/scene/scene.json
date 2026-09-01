@@ -1,0 +1,365 @@
+{
+  "name": "The vacant floor",
+  "version": 1,
+  "geometry": "environment.glb",
+  "radiance": [
+    {
+      "file": "radiance-0.hdr",
+      "flipY": false,
+      "resolution": 4096,
+      "family": "walls"
+    },
+    {
+      "file": "radiance-1.hdr",
+      "flipY": false,
+      "resolution": 4096,
+      "family": "floor"
+    },
+    {
+      "file": "radiance-2.hdr",
+      "flipY": false,
+      "resolution": 2048,
+      "family": "ceiling"
+    },
+    {
+      "file": "radiance-3.hdr",
+      "flipY": false,
+      "resolution": 2048,
+      "family": "details"
+    }
+  ],
+  "spawn": {
+    "position": [
+      1.9,
+      1.65,
+      -3.15
+    ],
+    "yaw": -0.1,
+    "pitch": -0.025
+  },
+  "viewpoints": [
+    {
+      "name": "Entry gallery",
+      "position": [
+        1.9,
+        1.65,
+        -3.15
+      ],
+      "yaw": -0.1,
+      "pitch": -0.025
+    },
+    {
+      "name": "The long room",
+      "position": [
+        3.8,
+        1.65,
+        -9.4
+      ],
+      "yaw": -0.22,
+      "pitch": -0.01
+    },
+    {
+      "name": "Quiet circuit",
+      "position": [
+        11.4,
+        1.65,
+        -9.4
+      ],
+      "yaw": -0.42,
+      "pitch": -0.02
+    },
+    {
+      "name": "Rear passage",
+      "position": [
+        8.0,
+        1.65,
+        -22.2
+      ],
+      "yaw": -1.36,
+      "pitch": -0.01
+    }
+  ],
+  "colliders": [
+    {
+      "min": [
+        -0.28,
+        0,
+        -24.28
+      ],
+      "max": [
+        0.0,
+        3.0,
+        0.27999999999999936
+      ]
+    },
+    {
+      "min": [
+        18.0,
+        0,
+        -24.28
+      ],
+      "max": [
+        18.28,
+        3.0,
+        0.27999999999999936
+      ]
+    },
+    {
+      "min": [
+        0.0,
+        0,
+        0.0
+      ],
+      "max": [
+        18.0,
+        3.0,
+        0.28
+      ]
+    },
+    {
+      "min": [
+        0.0,
+        0,
+        -24.28
+      ],
+      "max": [
+        18.0,
+        3.0,
+        -24.0
+      ]
+    },
+    {
+      "min": [
+        4.4399999999999995,
+        0,
+        -7.0
+      ],
+      "max": [
+        4.76,
+        3.0,
+        0.0
+      ]
+    },
+    {
+      "min": [
+        4.45,
+        0,
+        -7.16
+      ],
+      "max": [
+        7.3500000000000005,
+        3.0,
+        -6.84
+      ]
+    },
+    {
+      "min": [
+        9.24,
+        0,
+        -20.0
+      ],
+      "max": [
+        9.56,
+        3.0,
+        -3.1999999999999993
+      ]
+    },
+    {
+      "min": [
+        10.85,
+        0,
+        -7.16
+      ],
+      "max": [
+        16.15,
+        3.0,
+        -6.84
+      ]
+    },
+    {
+      "min": [
+        15.79,
+        0,
+        -16.9
+      ],
+      "max": [
+        16.11,
+        3.0,
+        -7.1
+      ]
+    },
+    {
+      "min": [
+        9.55,
+        0,
+        -19.76
+      ],
+      "max": [
+        15.649999999999999,
+        3.0,
+        -19.44
+      ]
+    },
+    {
+      "min": [
+        0.0,
+        0,
+        -21.26
+      ],
+      "max": [
+        7.4,
+        3.0,
+        -20.94
+      ]
+    },
+    {
+      "min": [
+        0.0,
+        0,
+        -13.16
+      ],
+      "max": [
+        2.8,
+        3.0,
+        -12.84
+      ]
+    },
+    {
+      "min": [
+        0.0,
+        0,
+        -17.36
+      ],
+      "max": [
+        3.2,
+        3.0,
+        -17.04
+      ]
+    },
+    {
+      "min": [
+        0.22500000000000003,
+        0,
+        -6.225
+      ],
+      "max": [
+        1.075,
+        3.0,
+        -5.375
+      ]
+    },
+    {
+      "min": [
+        5.4399999999999995,
+        0,
+        -12.059999999999999
+      ],
+      "max": [
+        6.16,
+        3.0,
+        -11.34
+      ]
+    },
+    {
+      "min": [
+        5.4399999999999995,
+        0,
+        -16.86
+      ],
+      "max": [
+        6.16,
+        3.0,
+        -16.14
+      ]
+    },
+    {
+      "min": [
+        11.950000000000001,
+        0,
+        -13.15
+      ],
+      "max": [
+        12.65,
+        3.0,
+        -12.450000000000001
+      ]
+    }
+  ],
+  "bounds": {
+    "min": [
+      0,
+      0,
+      -24
+    ],
+    "max": [
+      18,
+      3.03,
+      0
+    ]
+  },
+  "bake": {
+    "engine": "Cycles",
+    "device": "Metal",
+    "samples": 96,
+    "resolution": 4096,
+    "diffuseBounces": 6,
+    "totalBounces": 8,
+    "pass": "COMBINED: diffuse color, direct, indirect and emission; no glossy/transmission",
+    "colorSpace": "Linear Rec.709 / scene-linear RGBE; no view transform baked",
+    "uv": "TEXCOORD_0; glTF V=1-Blender V; RGBELoader flipY=false",
+    "coordinateSystem": "glTF Y-up; Blender (x,y,z) maps to (x,z,-y)",
+    "camera": {
+      "verticalFovDegrees": 46.61769049025356,
+      "exposureStops": 1.0,
+      "viewTransform": "AgX",
+      "look": "Medium High Contrast"
+    },
+    "seconds": 147.01,
+    "atlases": [
+      {
+        "family": "walls",
+        "resolution": 4096,
+        "maximum": 3.0034615993499756,
+        "meanNonBlack": [
+          0.07923822849988937,
+          0.06729664653539658,
+          0.038862619549036026
+        ],
+        "nonBlackPixels": 8866938
+      },
+      {
+        "family": "floor",
+        "resolution": 4096,
+        "maximum": 0.13594141602516174,
+        "meanNonBlack": [
+          0.06097235158085823,
+          0.052759766578674316,
+          0.03075510449707508
+        ],
+        "nonBlackPixels": 15836243
+      },
+      {
+        "family": "ceiling",
+        "resolution": 2048,
+        "maximum": 8.53563404083252,
+        "meanNonBlack": [
+          0.3576717972755432,
+          0.3395642340183258,
+          0.2945503890514374
+        ],
+        "nonBlackPixels": 4176868
+      },
+      {
+        "family": "details",
+        "resolution": 2048,
+        "maximum": 0.1196865662932396,
+        "meanNonBlack": [
+          0.02026667818427086,
+          0.017274511978030205,
+          0.009374995715916157
+        ],
+        "nonBlackPixels": 1741272
+      }
+    ]
+  }
+}

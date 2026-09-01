@@ -1,0 +1,33 @@
+{
+  "version": 1,
+  "sampleRate": 44100,
+  "clips": [
+    {
+      "file": "lens-01.wav",
+      "source": "Lens Zoom 1.wav",
+      "sourceStart": 0.14,
+      "sourceEnd": 1.08,
+      "duration": 0.86,
+      "crossfadeMs": 80,
+      "rms": 0.03382896770692973
+    },
+    {
+      "file": "lens-02.wav",
+      "source": "Lens Zoom 2.wav",
+      "sourceStart": 0.14,
+      "sourceEnd": 0.775,
+      "duration": 0.555,
+      "crossfadeMs": 80,
+      "rms": 0.035
+    },
+    {
+      "file": "lens-03.wav",
+      "source": "Lens Zoom 3.wav",
+      "sourceStart": 0.14,
+      "sourceEnd": 1.08,
+      "duration": 0.86,
+      "crossfadeMs": 80,
+      "rms": 0.034999999999999996
+    }
+  ]
+}

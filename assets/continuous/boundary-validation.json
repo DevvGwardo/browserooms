@@ -1,0 +1,308 @@
+{
+  "open-gallery": {
+    "projectedCeilingArea": 1295.999952004779,
+    "fullSquareFloorArea": 1296,
+    "cameraVerticalFovDegrees": 51.48141671246568,
+    "cameraExposureStops": 1.0,
+    "identicalOuterBandGeometry": true,
+    "edgePoweredFixtures": 36,
+    "noBoundaryWallOrSkirtingEndcaps": true,
+    "export": {
+      "geometryBytes": 4424620,
+      "vertices": 93938,
+      "triangles": 56195,
+      "drawCalls": 5,
+      "meshes": {
+        "details": {
+          "vertices": 27434,
+          "triangles": 22943,
+          "bounds": {
+            "min": [
+              -18.0,
+              0.0,
+              -18.0
+            ],
+            "max": [
+              18.0,
+              1.1825000047683716,
+              18.0
+            ]
+          },
+          "planarUVMaxError": null
+        },
+        "walls": {
+          "vertices": 1700,
+          "triangles": 850,
+          "bounds": {
+            "min": [
+              -18.0,
+              0.0,
+              -18.0
+            ],
+            "max": [
+              18.0,
+              3.0,
+              18.0
+            ]
+          },
+          "planarUVMaxError": null
+        },
+        "floor": {
+          "vertices": 4,
+          "triangles": 2,
+          "bounds": {
+            "min": [
+              -18.0,
+              0.0,
+              -18.0
+            ],
+            "max": [
+              18.0,
+              0.0,
+              18.0
+            ]
+          },
+          "planarUVMaxError": 0.0
+        },
+        "ceiling": {
+          "vertices": 64484,
+          "triangles": 32242,
+          "bounds": {
+            "min": [
+              -18.0,
+              3.0,
+              -18.0
+            ],
+            "max": [
+              18.0,
+              3.002000093460083,
+              18.0
+            ]
+          },
+          "planarUVMaxError": 5.960464477539063e-08
+        },
+        "ceiling-lights": {
+          "vertices": 316,
+          "triangles": 158,
+          "bounds": {
+            "min": [
+              -17.993000030517578,
+              3.000999927520752,
+              -15.593000411987305
+            ],
+            "max": [
+              15.593000411987305,
+              3.000999927520752,
+              17.39299964904785
+            ]
+          },
+          "planarUVMaxError": null
+        }
+      }
+    }
+  },
+  "open-offset": {
+    "projectedCeilingArea": 1295.9999520047793,
+    "fullSquareFloorArea": 1296,
+    "cameraVerticalFovDegrees": 51.48141671246568,
+    "cameraExposureStops": 1.0,
+    "identicalOuterBandGeometry": true,
+    "edgePoweredFixtures": 36,
+    "noBoundaryWallOrSkirtingEndcaps": true,
+    "export": {
+      "geometryBytes": 4149844,
+      "vertices": 86420,
+      "triangles": 52437,
+      "drawCalls": 5,
+      "meshes": {
+        "details": {
+          "vertices": 21308,
+          "triangles": 19881,
+          "bounds": {
+            "min": [
+              -18.0,
+              -2.9802322387695312e-08,
+              -18.0
+            ],
+            "max": [
+              18.0,
+              1.1749999523162842,
+              18.0
+            ]
+          },
+          "planarUVMaxError": null
+        },
+        "floor": {
+          "vertices": 4,
+          "triangles": 2,
+          "bounds": {
+            "min": [
+              -18.0,
+              0.0,
+              -18.0
+            ],
+            "max": [
+              18.0,
+              0.0,
+              18.0
+            ]
+          },
+          "planarUVMaxError": 0.0
+        },
+        "ceiling": {
+          "vertices": 64448,
+          "triangles": 32224,
+          "bounds": {
+            "min": [
+              -18.0,
+              3.0,
+              -18.0
+            ],
+            "max": [
+              18.0,
+              3.002000093460083,
+              18.0
+            ]
+          },
+          "planarUVMaxError": 5.960464477539063e-08
+        },
+        "ceiling-lights": {
+          "vertices": 352,
+          "triangles": 176,
+          "bounds": {
+            "min": [
+              -17.993000030517578,
+              3.000999927520752,
+              -15.593000411987305
+            ],
+            "max": [
+              15.593000411987305,
+              3.000999927520752,
+              17.39299964904785
+            ]
+          },
+          "planarUVMaxError": null
+        },
+        "walls": {
+          "vertices": 308,
+          "triangles": 154,
+          "bounds": {
+            "min": [
+              -18.0,
+              0.0,
+              -18.0
+            ],
+            "max": [
+              18.0,
+              3.0,
+              18.0
+            ]
+          },
+          "planarUVMaxError": null
+        }
+      }
+    }
+  },
+  "open-columns": {
+    "projectedCeilingArea": 1295.9999520047793,
+    "fullSquareFloorArea": 1296,
+    "cameraVerticalFovDegrees": 51.48141671246568,
+    "cameraExposureStops": 1.0,
+    "identicalOuterBandGeometry": true,
+    "edgePoweredFixtures": 36,
+    "noBoundaryWallOrSkirtingEndcaps": true,
+    "export": {
+      "geometryBytes": 4155440,
+      "vertices": 86560,
+      "triangles": 52507,
+      "drawCalls": 5,
+      "meshes": {
+        "details": {
+          "vertices": 21368,
+          "triangles": 19911,
+          "bounds": {
+            "min": [
+              -18.0,
+              0.0,
+              -18.0
+            ],
+            "max": [
+              18.0,
+              1.1749999523162842,
+              18.0
+            ]
+          },
+          "planarUVMaxError": null
+        },
+        "floor": {
+          "vertices": 4,
+          "triangles": 2,
+          "bounds": {
+            "min": [
+              -18.0,
+              0.0,
+              -18.0
+            ],
+            "max": [
+              18.0,
+              0.0,
+              18.0
+            ]
+          },
+          "planarUVMaxError": 0.0
+        },
+        "ceiling": {
+          "vertices": 64452,
+          "triangles": 32226,
+          "bounds": {
+            "min": [
+              -18.0,
+              3.0,
+              -18.0
+            ],
+            "max": [
+              18.0,
+              3.002000093460083,
+              18.0
+            ]
+          },
+          "planarUVMaxError": 5.960464477539063e-08
+        },
+        "ceiling-lights": {
+          "vertices": 348,
+          "triangles": 174,
+          "bounds": {
+            "min": [
+              -17.993000030517578,
+              3.000999927520752,
+              -15.593000411987305
+            ],
+            "max": [
+              15.593000411987305,
+              3.000999927520752,
+              17.39299964904785
+            ]
+          },
+          "planarUVMaxError": null
+        },
+        "walls": {
+          "vertices": 388,
+          "triangles": 194,
+          "bounds": {
+            "min": [
+              -18.0,
+              0.0,
+              -18.0
+            ],
+            "max": [
+              18.0,
+              3.0,
+              18.0
+            ]
+          },
+          "planarUVMaxError": null
+        }
+      }
+    }
+  }
+}

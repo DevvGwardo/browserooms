@@ -1,0 +1,12 @@
+{
+  "savedMapFronts": [
+    "open-gallery-saved-front.png",
+    "open-offset-saved-front.png",
+    "open-columns-saved-front.png"
+  ],
+  "boundaryRenders": [
+    "boundary-eye-level.png",
+    "boundary-overview.png"
+  ],
+  "replay": "Actual exported GLBs and saved diffuse E/pi maps, ceiling vertex tints and camera display emitters; specular excluded from this diagnostic."
+}

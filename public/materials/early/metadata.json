@@ -1,0 +1,397 @@
+{
+  "version": 1,
+  "resolution": [
+    2048,
+    2048
+  ],
+  "generator": "scripts/export_early_materials.py",
+  "blenderVersion": "5.1.2",
+  "source": "assets/backrooms.blend (material datablocks only)",
+  "sourceDefinition": "scripts/bake_scene.py:make_materials",
+  "preservedComparisonScene": "assets/modules/gallery.blend",
+  "bake": {
+    "engine": "Cycles",
+    "device": "CPU",
+    "samples": 16,
+    "albedoPass": "DIFFUSE/COLOR only, no lighting, AO or view transform",
+    "normalPass": "NORMAL, TANGENT, +X +Y +Z (OpenGL)",
+    "roughness": "Matte PBR constants; source diffuse roughness is Oren-Nayar, not microfacet roughness"
+  },
+  "colorSpace": {
+    "albedo": "sRGB",
+    "normal": "Non-Color",
+    "roughness": "Non-Color"
+  },
+  "textureSettings": {
+    "flipY": false,
+    "wrapS": "RepeatWrapping",
+    "wrapT": "RepeatWrapping",
+    "normalConvention": "OpenGL +Y",
+    "normalScale": [
+      1,
+      1
+    ],
+    "minFilter": "LinearMipmapLinearFilter",
+    "magFilter": "LinearFilter",
+    "generateMipmaps": true
+  },
+  "tint": "None. Apply latest continuous palette once in renderer. No surface-detail.ts legacy tint.",
+  "detailComposition": "source linear basecolor * (old PNG raw Non-Color grayscale * 2.0); neutral 0.5",
+  "seamMethod": "Moisan periodic-plus-smooth FFT on linear RGB before and after detail; on tangent normal XYZ before renormalizing. No mirroring, resynthesis or interior crossfade.",
+  "uvConvention": "Current continuous geometry UV0; Blender UV V converted to glTF 1-V; PNG top-down, flipY=false",
+  "materials": {
+    "wall": {
+      "material": "Cream chevron paper - linen relief",
+      "bakeMeters": [
+        0.368,
+        0.448
+      ],
+      "tileMeters": [
+        0.36,
+        0.448
+      ],
+      "uvRepeat": [
+        1.3888888888888888,
+        1.1160714285714286
+      ],
+      "uvRepeatExpression": [
+        "0.5 / 0.36",
+        "0.5 / 0.448"
+      ],
+      "detail": "public/textures/wallpaper-detail.png",
+      "roughness": 0.85,
+      "normalXScale": 1.0222222222222221,
+      "sourceDiffuseRoughnessOrenNayar": 0.44999998807907104,
+      "sourceNodeTypes": [
+        "ShaderNodeBsdfDiffuse",
+        "ShaderNodeBump",
+        "ShaderNodeMath",
+        "ShaderNodeMath",
+        "ShaderNodeMath",
+        "ShaderNodeMath",
+        "ShaderNodeMath",
+        "ShaderNodeMath",
+        "ShaderNodeMath",
+        "ShaderNodeMath",
+        "ShaderNodeMath",
+        "ShaderNodeMath",
+        "ShaderNodeMath",
+        "ShaderNodeMath",
+        "ShaderNodeMath",
+        "ShaderNodeMath",
+        "ShaderNodeMath",
+        "ShaderNodeMath",
+        "ShaderNodeMath",
+        "ShaderNodeNewGeometry",
+        "ShaderNodeOutputMaterial",
+        "ShaderNodeSeparateXYZ",
+        "ShaderNodeTexNoise",
+        "ShaderNodeTexNoise",
+        "ShaderNodeValToRGB"
+      ],
+      "maps": {
+        "albedo": {
+          "file": "wall-albedo.png",
+          "url": "/materials/early/wall-albedo.png",
+          "colorSpace": "sRGB",
+          "rgbMean": [
+            0.7880506791430548,
+            0.7625465048412821,
+            0.6665706646265903
+          ],
+          "sha256": "b9f58d31b0a6926602784452abce86f76d787a8ae2a449e122a678b3822d6434",
+          "bytes": 2172840,
+          "edges": {
+            "horizontal": {
+              "wrapMeanAbs": 0.0007161457906477153,
+              "wrapMaxAbs": 0.003921568393707275,
+              "interiorMeanAbs": 0.001806773478165269,
+              "interiorCutP95MeanAbs": 0.0025065471418201923,
+              "wrapToInteriorRatio": 0.39636722207069397
+            },
+            "vertical": {
+              "wrapMeanAbs": 0.0007174222846515477,
+              "wrapMaxAbs": 0.003921568393707275,
+              "interiorMeanAbs": 0.001912490464746952,
+              "interiorCutP95MeanAbs": 0.002622038358822465,
+              "wrapToInteriorRatio": 0.37512463331222534
+            }
+          }
+        },
+        "normal": {
+          "file": "wall-normal.png",
+          "url": "/materials/early/wall-normal.png",
+          "colorSpace": "Non-Color",
+          "rgbMean": [
+            0.500009213220558,
+            0.5000088887863328,
+            1.0
+          ],
+          "sha256": "bc4928b5f2871e85d9639a5961a25774ad41e28cf1cda070727daa20baf2d9eb",
+          "bytes": 1465650,
+          "edges": {
+            "horizontal": {
+              "wrapMeanAbs": 0.0003421179426368326,
+              "wrapMaxAbs": 0.003921598196029663,
+              "interiorMeanAbs": 0.0004533954197540879,
+              "interiorCutP95MeanAbs": 0.000542342197149992,
+              "wrapToInteriorRatio": 0.7545685768127441
+            },
+            "vertical": {
+              "wrapMeanAbs": 0.00026999192778021097,
+              "wrapMaxAbs": 0.003921598196029663,
+              "interiorMeanAbs": 0.000545357121154666,
+              "interiorCutP95MeanAbs": 0.0006567885866388679,
+              "wrapToInteriorRatio": 0.4950736165046692
+            }
+          }
+        },
+        "roughness": {
+          "file": "wall-roughness.png",
+          "url": "/materials/early/wall-roughness.png",
+          "colorSpace": "Non-Color",
+          "rgbMean": [
+            0.8509804010391235,
+            0.8509804010391235,
+            0.8509804010391235
+          ],
+          "sha256": "735ddc5d228a4b0eabfca03980a3da95477735d1934738258dfa07559a5b7395",
+          "bytes": 16852,
+          "edges": {
+            "horizontal": {
+              "wrapMeanAbs": 0.0,
+              "wrapMaxAbs": 0.0,
+              "interiorMeanAbs": 0.0,
+              "interiorCutP95MeanAbs": 0.0,
+              "wrapToInteriorRatio": 0.0
+            },
+            "vertical": {
+              "wrapMeanAbs": 0.0,
+              "wrapMaxAbs": 0.0,
+              "interiorMeanAbs": 0.0,
+              "interiorCutP95MeanAbs": 0.0,
+              "wrapToInteriorRatio": 0.0
+            }
+          }
+        }
+      },
+      "rawLinearRGBMean": [
+        0.5866698977305305,
+        0.544997995592567,
+        0.40390233543701015
+      ],
+      "linearRGBMean": [
+        0.5843494520401933,
+        0.5428372164849691,
+        0.40229202964965083
+      ],
+      "detailMultiplierMean": 0.99607914686203,
+      "rawSourceWithDetailEdges": {
+        "horizontal": {
+          "wrapMeanAbs": 0.005216151010245085,
+          "wrapMaxAbs": 0.019098222255706787,
+          "interiorMeanAbs": 0.0018052393570542336,
+          "interiorCutP95MeanAbs": 0.002502865856513381,
+          "wrapToInteriorRatio": 2.889451265335083
+        },
+        "vertical": {
+          "wrapMeanAbs": 0.0052027031779289246,
+          "wrapMaxAbs": 0.020391106605529785,
+          "interiorMeanAbs": 0.001911220490001142,
+          "interiorCutP95MeanAbs": 0.0026287888176739216,
+          "wrapToInteriorRatio": 2.722188949584961
+        }
+      },
+      "periodicCorrectionLinearRMS": 0.0014164209133014083,
+      "savedLinearRGBMean": [
+        0.584353779522921,
+        0.542833253509194,
+        0.40229044416213355
+      ],
+      "normalUnitLengthMaxErrorRGB8": 0.001306295394897461
+    },
+    "carpet": {
+      "material": "Oatmeal loop-pile carpet",
+      "bakeMeters": [
+        2.0,
+        2.0
+      ],
+      "tileMeters": [
+        2.0,
+        2.0
+      ],
+      "uvRepeat": [
+        0.6,
+        0.6
+      ],
+      "uvRepeatExpression": [
+        "1.2 / 2.0",
+        "1.2 / 2.0"
+      ],
+      "detail": "public/textures/carpet-detail.png",
+      "roughness": 0.94,
+      "normalXScale": 1.0,
+      "sourceDiffuseRoughnessOrenNayar": 0.44999998807907104,
+      "sourceNodeTypes": [
+        "ShaderNodeBsdfDiffuse",
+        "ShaderNodeBump",
+        "ShaderNodeMath",
+        "ShaderNodeMath",
+        "ShaderNodeMath",
+        "ShaderNodeMath",
+        "ShaderNodeMath",
+        "ShaderNodeNewGeometry",
+        "ShaderNodeOutputMaterial",
+        "ShaderNodeTexNoise",
+        "ShaderNodeTexNoise",
+        "ShaderNodeTexNoise",
+        "ShaderNodeValToRGB"
+      ],
+      "maps": {
+        "albedo": {
+          "file": "carpet-albedo.png",
+          "url": "/materials/early/carpet-albedo.png",
+          "colorSpace": "sRGB",
+          "rgbMean": [
+            0.6012729308480473,
+            0.5832396970992377,
+            0.4957199313370637
+          ],
+          "sha256": "afbea7be08667611cb8597807c2151247070a370c8f5480029685e7584e06012",
+          "bytes": 5310222,
+          "edges": {
+            "horizontal": {
+              "wrapMeanAbs": 0.006143407896161079,
+              "wrapMaxAbs": 0.027450978755950928,
+              "interiorMeanAbs": 0.02018885128200054,
+              "interiorCutP95MeanAbs": 0.023586243391036987,
+              "wrapToInteriorRatio": 0.3042970597743988
+            },
+            "vertical": {
+              "wrapMeanAbs": 0.006133195478469133,
+              "wrapMaxAbs": 0.0313725471496582,
+              "interiorMeanAbs": 0.017333313822746277,
+              "interiorCutP95MeanAbs": 0.021166641265153885,
+              "wrapToInteriorRatio": 0.35383859276771545
+            }
+          }
+        },
+        "normal": {
+          "file": "carpet-normal.png",
+          "url": "/materials/early/carpet-normal.png",
+          "colorSpace": "Non-Color",
+          "rgbMean": [
+            0.5000098826313248,
+            0.500015890750042,
+            0.998342148561747
+          ],
+          "sha256": "eaeab177bb6cfead6cef4a4269bea79e870116b8d87b92f53750c88a70491f53",
+          "bytes": 7161749,
+          "edges": {
+            "horizontal": {
+              "wrapMeanAbs": 0.009723503142595291,
+              "wrapMaxAbs": 0.07058826088905334,
+              "interiorMeanAbs": 0.016575871035456657,
+              "interiorCutP95MeanAbs": 0.01892704889178276,
+              "wrapToInteriorRatio": 0.5866058468818665
+            },
+            "vertical": {
+              "wrapMeanAbs": 0.00944968219846487,
+              "wrapMaxAbs": 0.06666669249534607,
+              "interiorMeanAbs": 0.01729092374444008,
+              "interiorCutP95MeanAbs": 0.019589340314269066,
+              "wrapToInteriorRatio": 0.5465111136436462
+            }
+          }
+        },
+        "roughness": {
+          "file": "carpet-roughness.png",
+          "url": "/materials/early/carpet-roughness.png",
+          "colorSpace": "Non-Color",
+          "rgbMean": [
+            0.9411764740943909,
+            0.9411764740943909,
+            0.9411764740943909
+          ],
+          "sha256": "044b4dfffc2b506ad220010c4c3963196910c202a6f00b87a442654f2b6d6a30",
+          "bytes": 16852,
+          "edges": {
+            "horizontal": {
+              "wrapMeanAbs": 0.0,
+              "wrapMaxAbs": 0.0,
+              "interiorMeanAbs": 0.0,
+              "interiorCutP95MeanAbs": 0.0,
+              "wrapToInteriorRatio": 0.0
+            },
+            "vertical": {
+              "wrapMeanAbs": 0.0,
+              "wrapMaxAbs": 0.0,
+              "interiorMeanAbs": 0.0,
+              "interiorCutP95MeanAbs": 0.0,
+              "wrapToInteriorRatio": 0.0
+            }
+          }
+        }
+      },
+      "rawLinearRGBMean": [
+        0.32385373441310605,
+        0.3028864315950841,
+        0.21263784670083297
+      ],
+      "linearRGBMean": [
+        0.3225802424832338,
+        0.30169554869583237,
+        0.21180145428902541
+      ],
+      "detailMultiplierMean": 0.9960858821868896,
+      "rawSourceWithDetailEdges": {
+        "horizontal": {
+          "wrapMeanAbs": 0.02683427929878235,
+          "wrapMaxAbs": 0.1066482663154602,
+          "interiorMeanAbs": 0.02019285410642624,
+          "interiorCutP95MeanAbs": 0.02359994500875473,
+          "wrapToInteriorRatio": 1.3288997411727905
+        },
+        "vertical": {
+          "wrapMeanAbs": 0.024678906425833702,
+          "wrapMaxAbs": 0.1260010004043579,
+          "interiorMeanAbs": 0.01733616180717945,
+          "interiorCutP95MeanAbs": 0.02117164433002472,
+          "wrapToInteriorRatio": 1.4235507249832153
+        }
+      },
+      "periodicCorrectionLinearRMS": 0.0015260878717526793,
+      "savedLinearRGBMean": [
+        0.3225820831977799,
+        0.30169728757648073,
+        0.21180312183398264
+      ],
+      "normalUnitLengthMaxErrorRGB8": 0.00480198860168457
+    }
+  },
+  "preservation": {
+    "allSourceGeometryAndCeilingHashesUnchanged": true,
+    "sha256": {
+      "assets/backrooms.blend": "67ff008d10ca53fa7fc977f3f4460a17c9f3c2e81d1a02bc64460936d44633f3",
+      "assets/modules/gallery.blend": "88d6ea603c89eef297400c67a6c6858d781e749732991893cfeccb0db2df8a63",
+      "scripts/bake_scene.py": "18781e2c4081203a171d92804f8cbf858e2679a168c12f25a7fb3e31d843c425",
+      "scripts/make_surface_detail.py": "4aa8a33d5de0d04b18ffc40665918b3c0b145280f278f4adf53f73aff97f0621",
+      "scripts/bake_continuous_floor.py": "cef0884f48bf94ada6d7b56e50965d8d737402f54a3213166b6da0a49e60ce56",
+      "assets/browser-yellow-detail.png": "737d2bb1b6f1167abb45bbc030ecef7546dce2a4e22b71b087136dfc1b8cf4d5",
+      "assets/browser-desktop.png": "876b4415ad11b4ed5e0276e02628de90c3e5c5093fed4b938db9accabd084f71",
+      "public/textures/wallpaper-detail.png": "b2533cd90e12e41349e52d582d650a85e51210023391b265d9597631f9fbec76",
+      "public/textures/carpet-detail.png": "c9641d4a161d3737d6f1a33033faeb37e0a88b19d8d653371d95545ac9dc94d6",
+      "public/continuous/open-columns-ceiling.hdr": "5440b24a912ff400d3dedc21b1da8321e3788146088b1c8e01c9c633d6e30065",
+      "public/continuous/open-gallery-ceiling.hdr": "405f3ceb461981a8476eda50e274854b896ce50a3efb43c93762da08f4a21b29",
+      "public/continuous/open-offset-ceiling.hdr": "65deaa1f86019be466e385197e53dd29f3c1d68405fc3bb0785c292ff29f061b",
+      "public/continuous/open-columns.glb": "0a5aa39c1070788f94537f3eb1937a58340b1a3a382ceae3f45a43efda1fc479",
+      "public/continuous/open-gallery.glb": "ca77b834583f3a3303aca886f9f700b1d283b8bef3ff16e51aa01741b687b018",
+      "public/continuous/open-offset.glb": "5c6888793544085213283a43ecd7b57ad21cc1a8ae3fa1386a4aa5a7cf2b13ac"
+    },
+    "manifestSHA256Before": "5838b0faa5fc00bbda47622af40d0c15a0d3ae00bf9681bf7c6b56787ba1ee93",
+    "manifestSHA256After": "5838b0faa5fc00bbda47622af40d0c15a0d3ae00bf9681bf7c6b56787ba1ee93",
+    "manifestWritten": false,
+    "liveBlenderAccessed": false
+  },
+  "generatorSHA256": "521ab48310a6af2e95726fd973f5de3a1ce558663c5d5ddf563d15a47ec69097"
+}

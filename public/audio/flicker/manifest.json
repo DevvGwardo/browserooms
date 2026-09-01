@@ -1,0 +1,77 @@
+{
+  "version": 1,
+  "clips": [
+    {
+      "file": "flicker-01.wav",
+      "duration": 0.285351,
+      "sourceStart": 0.24873,
+      "sourceEnd": 0.534082
+    },
+    {
+      "file": "flicker-02.wav",
+      "duration": 0.312336,
+      "sourceStart": 0.840771,
+      "sourceEnd": 1.153107
+    },
+    {
+      "file": "flicker-03.wav",
+      "duration": 0.375238,
+      "sourceStart": 1.713832,
+      "sourceEnd": 2.08907
+    },
+    {
+      "file": "flicker-04.wav",
+      "duration": 0.371746,
+      "sourceStart": 2.494354,
+      "sourceEnd": 2.8661
+    },
+    {
+      "file": "flicker-05.wav",
+      "duration": 0.565737,
+      "sourceStart": 4.563537,
+      "sourceEnd": 5.129274
+    },
+    {
+      "file": "flicker-06.wav",
+      "duration": 0.391678,
+      "sourceStart": 5.899456,
+      "sourceEnd": 6.291134
+    },
+    {
+      "file": "flicker-07.wav",
+      "duration": 0.289796,
+      "sourceStart": 6.931905,
+      "sourceEnd": 7.221701
+    },
+    {
+      "file": "flicker-08.wav",
+      "duration": 0.392222,
+      "sourceStart": 7.766281,
+      "sourceEnd": 8.158503
+    },
+    {
+      "file": "flicker-09.wav",
+      "duration": 0.386984,
+      "sourceStart": 9.549864,
+      "sourceEnd": 9.936848
+    },
+    {
+      "file": "flicker-10.wav",
+      "duration": 0.315465,
+      "sourceStart": 10.978617,
+      "sourceEnd": 11.294082
+    },
+    {
+      "file": "flicker-11.wav",
+      "duration": 0.903379,
+      "sourceStart": 12.777098,
+      "sourceEnd": 13.680476
+    },
+    {
+      "file": "flicker-12.wav",
+      "duration": 1.06449,
+      "sourceStart": 14.068186,
+      "sourceEnd": 15.132676
+    }
+  ]
+}

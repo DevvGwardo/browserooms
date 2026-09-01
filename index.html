@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#181914" />
+    <title>Backrooms</title>
+  </head>
+  <body>
+    <main id="app">
+      <canvas id="scene" aria-label="Interactive Backrooms environment"></canvas>
+      <canvas id="vhs-view" aria-hidden="true" hidden></canvas>
+      <canvas id="exploration-map" role="img" aria-label="Explored floor plan and camera heading" hidden></canvas>
+      <header id="title">
+        <h1>Backrooms</h1>
+        <button id="enter" disabled>enter the back rooms.</button>
+      </header>
+      <div id="loading" role="status" aria-live="polite">
+        <span id="load-label">Loading the environment</span>
+        <progress id="load-progress" aria-label="Loading scene"></progress>
+      </div>
+      <div id="toolbar" hidden>
+        <div class="navigation-actions">
+          <button id="explore" class="primary">Resume</button>
+          <span id="help">WASD move · Mouse look · Q/E zoom · M sound · Esc menu</span>
+        </div>
+        <button id="settings-button" aria-controls="settings" aria-expanded="false">Image settings</button>
+      </div>
+      <div id="walk-actions" hidden>
+        <button id="audio-toggle" aria-pressed="false">Enable sound</button>
+        <button id="leave" aria-label="Open menu" hidden>Menu</button>
+      </div>
+      <section id="settings" aria-label="Image settings" hidden>
+        <div class="settings-heading"><h2>Image settings</h2><button id="close-settings" aria-label="Close image settings">Close</button></div>
+        <div id="vhs-controls" hidden>
+          <label for="vhs-preset">VHS preset</label>
+          <select id="vhs-preset"></select>
+          <p id="vhs-status" role="status" hidden></p>
+        </div>
+        <label for="walking-motion">Walking motion</label>
+        <select id="walking-motion"></select>
+        <label for="standing-motion">Standing motion</label>
+        <select id="standing-motion"></select>
+        <label for="exposure">Exposure <output id="exposure-output">0.0 EV</output></label>
+        <input id="exposure" type="range" min="-2" max="2" step="0.05" value="0" />
+        <label class="check"><span>Soft light bloom</span><input id="bloom" type="checkbox" checked /></label>
+        <div id="clean-options">
+          <label for="resolution">Resolution</label>
+          <select id="resolution"><option value="1">Native</option><option value="0.75">75%</option><option value="0.5">50%</option></select>
+          <label class="check"><span>Film grain</span><input id="grain" type="checkbox" /></label>
+        </div>
+        <label for="viewpoint">Viewpoint</label>
+        <select id="viewpoint"></select>
+        <button id="reset-view">Reset view</button>
+        <output id="performance" aria-label="Rendering performance" aria-live="off" hidden></output>
+      </section>
+      <span id="alarm-hint" hidden></span>
+      <div id="touch-controls" hidden>
+        <div id="stick" aria-label="Drag to walk"><span></span></div>
+        <span id="touch-hint">Drag the scene to look</span>
+      </div>
+      <div id="error" role="alert" hidden><p id="error-message"></p><button id="reload">Try again</button></div>
+    </main>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

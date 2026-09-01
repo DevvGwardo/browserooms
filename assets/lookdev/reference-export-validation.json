@@ -1,0 +1,18 @@
+{
+  "exportedBounds": {
+    "min": [
+      -16.0,
+      0.0,
+      -16.0
+    ],
+    "max": [
+      16.0,
+      3.01200008392334,
+      16.0
+    ]
+  },
+  "importedMeshCount": 4,
+  "png8RgbVerified": true,
+  "reconstruction": "reference-pbr-diffuse-reconstruction.png",
+  "comparison": "Diffuse-only saved-map replay: albedo times E/pi; excludes view-dependent specular and runtime sheen."
+}

@@ -1,0 +1,20 @@
+{
+  "exportedBounds": {
+    "min": [
+      -16.0,
+      0.0,
+      -16.0
+    ],
+    "max": [
+      16.0,
+      3.002000093460083,
+      16.0
+    ]
+  },
+  "importedMeshes": 5,
+  "replay": "Exported GLB, saved albedo times E/pi and vertex tint; unchanged saved detail radiance. Display-only panel radiance. No fresh lighting solution.",
+  "renders": [
+    "front-reference.png",
+    "upward-ceiling.png"
+  ]
+}

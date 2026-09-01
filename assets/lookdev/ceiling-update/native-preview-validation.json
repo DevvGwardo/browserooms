@@ -1,0 +1,14 @@
+{
+  "physicalEmissionInputsUnchanged": true,
+  "allPublicFileHashesUnchanged": true,
+  "cameraRadiance": [
+    3.6,
+    3.55,
+    2.85
+  ],
+  "renders": [
+    "native-front-reference.png",
+    "native-upward-ceiling.png"
+  ],
+  "maximumCoplanarGridOverlapSquareMeters": 0.0
+}

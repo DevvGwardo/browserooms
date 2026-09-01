@@ -1,0 +1,13 @@
+{
+  "size": 64,
+  "logMin": -12.0,
+  "logMax": 10.0,
+  "view": "AgX",
+  "look": "AgX - Medium High Contrast",
+  "output": "display sRGB; no further output transfer or tone mapping",
+  "format": "little-endian float16 RGBA, red axis fastest",
+  "validationSamples": 12000,
+  "meanAbsoluteError": 0.0005075299995951355,
+  "p99AbsoluteError": 0.005638977512717247,
+  "maxAbsoluteError": 0.037327881902456284
+}

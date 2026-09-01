@@ -1,0 +1,30 @@
+{
+  "measuredPanels": {
+    "main": {
+      "panels": 800,
+      "emitters": 31,
+      "cellMeters": [
+        0.6,
+        1.2
+      ]
+    },
+    "corridor": {
+      "panels": 64,
+      "emitters": 16,
+      "cellMeters": [
+        0.5,
+        1.215
+      ]
+    }
+  },
+  "physicalUV0AndPlanarUV1MaxError": 4.76837158203125e-07,
+  "emissionEnergyMaxError": 0.0,
+  "allRequiredHeightsVerified": true,
+  "fixtureCentersMatchManifest": true,
+  "png1024Rgb8Verified": [
+    "ceiling-refined-albedo.png",
+    "ceiling-refined-normal.png",
+    "ceiling-refined-roughness.png"
+  ],
+  "maximumCoplanarGridOverlapSquareMeters": 0.0
+}
