@@ -1,5 +1,7 @@
 # Browserooms
 
+**[Play in your browser](https://backrooms.exe.xyz/)**
+
 ![The Backrooms title screen](assets/readme/title.png)
 
 A first-person Backrooms exploration game for the browser, built with Three.js, Blender-baked lighting, and real ntsc-rs VHS processing. The horror comes from empty rooms, distant footsteps, unreliable lights, and alarms you have to find and silence. No creatures or jump scares.
@@ -56,5 +58,7 @@ bun run build
 ```
 
 The production output goes into `dist/`.
+
+The live game is hosted on exe.dev, with Nginx serving the production build on port 8000 behind its public HTTPS proxy. The server configuration is in [`deploy/nginx.conf`](deploy/nginx.conf).
 
 Gameplay and rendering live in `src/`, runtime assets in `public/`, Blender source scenes in `assets/`, and asset-generation scripts in `scripts/`. VHS processing uses [ntsc-rs](https://github.com/ntsc-rs/ntsc-rs) compiled to WebAssembly; its [build provenance and notices](src/vendor/ntsc-rs/README.md) are included.
