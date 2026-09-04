@@ -224,6 +224,12 @@ async function boot() {
   element("vhs-controls").hidden = false;
   resize();
 
+  // Visible boot progress: the enter button stays disabled for the whole
+  // ~170MB kit load, so sighted users need staged text, not a silent bar.
+  const stageLoad = (stage: string) => {
+    loadLabel.textContent = stage;
+  };
+
   const params = new URLSearchParams(location.search);
   const seed = params.get("seed") ?? "47";
   const roomPreview = params.get("look") === "room-preview";
@@ -231,6 +237,7 @@ async function boot() {
   const referenceLook = continuousLook || roomPreview;
   const kitPath = continuousLook ? "/continuous/" : referenceLook ? "/reference/" : "/modules/";
   if (seed.length > 128) throw new Error("World seeds must be 128 characters or fewer.");
+  loadLabel.textContent = "Loading the architecture kit…";
   const response = await fetch(`${kitPath}modules.json`);
   if (!response.ok || !response.headers.get("content-type")?.includes("json")) {
     throw new Error("The architectural module kit could not be loaded.");
@@ -262,8 +269,11 @@ async function boot() {
   manager.onProgress = (_, loaded, total) => {
     progress.max = total;
     progress.value = loaded;
-    loadLabel.textContent = `Loading baked lighting · ${loaded} / ${total}`;
+    stageLoad(total > 1
+      ? `Loading baked lighting · ${loaded} / ${total} (${Math.round(loaded / total * 100)}%)`
+      : `Loading baked lighting · ${loaded} / ${total}`);
   };
+  stageLoad("Loading the color transform…");
   const [colorBuffer, details] = await Promise.all([
     fetch("/color/agx-medium-high.bin").then((res) => {
       if (!res.ok) throw new Error("The Blender color transform could not be loaded.");
@@ -289,6 +299,7 @@ async function boot() {
   viewLut.magFilter = THREE.LinearFilter;
   viewLut.needsUpdate = true;
   output.uniforms.viewLut.value = viewLut;
+  stageLoad("Loading room geometry and baked lighting (this is the big one)…");
   const assets = referenceLook
     ? await loadReferenceAssets(kit as ReferenceKit, manager, renderer, kitPath)
     : await loadWorldAssets(kit, manager, renderer, details![0], details![1]);
@@ -337,6 +348,7 @@ async function boot() {
   exitDoor = new ExitDoor(camera, () => ambience.bus, () => world, kit, () => advanceLevel());
   scene.add(exitDoor.root);
   exitDoor.place(world);
+  stageLoad("Waking the entity…");
   await entity.load(scene);
   rig = new ThirdPersonRig(() => eyeHeight);
   await rig.load(scene);
@@ -567,7 +579,7 @@ async function boot() {
   stick.addEventListener("pointerup", stopStick);
   stick.addEventListener("pointercancel", stopStick);
 
-  loadLabel.textContent = "Preparing the first frame";
+  loadLabel.textContent = "Preparing the first frame…";
   renderer.setRenderTarget(composer.readBuffer);
   await renderer.compileAsync(scene, camera);
   renderer.setRenderTarget(null);
