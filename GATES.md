@@ -63,7 +63,12 @@ Baseline (clean clone, 2026-09-03): `bun test` 63 pass / 1 pre-existing fail
   EXPECT: Backrooms
   EVIDENCE: continuous/modules.json:200 | color/agx-medium-high.bin:200
 
-- [ ] G13: Perf trim — props stream only into the fog-visible inner ring (≤2/chunk), suite stays green
+- [x] G13: Perf trim — props stream only into the fog-visible inner ring (≤2/chunk), suite stays green
   CHECK: bash -c 'bun test 2>&1 | tail -n 4'
   EXPECT: 89 pass
+  EVIDENCE: 192114 expect() calls | Ran 90 tests across 16 files. [1.52s]
+
+- [ ] G14: Lag root-caused with measured A/B (forked vs upstream draw calls/tris), fix pushed
+  CHECK: bash -c 'cat /tmp/perf-ab.txt'
+  EXPECT: VERDICT
   EVIDENCE: pending

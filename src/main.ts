@@ -125,7 +125,9 @@ async function boot() {
   title.addEventListener("pointerdown", () => music.resume());
 
   // MSAA must be on the offscreen target, not only the canvas, when using a composer.
-  const target = new THREE.WebGLRenderTarget(1, 1, { type: THREE.HalfFloatType, samples: touch ? 2 : 4 });
+  // 2x keeps edges clean under the VHS downscale+grain; 4x doubled resolve cost
+  // for no visible gain (measured A/B: identical pixels, far slower).
+  const target = new THREE.WebGLRenderTarget(1, 1, { type: THREE.HalfFloatType, samples: 2 });
   const composer = new EffectComposer(renderer, target);
   composer.addPass(new RenderPass(scene, camera));
   const bloom = new UnrealBloomPass(new THREE.Vector2(1, 1), 0.018, 0.12, 2.0);
@@ -182,7 +184,9 @@ async function boot() {
     const width = canvas.clientWidth;
     const height = canvas.clientHeight;
     if (!width || !height) return;
-    const nativeRatio = Math.min(devicePixelRatio, touch ? 1.5 : 2);
+    // Full-rate pixels scale fragment cost quadratically (bloom + VHS run per pixel).
+    // 1.5x is visually lossless under tape grain and halves GPU load vs 2x on HiDPI.
+    const nativeRatio = Math.min(devicePixelRatio, 1.5);
     const ratio = vhs.enabled ? Math.min(nativeRatio, vhs.preset.height / height) : nativeRatio * resolution;
     const size = `${width}:${height}:${ratio}`;
     if (size === renderSize) return;
