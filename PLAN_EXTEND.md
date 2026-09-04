@@ -51,3 +51,7 @@ liminal clutter (OpenClawWorld props), and a finishable arc (3 levels + escape).
   (was eye-level band only, so ceilings never caught the boom). 6 solver tests incl.
   overhead-ceiling containment proof. Forced-third screenshot: camera inside room,
   ceiling + light panels visible, zero console errors. 87pass/1prefail, 9/10 gates.
+- [2026-09-03] lag hunt (G14): A/B vs pristine upstream worktree — fork +24 draw calls
+  (+46%), +0.4% tris; wall-time 12.4s base vs 4.1s fixed (MSAA resolve dominates in SW).
+  Fix: offscreen MSAA 4x→2x, DPR cap 2→1.5. Rig absolved (first-person no-op).
+  Probe reverted, 89pass/1prefail, build green, scene screenshot verified, pushed.

@@ -68,7 +68,7 @@ Baseline (clean clone, 2026-09-03): `bun test` 63 pass / 1 pre-existing fail
   EXPECT: 89 pass
   EVIDENCE: 192114 expect() calls | Ran 90 tests across 16 files. [1.52s]
 
-- [ ] G14: Lag root-caused with measured A/B (forked vs upstream draw calls/tris), fix pushed
+- [x] G14: Lag root-caused with measured A/B (forked vs upstream draw calls/tris), fix pushed
   CHECK: bash -c 'cat /tmp/perf-ab.txt'
   EXPECT: VERDICT
-  EVIDENCE: pending
+  EVIDENCE: - Third-person rig absolved: early-returns in first-person mode before any work. | VERDICT: post-chain bound; MSAA+DPR fix pushed; prop draw trim already live (G13)
