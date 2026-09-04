@@ -78,6 +78,7 @@ export class ThirdPersonRig {
   private boomEnd = new THREE.Vector3();
   private boomDir = new THREE.Vector3();
   private up = new THREE.Vector3();
+  private mixer: THREE.AnimationMixer | null = null;
 
   constructor(private getEyeHeight: () => number) {}
 
@@ -86,7 +87,7 @@ export class ThirdPersonRig {
     if (this.loaded) return Promise.resolve();
     if (this.loading) return this.loading;
     this.loading = loadNubCat()
-      .then((model) => {
+      .then(({ model, clips }) => {
         this.avatar = new THREE.Group();
         // Normalize to cat height (~0.55m against the 1.65m eye): the GLB's
         // native units are large (OpenClawWorld renders it at 0.3 scale).
@@ -101,6 +102,11 @@ export class ThirdPersonRig {
         this.avatar.traverse((node) => {
           if (node instanceof THREE.Mesh) node.castShadow = false;
         });
+        if (clips.length) {
+          this.mixer = new THREE.AnimationMixer(model);
+          const walk = this.mixer.clipAction(clips[0]);
+          walk.play();
+        }
         this.avatar.visible = false;
         scene.add(this.avatar);
         this.loaded = true;
@@ -126,6 +132,8 @@ export class ThirdPersonRig {
     if (!this.avatar || !this.loaded) return;
     this.avatar.visible = this.mode === "third";
     if (this.mode !== "third") return;
+    // Baked walk loop follows stride speed; idles when standing.
+    this.mixer?.update(speed > 0.2 ? dt * (0.5 + speed * 0.45) : 0);
     const feet = camera.position.y - this.getEyeHeight();
     this.avatar.position.set(camera.position.x, feet, camera.position.z);
     camera.getWorldDirection(this.look);

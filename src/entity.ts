@@ -52,6 +52,8 @@ export class Entity {
   private forward = new THREE.Vector3();
   private toEntity = new THREE.Vector3();
   private bobPhase = Math.random() * 10;
+  private mixer: THREE.AnimationMixer | null = null;
+  private walkAction: THREE.AnimationAction | null = null;
 
   constructor(
     private camera: THREE.PerspectiveCamera,
@@ -74,7 +76,7 @@ export class Entity {
     if (this.loaded) return Promise.resolve();
     if (this.loading) return this.loading;
     this.loading = loadNubCat()
-      .then((model) => {
+      .then(({ model, clips }) => {
         // The scene is baked MeshBasic, not lit: an unlit body matches and a
         // PointLight would burn uniforms for zero contribution. Eyes stay
         // emissive-looking MeshBasic instead of a light source.
@@ -87,6 +89,12 @@ export class Entity {
         });
         this.body = new THREE.Group();
         this.body.add(model);
+        // Blender-baked walk loop: chase scrambles it faster, stalk ambles.
+        if (clips.length) {
+          this.mixer = new THREE.AnimationMixer(model);
+          this.walkAction = this.mixer.clipAction(clips[0]);
+          this.walkAction.play();
+        }
         const eyeMat = new THREE.MeshBasicMaterial({ color: 0xff2222 });
         for (const x of [-0.22, 0.22]) {
           const eye = new THREE.Mesh(new THREE.SphereGeometry(0.07, 12, 12), eyeMat);
@@ -227,6 +235,9 @@ export class Entity {
       this.bobPhase += dt * (this.brain.mode === "chase" ? 9 : 4);
       this.body.position.y = 0.55 + Math.abs(Math.sin(this.bobPhase)) * (this.brain.mode === "chase" ? 0.22 : 0.1);
     }
+    // Baked walk loop rides alongside the procedural bob: chase scrambles.
+    if (this.walkAction) this.walkAction.timeScale = this.brain.mode === "chase" ? 2.2 : 0.9;
+    this.mixer?.update(dt);
 
     this.updateDrone(audible, dist);
   }
