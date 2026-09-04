@@ -23,6 +23,7 @@ import { Props } from "./props";
 import { ExitDoor } from "./exit-door";
 import { ThirdPersonRig } from "./third-person";
 import { AutoQuality } from "./auto-quality";
+import { CHARACTERS, getCharacter, setCharacter } from "./nubcat";
 import { LEVELS, levelSeed } from "./levels";
 import { VhsPlayer } from "./vhs/player";
 import { getVhsPreset, VHS_PRESETS } from "./vhs/presets";
@@ -430,6 +431,15 @@ async function boot() {
     setView(world.spawnAt(view.x, view.z));
   });
   element("reset-view").addEventListener("click", () => { setView(world.spawnAt(0, 0)); viewSelect.value = "0"; });
+  const charSelect = element<HTMLSelectElement>("character");
+  for (const c of CHARACTERS) charSelect.add(new Option(c.label, c.id));
+  charSelect.value = getCharacter();
+  charSelect.addEventListener("change", () => {
+    setCharacter(charSelect.value);
+    // Second character loads once, then both ride the single-flight cache.
+    void entity?.reload(scene);
+    void rig?.reload(scene);
+  });
 
   function openSettings(open: boolean) {
     settings.hidden = !open;

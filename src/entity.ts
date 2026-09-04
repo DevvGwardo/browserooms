@@ -1,5 +1,5 @@
 import * as THREE from "three";
-import { loadNubCat } from "./nubcat";
+import { loadNubCat, characterDef, getCharacter, nubFaceTexture } from "./nubcat";
 import type { AudioBus } from "./light-ambience";
 import type { StreamedWorld } from "./streamed-world";
 import { movePlayer } from "./collision";
@@ -54,6 +54,8 @@ export class Entity {
   private bobPhase = Math.random() * 10;
   private mixer: THREE.AnimationMixer | null = null;
   private walkAction: THREE.AnimationAction | null = null;
+  /** Per-load materials (owned here, disposed on reload — never the shared geo). */
+  private ownedMats: THREE.Material[] = [];
 
   constructor(
     private camera: THREE.PerspectiveCamera,
@@ -80,15 +82,14 @@ export class Entity {
         // The scene is baked MeshBasic, not lit: an unlit body matches and a
         // PointLight would burn uniforms for zero contribution. The pinkNUB
         // rig ships its own eye mesh (Nub_eyes) with a real face texture, so:
-        // body keeps the artist's pink, eyes get map + red tint.
+        // body keeps the current character's artist color, eyes get map + red tint.
         // Texture base path mirrors the GLB so dev + Vercel agree.
-        const loader = new THREE.TextureLoader();
-        const faceTex = loader.load("models/nubtex/test_face_neutral.png");
-        faceTex.colorSpace = THREE.SRGBColorSpace;
-        const dark = new THREE.MeshBasicMaterial({ color: 0xffcadc });
+        const faceTex = nubFaceTexture();
+        const dark = new THREE.MeshBasicMaterial({ color: characterDef(getCharacter()).bodyColor });
         const eyeMat = new THREE.MeshBasicMaterial({
           map: faceTex, color: 0xff5555, transparent: true,
         });
+        this.ownedMats.push(dark, eyeMat);
         model.traverse((node) => {
           if (node instanceof THREE.Mesh) {
             node.castShadow = false;
@@ -122,6 +123,22 @@ export class Entity {
       });
     scene.add(this.root);
     return this.loading;
+  }
+
+  /** Hot-swap the rig after a character change (scene graph + sim state kept). */
+  reload(scene: THREE.Scene): Promise<void> {
+    if (this.loading) return this.loading;
+    this.stopDrone();
+    if (this.body) {
+      this.root.remove(this.body);
+      this.body = null;
+    }
+    for (const mat of this.ownedMats) mat.dispose();
+    this.ownedMats = [];
+    this.mixer = null;
+    this.walkAction = null;
+    this.loaded = false;
+    return this.load(scene);
   }
 
   prepare(): Promise<void> {

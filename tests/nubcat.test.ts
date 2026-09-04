@@ -1,6 +1,12 @@
 import { expect, test } from "bun:test";
 import * as THREE from "three";
-import { NUBCAT_WALK_URL, NUBCAT_IDLE_URL } from "../src/nubcat";
+import {
+  CHARACTERS,
+  DEFAULT_CHARACTER,
+  characterDef,
+  getCharacter,
+  setCharacter,
+} from "../src/nubcat";
 
 // The loader's clone contract: each clone must own its skeleton so a mixer
 // driving one clone's bones cannot move (or freeze) another clone's skin.
@@ -17,8 +23,24 @@ test("plain clone shares the skeleton (why the loader must not use it)", () => {
   expect(copy.skeleton).toBe(mesh.skeleton);
 });
 
-test("loader exposes distinct walk/idle URLs", () => {
-  expect(NUBCAT_WALK_URL).toBe("models/pinkNUB-walk.glb");
-  expect(NUBCAT_IDLE_URL).toBe("models/pinkNUB.glb");
-  expect(NUBCAT_WALK_URL === NUBCAT_IDLE_URL).toBe(false);
+test("character table covers male + female with distinct rigs and colors", () => {
+  expect(CHARACTERS.map((c) => c.id).sort()).toEqual(["female", "male"]);
+  const [female, male] = [characterDef("female"), characterDef("male")];
+  expect(female.walkUrl).toBe("models/pinkNUB-walk.glb");
+  expect(male.walkUrl).toBe("models/blueNUB-walk.glb");
+  expect(female.walkUrl === male.walkUrl).toBe(false);
+  expect(female.idleUrl === male.idleUrl).toBe(false);
+  expect(female.bodyColor).toBe(0xffcadc);
+  expect(male.bodyColor).toBe(0x64a6ff);
+});
+
+test("unknown ids fall back to the default character", () => {
+  expect(characterDef("???").id).toBe(DEFAULT_CHARACTER);
+  expect(characterDef("").id).toBe(DEFAULT_CHARACTER);
+});
+
+test("getCharacter is safe without storage and setCharacter round-trips the def", () => {
+  expect(["female", "male"]).toContain(getCharacter());
+  expect(setCharacter("male").id).toBe("male");
+  expect(setCharacter("bogus").id).toBe(DEFAULT_CHARACTER);
 });

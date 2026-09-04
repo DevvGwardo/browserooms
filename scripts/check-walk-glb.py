@@ -16,6 +16,11 @@ ORIG = "public/models/pinkNUB.glb"
 LEG_L = "Leg_L"
 LEG_R = "Leg_R"
 
+if "--base" in sys.argv:
+    ORIG = sys.argv[sys.argv.index("--base") + 1]
+    sys.argv.remove("--base")
+    sys.argv.remove(ORIG)
+
 
 def load(path):
     with open(path, "rb") as f:

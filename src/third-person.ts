@@ -1,5 +1,5 @@
 import * as THREE from "three";
-import { loadNubCat } from "./nubcat";
+import { loadNubCat, characterDef, getCharacter, nubFaceTexture } from "./nubcat";
 import type { Collider } from "./collision";
 
 export type ViewMode = "first" | "third";
@@ -79,6 +79,8 @@ export class ThirdPersonRig {
   private boomDir = new THREE.Vector3();
   private up = new THREE.Vector3();
   private mixer: THREE.AnimationMixer | null = null;
+  /** Per-load materials (owned here, disposed on reload — never the shared geo). */
+  private ownedMats: THREE.Material[] = [];
 
   constructor(private getEyeHeight: () => number) {}
 
@@ -103,16 +105,16 @@ export class ThirdPersonRig {
         inner.position.y = -bounds.min.y * (0.9 / height);
         this.avatar.add(inner);
         // The scene is unlit MeshBasic: keep the GLB's MeshStandard materials
-        // and the avatar renders near-black. Mirror the entity: artist
-        // pink body, real face texture on the eyes.
-        const faceTex = new THREE.TextureLoader().load("models/nubtex/test_face_neutral.png");
-        faceTex.colorSpace = THREE.SRGBColorSpace;
+        // and the avatar renders near-black. Mirror the entity: current
+        // character body color, real face texture on the eyes.
+        const faceTex = nubFaceTexture();
+        const bodyMat = new THREE.MeshBasicMaterial({ color: characterDef(getCharacter()).bodyColor });
+        const eyeMat = new THREE.MeshBasicMaterial({ map: faceTex, transparent: true });
+        this.ownedMats.push(bodyMat, eyeMat);
         this.avatar.traverse((node) => {
           if (node instanceof THREE.Mesh) {
             node.castShadow = false;
-            node.material = /eye/i.test(node.name)
-              ? new THREE.MeshBasicMaterial({ map: faceTex, transparent: true })
-              : new THREE.MeshBasicMaterial({ color: 0xffcadc });
+            node.material = /eye/i.test(node.name) ? eyeMat : bodyMat;
           }
         });
         if (clips.length) {
@@ -132,6 +134,20 @@ export class ThirdPersonRig {
         this.loading = null;
       });
     return this.loading;
+  }
+
+  /** Hot-swap the avatar after a character change (mode + scene kept). */
+  reload(scene: THREE.Scene): Promise<void> {
+    if (this.loading) return this.loading;
+    if (this.avatar) {
+      scene.remove(this.avatar);
+      this.avatar = null;
+    }
+    for (const mat of this.ownedMats) mat.dispose();
+    this.ownedMats = [];
+    this.mixer = null;
+    this.loaded = false;
+    return this.load(scene);
   }
 
   toggle(): ViewMode {
