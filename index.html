@@ -22,12 +22,13 @@
       <div id="toolbar" hidden>
         <div class="navigation-actions">
           <button id="explore" class="primary">Resume</button>
-          <span id="help">WASD move · Mouse look · Q/E zoom · M sound · Esc menu</span>
+          <span id="help">WASD move · Mouse look · Q/E zoom · V view · M sound · Esc menu</span>
         </div>
         <button id="settings-button" aria-controls="settings" aria-expanded="false">Image settings</button>
       </div>
       <div id="walk-actions" hidden>
         <button id="audio-toggle" aria-pressed="false">Enable sound</button>
+        <button id="view-toggle">Third person</button>
         <button id="leave" aria-label="Open menu" hidden>Menu</button>
       </div>
       <section id="settings" aria-label="Image settings" hidden>
@@ -55,6 +56,10 @@
         <output id="performance" aria-label="Rendering performance" aria-live="off" hidden></output>
       </section>
       <span id="alarm-hint" hidden></span>
+      <div id="level-banner" role="status"></div>
+      <div id="entity-hint" hidden>IT SEES YOU — RUN</div>
+      <div id="taken" hidden><div class="taken-eyes"><span>◉</span><span>◉</span></div><p id="taken-sub"></p></div>
+      <div id="escaped" hidden><h2>YOU ESCAPED</h2><p id="escape-time"></p><button id="escape-again">noclip again</button></div>
       <div id="touch-controls" hidden>
         <div id="stick" aria-label="Drag to walk"><span></span></div>
         <span id="touch-hint">Drag the scene to look</span>

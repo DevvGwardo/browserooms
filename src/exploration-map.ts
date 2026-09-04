@@ -40,6 +40,17 @@ export class ExplorationMap {
     this.breaks++;
   }
 
+  /** Full wipe for level transitions — stale patches belong to another maze. */
+  reset() {
+    this.patches.clear();
+    this.previous = null;
+    this.nextUpdate = 0;
+    this.updates = 0;
+    this.lastMs = 0;
+    this.maxMs = 0;
+    this.breaks++;
+  }
+
   private mark(x: number, z: number, flag: number) {
     const size = this.world.kit.cellSize;
     const dx = Math.floor((x + size / 2) / size);

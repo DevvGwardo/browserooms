@@ -39,8 +39,26 @@ export class StreamedWorld extends THREE.EventDispatcher<{ chunkload: LoadedChun
     this.setOrigin(0, 0);
   }
 
-  setOrigin(x: number, z: number) {
-    // Validate before changing the current scene so a bad destination cannot strand the player.
+  /**
+   * Restart the endless world under a new seed without replacing this object,
+   * so every live system holding this world (flicker, alarm, entity, props)
+   * keeps reading fresh colliders, lights, and chunk events.
+   */
+  reseed(seed: string) {
+    describeChunk(seed, 0, 0, this.kit);
+    (this as { seed: string }).seed = seed;
+    for (const [, chunk] of this.loaded) {
+      this.root.remove(chunk.object);
+      chunk.object.clear();
+    }
+    this.loaded.clear();
+    this.colliders = [];
+    this.lights = [];
+    this.initialized = false;
+    this.setOrigin(0, 0);
+  }
+
+  setOrigin(x: number, z: number) {    // Validate before changing the current scene so a bad destination cannot strand the player.
     describeChunk(this.seed, x, z, this.kit);
     describeChunk(this.seed, x - this.radius, z - this.radius, this.kit);
     describeChunk(this.seed, x + this.radius, z + this.radius, this.kit);

@@ -18,6 +18,11 @@ import { CameraMotion, WALK_STYLES, STAND_STYLES } from "./camera-motion";
 import { DistantSteps } from "./distant-steps";
 import { DistantAlarm } from "./distant-alarm";
 import { Soundtrack } from "./soundtrack";
+import { Entity } from "./entity";
+import { Props } from "./props";
+import { ExitDoor } from "./exit-door";
+import { ThirdPersonRig } from "./third-person";
+import { LEVELS, levelSeed } from "./levels";
 import { VhsPlayer } from "./vhs/player";
 import { getVhsPreset, VHS_PRESETS } from "./vhs/presets";
 import "./style.css";
@@ -92,7 +97,7 @@ async function boot() {
   function updateAudioButton() {
     audioButton.textContent = ambience.error ? "Retry sound" : !ambience.started ? "Enable sound" : ambience.enabled ? "Sound on" : "Sound off";
     audioButton.setAttribute("aria-pressed", String(ambience.started && ambience.enabled && !ambience.error));
-    audioButton.title = ambience.error ?? music.error ?? footsteps.error ?? zoom.error ?? distant.error ?? alarm.error ?? flicker?.error ?? "Soundtrack and scene sound";
+    audioButton.title = ambience.error ?? music.error ?? footsteps.error ?? zoom.error ?? distant.error ?? alarm.error ?? flicker?.error ?? entity?.error ?? exitDoor?.error ?? "Soundtrack and scene sound";
   }
   const ambience = new LightAmbience(updateAudioButton);
   const music = new Soundtrack(() => ambience.ensureBus());
@@ -102,9 +107,21 @@ async function boot() {
   const distant = new DistantSteps(camera, () => ambience.bus, updateAudioButton);
   const alarm = new DistantAlarm(camera, () => ambience.bus, updateAudioButton, () => world, scene);
   const alarmHint = element("alarm-hint");
+  const entityHint = element("entity-hint");
+  const levelBanner = element("level-banner");
+  const taken = element("taken");
+  const escaped = element("escaped");
+  const escapeTime = element("escape-time");
   alarmHint.textContent = touch ? "Tap the alarm to silence" : "Click or F to silence";
   let flicker: LightFlicker | null = null;
-  audioButton.addEventListener("click", () => { ambience.toggle(); if (ambience.enabled) music.resume(); void footsteps.prepare(); void zoom.prepare(); void distant.prepare(); void alarm.prepare(); void flicker?.prepare(); });
+  let entity: Entity | null = null;
+  let exitDoor: ExitDoor | null = null;
+  let rig: ThirdPersonRig | null = null;
+  const viewButton = element<HTMLButtonElement>("view-toggle");
+  function refreshViewButton() {
+    viewButton.textContent = rig?.mode === "third" ? "First person" : "Third person";
+  }
+  audioButton.addEventListener("click", () => { ambience.toggle(); if (ambience.enabled) music.resume(); void footsteps.prepare(); void zoom.prepare(); void distant.prepare(); void alarm.prepare(); void entity?.prepare(); void exitDoor?.prepare(); void flicker?.prepare(); });
   title.addEventListener("pointerdown", () => music.resume());
 
   // MSAA must be on the offscreen target, not only the canvas, when using a composer.
@@ -252,17 +269,108 @@ async function boot() {
   const assets = referenceLook
     ? await loadReferenceAssets(kit as ReferenceKit, manager, renderer, kitPath)
     : await loadWorldAssets(kit, manager, renderer, details![0], details![1]);
-  const worldSeed = continuousLook ? `continuous:${seed}` : referenceLook ? `reference:${seed}` : seed;
-  const world = new StreamedWorld(kit, worldSeed, assets.prototypes);
+  const worldSeedFor = (level: number) => {
+    const namespaced = levelSeed(seed, level);
+    return continuousLook ? `continuous:${namespaced}` : referenceLook ? `reference:${namespaced}` : namespaced;
+  };
+  let levelIndex = 0;
+  let runStart = 0;
+  let deaths = 0;
+  const world = new StreamedWorld(kit, worldSeedFor(0), assets.prototypes);
   const explorationMap = new ExplorationMap(element<HTMLCanvasElement>("exploration-map"), world);
   scene.add(world.root);
   if (continuousLook) flicker = new LightFlicker(camera, world, () => ambience.bus, updateAudioButton, reducedMotion, assets.prototypes.values());
+
+  function applyLevelTheme() {
+    const fog = new THREE.Color(LEVELS[levelIndex % LEVELS.length].fog);
+    (scene.background as THREE.Color).copy(fog);
+    scene.fog!.color.copy(fog);
+    const def = LEVELS[levelIndex % LEVELS.length];
+    levelBanner.innerHTML = `<strong>${def.name}</strong><span>${def.hint}</span>`;
+  }
+
+  entity = new Entity(camera, () => ambience.bus, () => world, {
+    onSpotted: () => {
+      entityHint.hidden = false;
+    },
+    onCaught: () => {
+      deaths++;
+      element("taken-sub").textContent =
+        `The hum continues without you. Deaths this run: ${deaths}.`;
+      taken.hidden = false;
+      window.setTimeout(() => {
+        if (taken.hidden) return;
+        taken.hidden = true;
+        entityHint.hidden = true;
+        alarm.reset(true);
+        entity!.reset();
+        setView(world.spawnAt(0, 0));
+      }, 1600);
+    },
+  }, worldSeedFor(0), LEVELS[0].entitySpeed);
+  scene.add(entity.root);
+  const props = new Props(() => world);
+  props.attach();
+  exitDoor = new ExitDoor(camera, () => ambience.bus, () => world, kit, () => advanceLevel());
+  scene.add(exitDoor.root);
+  exitDoor.place(world);
+  await entity.load(scene);
+  rig = new ThirdPersonRig(() => eyeHeight);
+  await rig.load(scene);
+  refreshViewButton();
+  viewButton.addEventListener("click", () => {
+    rig?.toggle();
+    refreshViewButton();
+  });
+  applyLevelTheme();
+
+  function advanceLevel() {
+    if (levelIndex >= LEVELS.length - 1) {
+      const seconds = Math.max(1, Math.round((Date.now() - runStart) / 1000));
+      escapeTime.textContent =
+        `Escaped all three levels in ${Math.floor(seconds / 60)}:${String(seconds % 60).padStart(2, "0")} · Deaths: ${deaths}.`;
+      escaped.hidden = false;
+      if (controls.isLocked) controls.unlock();
+      else setActive(false);
+      return;
+    }
+    levelIndex++;
+    entity!.speed = LEVELS[levelIndex % LEVELS.length].entitySpeed;
+    world.reseed(worldSeedFor(levelIndex));
+    explorationMap.reset();
+    applyLevelTheme();
+    alarm.reset(true);
+    entity!.reset();
+    exitDoor!.place(world);
+    viewSelect.value = "0";
+    setView(world.spawnAt(0, 0));
+  }
+
+  function restartRun() {
+    levelIndex = 0;
+    deaths = 0;
+    runStart = Date.now();
+    world.reseed(worldSeedFor(0));
+    explorationMap.reset();
+    applyLevelTheme();
+    alarm.reset(true);
+    entity!.reset(true);
+    exitDoor!.place(world);
+    viewSelect.value = "0";
+    escaped.hidden = true;
+    setView(world.spawnAt(0, 0));
+  }
+  element("escape-again").addEventListener("click", () => {
+    restartRun();
+    enterWorld();
+  });
 
   function setView(view: View) {
     explorationMap.resetTrail();
     motion.reset();
     distant.reset();
     alarm.reset(true);
+    entity?.reset();
     camera.position.fromArray(view.position);
     camera.rotation.set(view.pitch, view.yaw, 0, "YXZ");
     eyeHeight = view.position[1];
@@ -336,11 +444,13 @@ async function boot() {
     entered = true;
     title.hidden = true;
     void ambience.start();
-    if (firstEntry) music.enter(); else music.resume();
+    if (firstEntry) { music.enter(); runStart = Date.now(); } else music.resume();
     void footsteps.prepare();
     void zoom.prepare();
     void distant.prepare();
     void alarm.prepare();
+    void entity?.prepare();
+    void exitDoor?.prepare();
     void flicker?.prepare();
     if (touch) setActive(true);
     else {
@@ -361,8 +471,9 @@ async function boot() {
     if (event.code === "Escape" && !settings.hidden) { openSettings(false); return; }
     if (!active) return;
     if (event.metaKey || event.ctrlKey || event.altKey) return;
-    if (event.code === "KeyM") { event.preventDefault(); if (event.repeat) return; ambience.toggle(); if (ambience.enabled) music.resume(); void footsteps.prepare(); void zoom.prepare(); void distant.prepare(); void alarm.prepare(); void flicker?.prepare(); return; }
-    if (event.code === "KeyF" && !event.repeat) { event.preventDefault(); if (alarm.interact(0, 0)) alarmHint.hidden = true; return; }
+    if (event.code === "KeyM") { event.preventDefault(); if (event.repeat) return; ambience.toggle(); if (ambience.enabled) music.resume(); void footsteps.prepare(); void zoom.prepare(); void distant.prepare(); void alarm.prepare(); void entity?.prepare(); void exitDoor?.prepare(); void flicker?.prepare(); return; }
+    if (event.code === "KeyF" && !event.repeat) { event.preventDefault(); if (alarm.interact(0, 0)) alarmHint.hidden = true; else if (exitDoor?.interact(0, 0)) levelBanner.classList.add("touched"); return; }
+    if (event.code === "KeyV" && !event.repeat) { event.preventDefault(); rig?.toggle(); refreshViewButton(); return; }
     if (["KeyW", "KeyA", "KeyS", "KeyD", "KeyQ", "KeyE", "ArrowUp", "ArrowLeft", "ArrowDown", "ArrowRight", "ShiftLeft", "ShiftRight"].includes(event.code)) {
       event.preventDefault(); keys.add(event.code);
     }
@@ -402,6 +513,7 @@ async function boot() {
     const x = controls.isLocked ? 0 : (event.clientX - rect.left) / rect.width * 2 - 1;
     const y = controls.isLocked ? 0 : 1 - (event.clientY - rect.top) / rect.height * 2;
     if (alarm.interact(x, y)) alarmHint.hidden = true;
+    else if (exitDoor?.interact(x, y)) levelBanner.classList.add("touched");
   });
 
   const stick = element("stick");
@@ -461,7 +573,7 @@ async function boot() {
       const distance = Math.hypot(next.x - camera.position.x, next.z - camera.position.z);
       camera.position.x = next.x; camera.position.z = next.z;
       const shift = world.update(camera.position);
-      if (shift) alarm.shiftOrigin(shift);
+      if (shift) { alarm.shiftOrigin(shift); entity?.shiftOrigin(shift); exitDoor?.shiftOrigin(shift); }
       footsteps.advance(distance, delta, running, ambience.enabled);
       moved += distance;
       simulated += delta;
@@ -472,12 +584,16 @@ async function boot() {
     else if (!active) motionSpeed = 0;
     flicker?.update(elapsed, active && document.hasFocus(), ambience.enabled);
     alarm.update(elapsed, active && document.hasFocus(), ambience.enabled);
-    distant.update(elapsed, active && document.hasFocus(), ambience.enabled, Math.max(flicker?.threat ?? 0, alarm.threat));
+    distant.update(elapsed, active && document.hasFocus(), ambience.enabled, Math.max(flicker?.threat ?? 0, alarm.threat, entity?.threat ?? 0));
     music.update(elapsed, distant.tension, active, ambience.enabled);
     motion.update(elapsed, motionSpeed, footsteps.cadence.phase, footsteps.cadence.steps,
       document.hasFocus() && (active || !settings.hidden), distant.tension);
+    rig?.update(elapsed, camera, active ? motionSpeed : 0);
     motion.apply(world.colliders);
     alarmHint.hidden = !active || !alarm.updateView();
+    if (!(entity && entity.mode === "chase")) entityHint.hidden = true;
+    entity?.update(elapsed, active && document.hasFocus(), ambience.enabled, motionSpeed, camera.zoom);
+    exitDoor?.update(elapsed, active && document.hasFocus(), ambience.enabled);
     explorationMap.update(time, camera, active);
     ambience.updateListener(camera);
     grain.uniforms.time.value = time / 1000;
@@ -487,8 +603,10 @@ async function boot() {
       audioElapsed = 0;
     }
     renderer.info.reset();
+    rig?.apply(camera, world.colliders);
     composer.render(elapsed);
     vhs.capture(time);
+    rig?.restore(camera);
     motion.restore();
     frameTime += elapsed;
     frameCount++;
@@ -540,6 +658,11 @@ async function boot() {
       motion: motion.diagnostics,
       distant: distant.diagnostics,
       alarm: alarm.diagnostics,
+      entity: entity?.diagnostics,
+      props: props.diagnostics,
+      exitDoor: exitDoor?.diagnostics,
+      view: rig?.diagnostics,
+      levels: { level: levelIndex, levels: LEVELS.map((level) => level.name), deaths },
       music: music.diagnostics,
       flicker: flicker?.diagnostics,
       vhs: vhs.diagnostics,
@@ -551,7 +674,7 @@ async function boot() {
         return alarm.diagnostics;
       },
       getArchitecture: () => world.current,
-      inspectChunk: (x: number, z: number) => describeChunk(worldSeed, x, z, kit),
+      inspectChunk: (x: number, z: number) => describeChunk(world.seed, x, z, kit),
       warpToChunk: (x: number, z: number) => { setView(world.spawnAt(x, z)); return world.stats; },
     } : {}),
   } });

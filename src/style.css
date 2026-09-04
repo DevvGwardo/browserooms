@@ -71,3 +71,18 @@ body.walking:not(.touch) #walk-actions { visibility: hidden; }
 @media (max-height: 450px) { #exploration-map { width: 140px; height: 104px; bottom: max(18px, env(safe-area-inset-bottom)); } }
 body.touch #exploration-map { left: max(30px, env(safe-area-inset-left)); bottom: max(168px, calc(env(safe-area-inset-bottom) + 130px)); }
 @media (prefers-reduced-motion: reduce) { button { transition: none; } }
+#level-banner { position: absolute; z-index: 2; top: max(14px, env(safe-area-inset-top)); left: 50%; transform: translateX(-50%); text-align: center; pointer-events: none; }
+#level-banner strong { display: block; font-size: 13px; letter-spacing: 3px; color: #e8d27a; text-shadow: 0 1px 8px #000; }
+#level-banner span { display: block; font-size: 11px; color: #b8b090; margin-top: 2px; text-shadow: 0 1px 6px #000; }
+#entity-hint { position: absolute; z-index: 2; top: 22%; left: 50%; transform: translateX(-50%); color: #ff4444; font-size: 22px; letter-spacing: 4px; font-weight: bold; text-shadow: 0 0 18px #f00, 0 2px 4px #000; pointer-events: none; animation: entity-blink 0.5s steps(2) infinite; white-space: nowrap; }
+@keyframes entity-blink { 50% { opacity: 0.25; } }
+#taken { position: absolute; inset: 0; z-index: 5; background: #000; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 18px; animation: taken-shake 0.1s linear infinite; }
+#taken[hidden] { display: none; }
+.taken-eyes { display: flex; gap: 8vw; font-size: min(30vw, 180px); line-height: 1; color: #f22; text-shadow: 0 0 60px #f00; }
+#taken-sub { color: #8a8266; font-size: 13px; }
+@keyframes taken-shake { 0% { transform: translate(0, 0); } 25% { transform: translate(-8px, 5px); } 50% { transform: translate(7px, -6px); } 75% { transform: translate(-5px, -4px); } 100% { transform: translate(6px, 6px); } }
+#escaped { position: absolute; inset: 0; z-index: 5; background: #060604f2; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; }
+#escaped[hidden] { display: none; }
+#escaped h2 { color: #9ae87a; letter-spacing: 5px; font-size: 30px; }
+#escape-time { color: #b8b090; font-size: 14px; }
+@media (prefers-reduced-motion: reduce) { #taken, #entity-hint { animation: none; } }

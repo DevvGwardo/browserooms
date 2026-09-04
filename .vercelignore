@@ -1,0 +1,8 @@
+# Blender sources, tooling, and ledgers never ship to the CDN.
+assets/
+scripts/
+tests/
+deploy/
+GATES.md
+PLAN_EXTEND.md
+*.log
