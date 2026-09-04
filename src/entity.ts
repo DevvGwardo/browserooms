@@ -79,12 +79,16 @@ export class Entity {
       .then(({ model, clips }) => {
         // The scene is baked MeshBasic, not lit: an unlit body matches and a
         // PointLight would burn uniforms for zero contribution. Eyes stay
-        // emissive-looking MeshBasic instead of a light source.
+        // emissive-looking MeshBasic instead of a light source. The nakedNUB
+        // rig ships its own eye mesh (Nub_eyes, ~0.85-1.23m up), so only the
+        // body is darkened and the eyes are tinted red in place.
         const dark = new THREE.MeshBasicMaterial({ color: 0x0b0b0d });
+        const eyeMat = new THREE.MeshBasicMaterial({ color: 0xff2222 });
         model.traverse((node) => {
           if (node instanceof THREE.Mesh) {
-            node.material = dark;
             node.castShadow = false;
+            if (/eye/i.test(node.name)) node.material = eyeMat;
+            else node.material = dark;
           }
         });
         this.body = new THREE.Group();
@@ -95,14 +99,11 @@ export class Entity {
           this.walkAction = this.mixer.clipAction(clips[0]);
           this.walkAction.play();
         }
-        const eyeMat = new THREE.MeshBasicMaterial({ color: 0xff2222 });
-        for (const x of [-0.22, 0.22]) {
-          const eye = new THREE.Mesh(new THREE.SphereGeometry(0.07, 12, 12), eyeMat);
-          eye.position.set(x, 0.72, 0.42);
-          this.body.add(eye);
-        }
-        const s = 1.55;
-        this.body.scale.set(s, s * 1.08, s);
+        // nakedNUB stands ~1.5m at the head; scale to a ~1.65m stalker so it
+        // reads at eye level down the corridor (old 1.55x was for the smaller rig).
+        const s = 1.1;
+        this.body.scale.set(s, s, s);
+        this.body.position.y = 0;
         this.root.add(this.body);
         this.root.visible = true;
         this.loaded = true;

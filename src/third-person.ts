@@ -89,15 +89,18 @@ export class ThirdPersonRig {
     this.loading = loadNubCat()
       .then(({ model, clips }) => {
         this.avatar = new THREE.Group();
-        // Normalize to cat height (~0.55m against the 1.65m eye): the GLB's
-        // native units are large (OpenClawWorld renders it at 0.3 scale).
-        const bounds = new THREE.Box3().setFromObject(model);
-        const height = Math.max(0.1, bounds.max.y - bounds.min.y);
+        // Normalize the avatar against the 1.65m eye. Use TRUE height (Y),
+        // not the longest axis: the nakedNUB quadruped is 2.2m wide but
+        // 1.5m tall, and max-axis normalization shrank it to a 0.38m sliver.
+        // Target ~0.9m at the shoulder so it reads against the 1.65m eye.
+        const bounds = new THREE.Box3().setFromObject(model, true);
+        const size = bounds.getSize(new THREE.Vector3());
+        const height = Math.max(0.1, size.y);
         const inner = new THREE.Group();
         inner.add(model);
-        inner.scale.setScalar(0.55 / height);
+        inner.scale.setScalar(0.9 / height);
         // Re-seat the normalized model so its feet sit at group origin.
-        inner.position.y = -bounds.min.y * (0.55 / height);
+        inner.position.y = -bounds.min.y * (0.9 / height);
         this.avatar.add(inner);
         this.avatar.traverse((node) => {
           if (node instanceof THREE.Mesh) node.castShadow = false;

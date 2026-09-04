@@ -14,8 +14,8 @@ import { clone as cloneSkinned } from "three/addons/utils/SkeletonUtils.js";
  */
 const pending = new Map<string, Promise<{ scene: THREE.Object3D; clips: THREE.AnimationClip[] }>>();
 
-export const NUBCAT_WALK_URL = "models/sillyNubCat-walk.glb";
-export const NUBCAT_IDLE_URL = "models/sillyNubCat.glb";
+export const NUBCAT_WALK_URL = "models/nakedNUB-walk.glb";
+export const NUBCAT_IDLE_URL = "models/nakedNUB.glb";
 
 export type NubCatModel = {
   /** Independent clone; safe to re-material, re-pose, or attach a mixer to. */

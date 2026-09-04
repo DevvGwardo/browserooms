@@ -1,20 +1,19 @@
-"""Bake a looping quadruped walk cycle into sillyNubCat via headless Blender.
+"""Bake a looping quadruped walk cycle via headless Blender.
 
-Usage (Blender 4.5 LTS):
+Usage (Blender 4.5 LTS) — naked NUB rig:
   /Applications/Blender.app/Contents/MacOS/Blender --background \
     --python scripts/bake-walk.py -- \
-    public/models/sillyNubCat.glb public/models/sillyNubCat-walk.glb
+    public/models/nakedNUB.glb public/models/nakedNUB-walk.glb
 
-Strategy: the source rig is a flat fan (body_00 carries legs, paws, head as
-siblings), so a walk reads through leg/paw swing + body bob/roll + head
-counter-bob. The script poses `pose.bones` per frame (24 frames @ 24fps = 1s
-loop), inserts LOCROT keyframes, then exports with baked animation.
+Strategy: keyframe pose.bones per frame (24 frames @ 24fps = 1s loop) with a
+lateral-sequence walk (legs oppose at half-cycle phase), foot follow-through,
+hip bob/roll, and head counter-bob; then export with baked animation.
 
 Frame phase (lateral sequence walk, 25/50/75% offsets):
-  leg.L / paw.L  : phase 0.0
-  leg.R / paw.R  : phase 0.5
-  body bob       : 2x frequency, dip when a foot lands
-  body roll      : 1x, lean toward the planted foot
+  Leg_L / Foot_L : phase 0.0
+  Leg_R / Foot_R : phase 0.5
+  hip bob        : 2x frequency, dip when a foot lands
+  hip roll       : 1x, lean toward the planted foot
   head           : counter-bob + slight yaw sway
 """
 
@@ -49,21 +48,22 @@ def main():
     arm.select_set(True)
 
     bones = arm.pose.bones
-    need = ["leg.L_04", "leg.R_03", "paw.L_02", "paw.R_01", "body_00", "head_07"]
+    need = ["Leg_L", "Leg_R", "Foot_L", "Foot_R", "Root_hip", "Head"]
     missing = [n for n in need if n not in bones]
     if missing:
         print(f"BAKE-FAIL: missing bones {missing}")
         sys.exit(1)
 
     base = {n: bones[n].rotation_quaternion.copy() for n in need}
+    base_loc = {n: bones[n].location.copy() for n in need}
 
     FPS = 24
     FRAMES = 24  # 1s loop
-    SWING = 0.55  # leg swing amplitude (rad)
-    PAW = 0.35  # paw follow-through amplitude
-    BOB = 0.06  # body bob (Blender units, pre-scale)
-    ROLL = 0.07
-    HEAD = 0.10
+    SWING = 0.5  # thigh swing amplitude (rad)
+    FOOT = 0.35  # foot follow-through (lags the thigh)
+    BOB = 0.035  # hip bob (Blender units: rig is ~1.2m tall, meters-ish)
+    ROLL = 0.06
+    HEAD = 0.08
 
     scn = bpy.context.scene
     scn.render.fps = FPS
@@ -78,8 +78,8 @@ def main():
         # Left leads by half a cycle over right.
         swing_l = math.sin(t * 2 * math.pi) * SWING
         swing_r = math.sin((t + 0.5) * 2 * math.pi) * SWING
-        paw_l = math.sin((t - 0.12) * 2 * math.pi) * PAW
-        paw_r = math.sin((t + 0.5 - 0.12) * 2 * math.pi) * PAW
+        foot_l = math.sin((t - 0.1) * 2 * math.pi) * FOOT
+        foot_r = math.sin((t + 0.5 - 0.1) * 2 * math.pi) * FOOT
         bob = -abs(math.sin(t * 2 * math.pi * 2)) * BOB
         roll = math.sin(t * 2 * math.pi) * ROLL
         head_bob = abs(math.sin(t * 2 * math.pi * 2)) * HEAD
@@ -90,32 +90,36 @@ def main():
         # plane with opposite phase (post-multiplying would inherit each
         # leg's mirrored bind quat and cancel the phase offset).
         swing_axis = mathutils.Vector((1, 0, 0))
-        bones["leg.L_04"].rotation_quaternion = (
-            mathutils.Quaternion(swing_axis, swing_l) @ base["leg.L_04"]
+        bones["Leg_L"].rotation_quaternion = (
+            mathutils.Quaternion(swing_axis, swing_l) @ base["Leg_L"]
         )
-        bones["leg.R_03"].rotation_quaternion = (
-            mathutils.Quaternion(swing_axis, swing_r) @ base["leg.R_03"]
+        bones["Leg_R"].rotation_quaternion = (
+            mathutils.Quaternion(swing_axis, swing_r) @ base["Leg_R"]
         )
-        bones["paw.L_02"].rotation_quaternion = (
-            mathutils.Quaternion(swing_axis, paw_l) @ base["paw.L_02"]
+        bones["Foot_L"].rotation_quaternion = (
+            mathutils.Quaternion(swing_axis, foot_l) @ base["Foot_L"]
         )
-        bones["paw.R_01"].rotation_quaternion = (
-            mathutils.Quaternion(swing_axis, paw_r) @ base["paw.R_01"]
+        bones["Foot_R"].rotation_quaternion = (
+            mathutils.Quaternion(swing_axis, foot_r) @ base["Foot_R"]
         )
-        # Body: bob on Z, roll about Y (rig is Y-up in Blender after import).
-        bones["body_00"].rotation_quaternion = (
-            mathutils.Quaternion(mathutils.Vector((0, 0, 1)), roll) @ base["body_00"]
+        # Hips: bob on Z, roll about Y (rig is Y-up in Blender after import).
+        bones["Root_hip"].rotation_quaternion = (
+            mathutils.Quaternion(mathutils.Vector((0, 0, 1)), roll) @ base["Root_hip"]
         )
-        bones["body_00"].location = (0, 0, bob)
-        bones["head_07"].rotation_quaternion = (
+        bones["Root_hip"].location = (
+            base_loc["Root_hip"][0],
+            base_loc["Root_hip"][1],
+            base_loc["Root_hip"][2] + bob,
+        )
+        bones["Head"].rotation_quaternion = (
             mathutils.Quaternion(mathutils.Vector((0, 1, 0)), head_bob)
             @ mathutils.Quaternion(mathutils.Vector((0, 0, 1)), head_yaw)
-            @ base["head_07"]
+            @ base["Head"]
         )
 
         for n in need:
             bones[n].keyframe_insert(data_path="rotation_quaternion", frame=f)
-        bones["body_00"].keyframe_insert(data_path="location", frame=f)
+        bones["Root_hip"].keyframe_insert(data_path="location", frame=f)
 
     for n in need:
         # Linear interpolation reads as mechanical; BEZIER smooths the loop.

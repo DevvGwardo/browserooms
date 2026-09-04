@@ -12,7 +12,9 @@ import sys
 
 import numpy as np
 
-ORIG = "public/models/sillyNubCat.glb"
+ORIG = "public/models/nakedNUB.glb"
+LEG_L = "Leg_L"
+LEG_R = "Leg_R"
 
 
 def load(path):
@@ -59,11 +61,11 @@ def main():
         for ch in an["channels"]:
             tgt = ch["target"]
             node = js["nodes"][tgt["node"]]["name"]
-            if node in ("leg.L_04", "leg.R_03") and tgt["path"] == "rotation":
+            if node in (LEG_L, LEG_R) and tgt["path"] == "rotation":
                 out = accessor(js, blob, an["samplers"][ch["sampler"]]["output"])
                 series[node] = out[:, 0]  # w carries the swing
-        l = series["leg.L_04"] - series["leg.L_04"].mean()
-        r = series["leg.R_03"] - series["leg.R_03"].mean()
+        l = series[LEG_L] - series[LEG_L].mean()
+        r = series[LEG_R] - series[LEG_R].mean()
         corr = float(np.dot(l, r) / (np.linalg.norm(l) * np.linalg.norm(r)))
         assert corr < -0.5, f"legs in phase, corr={corr:.2f}"
         # Loop closure: first == last on every animated output.
