@@ -102,8 +102,18 @@ export class ThirdPersonRig {
         // Re-seat the normalized model so its feet sit at group origin.
         inner.position.y = -bounds.min.y * (0.9 / height);
         this.avatar.add(inner);
+        // The scene is unlit MeshBasic: keep the GLB's MeshStandard materials
+        // and the avatar renders near-black. Mirror the entity: artist
+        // blue-grey body, real face texture on the eyes.
+        const faceTex = new THREE.TextureLoader().load("models/nubtex/test_face_neutral.png");
+        faceTex.colorSpace = THREE.SRGBColorSpace;
         this.avatar.traverse((node) => {
-          if (node instanceof THREE.Mesh) node.castShadow = false;
+          if (node instanceof THREE.Mesh) {
+            node.castShadow = false;
+            node.material = /eye/i.test(node.name)
+              ? new THREE.MeshBasicMaterial({ map: faceTex, transparent: true })
+              : new THREE.MeshBasicMaterial({ color: 0x6377b8 });
+          }
         });
         if (clips.length) {
           this.mixer = new THREE.AnimationMixer(model);

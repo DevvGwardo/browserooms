@@ -61,6 +61,10 @@ def main():
     FRAMES = 24  # 1s loop
     SWING = 0.5  # thigh swing amplitude (rad)
     FOOT = 0.35  # foot follow-through (lags the thigh)
+    # The FBX bind pose rests the belly on the ground (belly verts at y~0,
+    # held by Leg/Foot joints). A standing cat needs the hip line ~0.55m up:
+    # bake a static lift into Root_hip so the loop stands on its feet.
+    LIFT = 0.42
     BOB = 0.035  # hip bob (Blender units: rig is ~1.2m tall, meters-ish)
     ROLL = 0.06
     HEAD = 0.08
@@ -102,14 +106,12 @@ def main():
         bones["Foot_R"].rotation_quaternion = (
             mathutils.Quaternion(swing_axis, foot_r) @ base["Foot_R"]
         )
-        # Hips: bob on Z, roll about Y (rig is Y-up in Blender after import).
-        bones["Root_hip"].rotation_quaternion = (
-            mathutils.Quaternion(mathutils.Vector((0, 0, 1)), roll) @ base["Root_hip"]
-        )
+        # Hips: lift+bob on Y (armature is Y-up inside Blender after the
+        # fbx-to-glb transform bake; Z is forward, not up).
         bones["Root_hip"].location = (
             base_loc["Root_hip"][0],
-            base_loc["Root_hip"][1],
-            base_loc["Root_hip"][2] + bob,
+            base_loc["Root_hip"][1] + LIFT + bob,
+            base_loc["Root_hip"][2],
         )
         bones["Head"].rotation_quaternion = (
             mathutils.Quaternion(mathutils.Vector((0, 1, 0)), head_bob)

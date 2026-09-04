@@ -78,12 +78,17 @@ export class Entity {
     this.loading = loadNubCat()
       .then(({ model, clips }) => {
         // The scene is baked MeshBasic, not lit: an unlit body matches and a
-        // PointLight would burn uniforms for zero contribution. Eyes stay
-        // emissive-looking MeshBasic instead of a light source. The nakedNUB
-        // rig ships its own eye mesh (Nub_eyes, ~0.85-1.23m up), so only the
-        // body is darkened and the eyes are tinted red in place.
-        const dark = new THREE.MeshBasicMaterial({ color: 0x0b0b0d });
-        const eyeMat = new THREE.MeshBasicMaterial({ color: 0xff2222 });
+        // PointLight would burn uniforms for zero contribution. The nakedNUB
+        // rig ships its own eye mesh (Nub_eyes) with a real face texture, so:
+        // body keeps the artist's blue-grey, eyes get map + red tint.
+        // Texture base path mirrors the GLB so dev + Vercel agree.
+        const loader = new THREE.TextureLoader();
+        const faceTex = loader.load("models/nubtex/test_face_neutral.png");
+        faceTex.colorSpace = THREE.SRGBColorSpace;
+        const dark = new THREE.MeshBasicMaterial({ color: 0x6377b8 });
+        const eyeMat = new THREE.MeshBasicMaterial({
+          map: faceTex, color: 0xff5555, transparent: true,
+        });
         model.traverse((node) => {
           if (node instanceof THREE.Mesh) {
             node.castShadow = false;
