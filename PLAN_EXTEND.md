@@ -55,3 +55,7 @@ liminal clutter (OpenClawWorld props), and a finishable arc (3 levels + escape).
   (+46%), +0.4% tris; wall-time 12.4s base vs 4.1s fixed (MSAA resolve dominates in SW).
   Fix: offscreen MSAA 4x→2x, DPR cap 2→1.5. Rig absolved (first-person no-op).
   Probe reverted, 89pass/1prefail, build green, scene screenshot verified, pushed.
+- [2026-09-03] round 2 (G15): auto-quality governor (4s <40fps steps DPR 1→0.8→0.65,
+  then bloom off; 20s >57fps steps back; checkbox, diagnostics) + aniso cap 4x.
+  6 governor tests, 95pass/1prefail total, build green. Live boot-verify deferred:
+  machine at 16.7 load average, SwiftShader boots timing out with zero errors.
