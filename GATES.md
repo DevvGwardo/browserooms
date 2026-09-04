@@ -53,10 +53,10 @@ Baseline (clean clone, 2026-09-03): `bun test` 63 pass / 1 pre-existing fail
   EXPECT: 6 pass
   EVIDENCE: 11 expect() calls | Ran 6 tests across 1 file. [39.00ms]
 
-- [ ] G11: Live on Vercel production at backrooms.nub.lol (HTTP 200, game boots)
+- [x] G11: Live on Vercel production at backrooms.nub.lol (HTTP 200, game boots)
   CHECK: bash -c 'curl -s -o /dev/null -w "%{http_code}\n" https://backrooms.nub.lol/; curl -s https://backrooms.nub.lol/ | grep -o -E "<title>[^<]*" | head -n 1'
   EXPECT: Backrooms
-  EVIDENCE: pending — domain added to project; DNS CNAME missing (see below)
+  EVIDENCE: 200 | <title>Backrooms (2026-09-04 re-check; DNS resolved, new OPT bundle index-DQ150Ufq.js live)
 
 - [x] G12: Production deployment live on Vercel (title + kit + avatar + LUT + audio all 200)
   CHECK: bash -c 'curl -s https://backrooms-nub-lol.vercel.app/ | grep -o -E "<title>[^<]*"; for u in models/sillyNubCat.glb continuous/modules.json color/agx-medium-high.bin; do printf "%s:" "$u"; curl -s -o /dev/null -w "%{http_code}\n" "https://backrooms-nub-lol.vercel.app/$u"; done'
