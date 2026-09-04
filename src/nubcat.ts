@@ -19,15 +19,15 @@ export const CHARACTERS: CharacterDef[] = [
   {
     id: "female",
     label: "Female (pink)",
-    walkUrl: "models/pinkNUB-walk.glb",
-    idleUrl: "models/pinkNUB.glb",
+    walkUrl: "models/pinkNUB-walk.v2.glb",
+    idleUrl: "models/pinkNUB.v2.glb",
     bodyColor: 0xffcadc,
   },
   {
     id: "male",
     label: "Male (blue)",
-    walkUrl: "models/blueNUB-walk.glb",
-    idleUrl: "models/blueNUB.glb",
+    walkUrl: "models/blueNUB-walk.v2.glb",
+    idleUrl: "models/blueNUB.v2.glb",
     bodyColor: 0x64a6ff,
   },
 ];

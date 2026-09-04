@@ -26,8 +26,8 @@ test("plain clone shares the skeleton (why the loader must not use it)", () => {
 test("character table covers male + female with distinct rigs and colors", () => {
   expect(CHARACTERS.map((c) => c.id).sort()).toEqual(["female", "male"]);
   const [female, male] = [characterDef("female"), characterDef("male")];
-  expect(female.walkUrl).toBe("models/pinkNUB-walk.glb");
-  expect(male.walkUrl).toBe("models/blueNUB-walk.glb");
+  expect(female.walkUrl).toBe("models/pinkNUB-walk.v2.glb");
+  expect(male.walkUrl).toBe("models/blueNUB-walk.v2.glb");
   expect(female.walkUrl === male.walkUrl).toBe(false);
   expect(female.idleUrl === male.idleUrl).toBe(false);
   expect(female.bodyColor).toBe(0xffcadc);
