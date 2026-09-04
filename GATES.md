@@ -62,3 +62,8 @@ Baseline (clean clone, 2026-09-03): `bun test` 63 pass / 1 pre-existing fail
   CHECK: bash -c 'curl -s https://backrooms-nub-lol.vercel.app/ | grep -o -E "<title>[^<]*"; for u in models/sillyNubCat.glb continuous/modules.json color/agx-medium-high.bin; do printf "%s:" "$u"; curl -s -o /dev/null -w "%{http_code}\n" "https://backrooms-nub-lol.vercel.app/$u"; done'
   EXPECT: Backrooms
   EVIDENCE: continuous/modules.json:200 | color/agx-medium-high.bin:200
+
+- [ ] G13: Perf trim — props stream only into the fog-visible inner ring (≤2/chunk), suite stays green
+  CHECK: bash -c 'bun test 2>&1 | tail -n 4'
+  EXPECT: 89 pass
+  EVIDENCE: pending

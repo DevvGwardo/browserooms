@@ -26,7 +26,15 @@ export const PROP_DEFS: PropDef[] = [
   { file: "bench", footprint: [1.3, 0.55], height: 0.6, yOffset: 0, scale: [1, 1, 1] },
 ];
 
-export const MAX_PROPS_PER_CHUNK = 3;
+export const MAX_PROPS_PER_CHUNK = 2;
+
+/**
+ * Pure: only the fog-visible inner ring gets clutter. The outer streaming ring
+ * (up to 72m out, fog ends at 59m) would cost draw calls for invisible props.
+ */
+export function isInnerRing(dx: number, dz: number): boolean {
+  return Math.max(Math.abs(dx), Math.abs(dz)) <= 1;
+}
 
 export type Placement = {
   anchorIndex: number;
@@ -125,6 +133,8 @@ export class Props {
   }
 
   private async fill(chunk: { definition: Chunk; object: THREE.Object3D }) {
+    const world = this.getWorld();
+    if (!isInnerRing(chunk.definition.x - world.origin.x, chunk.definition.z - world.origin.z)) return;
     const placements = placementsForChunk(chunk.definition.id, chunk.definition.anchors);
     if (!placements.length) return;
     this.chunkCount++;

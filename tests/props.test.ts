@@ -1,5 +1,5 @@
 import { expect, test } from "bun:test";
-import { placementsForChunk, PROP_DEFS, MAX_PROPS_PER_CHUNK } from "../src/props";
+import { placementsForChunk, PROP_DEFS, MAX_PROPS_PER_CHUNK, isInnerRing } from "../src/props";
 import type { Chunk } from "../src/world-layout";
 
 function anchors(count: number, clearance: [number, number, number] = [3, 3, 3]): Chunk["anchors"] {
@@ -56,4 +56,16 @@ test("every prop def resolves to a sane footprint", () => {
     expect(def.height).toBeGreaterThan(0);
     expect(def.file).toMatch(/^[a-zA-Z0-9]+$/);
   }
+});
+
+test("only the fog-visible inner ring gets clutter", () => {
+  expect(isInnerRing(0, 0)).toBe(true);
+  expect(isInnerRing(1, -1)).toBe(true);
+  expect(isInnerRing(2, 0)).toBe(false);
+  expect(isInnerRing(0, 2)).toBe(false);
+  expect(isInnerRing(-2, -2)).toBe(false);
+});
+
+test("per-chunk cap stays small for draw-call budget", () => {
+  expect(MAX_PROPS_PER_CHUNK).toBeLessThanOrEqual(2);
 });
