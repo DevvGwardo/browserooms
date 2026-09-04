@@ -126,12 +126,25 @@ async function boot() {
   audioButton.addEventListener("click", () => { ambience.toggle(); if (ambience.enabled) music.resume(); void footsteps.prepare(); void zoom.prepare(); void distant.prepare(); void alarm.prepare(); void entity?.prepare(); void exitDoor?.prepare(); void flicker?.prepare(); });
   title.addEventListener("pointerdown", () => music.resume());
 
-  // MSAA must be on the offscreen target, not only the canvas, when using a composer.
-  // 2x keeps edges clean under the VHS downscale+grain; 4x doubled resolve cost
-  // for no visible gain (measured A/B: identical pixels, far slower).
-  const target = new THREE.WebGLRenderTarget(1, 1, { type: THREE.HalfFloatType, samples: 2 });
+  // MSAA lives on the offscreen target, not only the canvas, when using a composer.
+  // 2x keeps edges clean under the clean view; under VHS the tape downscale and
+  // grain hide any aliasing, so MSAA is dropped there (it only slows resolve).
+  const MSAA_SAMPLES = 2;
+  let msaaSamples = 0;
+  const target = new THREE.WebGLRenderTarget(1, 1, { type: THREE.HalfFloatType, samples: msaaSamples });
   const composer = new EffectComposer(renderer, target);
   composer.addPass(new RenderPass(scene, camera));
+
+  /** Toggle MSAA without rebuilding the composer. WebGLRenderTarget re-creates
+   * the multisampled framebuffer lazily on next use after dispose(). */
+  function setMsaa(samples: number) {
+    if (samples === msaaSamples) return;
+    msaaSamples = samples;
+    composer.renderTarget1.samples = samples;
+    composer.renderTarget2.samples = samples;
+    composer.renderTarget1.dispose();
+    composer.renderTarget2.dispose();
+  }
   const bloom = new UnrealBloomPass(new THREE.Vector2(1, 1), 0.018, 0.12, 2.0);
   composer.addPass(bloom);
   // The LUT includes Blender's view, contrast look, and sRGB transfer exactly once.
@@ -186,6 +199,8 @@ async function boot() {
     const width = canvas.clientWidth;
     const height = canvas.clientHeight;
     if (!width || !height) return;
+    // VHS is capped at tape height, so native MSAA only matters for clean view.
+    setMsaa(vhs.enabled ? 0 : gov.msaaOn() ? MSAA_SAMPLES : 0);
     // Full-rate pixels scale fragment cost quadratically (bloom + VHS run per pixel).
     // 1.5x is visually lossless under tape grain and halves GPU load vs 2x on HiDPI.
     const nativeRatio = Math.min(devicePixelRatio, 1.5);
@@ -629,7 +644,11 @@ async function boot() {
     frameCount++;
     if (frameTime >= 1) {
       averageMs = frameTime * 1000 / frameCount;
-      if (gov.update(1, 1000 / Math.max(1, averageMs))) resize();
+      if (gov.update(1, 1000 / Math.max(1, averageMs))) {
+        const wantTape = gov.sparseTape() && vhs.enabled;
+        if (wantTape !== vhs.throttled) { vhs.throttled = wantTape; resize(); }
+        else resize();
+      }
       bloom.enabled = bloomBox.checked && gov.bloomOn();
       performanceLabel.textContent = vhs.enabled
         ? `${vhs.diagnostics.tapeFps > 0 ? `${Math.round(vhs.diagnostics.tapeFps)} fps tape · ` : ""}${Math.round(vhs.diagnostics.latencyMs)} ms processing`

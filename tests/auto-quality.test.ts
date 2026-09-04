@@ -57,6 +57,8 @@ test("factors shrink render cost; bloom dies last", () => {
   const gov = new AutoQuality();
   expect(gov.factor()).toBe(1);
   expect(gov.bloomOn()).toBe(true);
+  expect(gov.msaaOn()).toBe(true);
+  expect(gov.sparseTape()).toBe(false);
   expect(GOV_FACTORS[0]).toBe(1);
   for (let i = 1; i < GOV_FACTORS.length; i++) {
     expect(GOV_FACTORS[i]).toBeLessThan(GOV_FACTORS[i - 1]);
@@ -65,7 +67,23 @@ test("factors shrink render cost; bloom dies last", () => {
   expect(gov.step).toBe(MAX_STEP);
   expect(gov.factor()).toBeLessThan(1);
   expect(gov.bloomOn()).toBe(false);
+  expect(gov.msaaOn()).toBe(false);
+  expect(gov.sparseTape()).toBe(true);
   gov.reset();
   expect(gov.step).toBe(0);
   expect(gov.bloomOn()).toBe(true);
+  expect(gov.msaaOn()).toBe(true);
+  expect(gov.sparseTape()).toBe(false);
+});
+
+test("bloom dies at step 3, MSAA at step 4, sparse tape only at max", () => {
+  const gov = new AutoQuality();
+  for (let i = 0; i < 4; i++) gov.update(4, 5);
+  expect(gov.step).toBe(4);
+  expect(gov.bloomOn()).toBe(false);
+  expect(gov.msaaOn()).toBe(false);
+  expect(gov.sparseTape()).toBe(false);
+  gov.update(4, 5);
+  expect(gov.step).toBe(MAX_STEP);
+  expect(gov.sparseTape()).toBe(true);
 });

@@ -3,7 +3,7 @@
 // game degrades gracefully on weak GPUs instead of slideshowing.
 
 export const GOV_FACTORS = [1, 0.8, 0.65];
-export const MAX_STEP = 3; // 0 full · 1 dpr×0.8 · 2 dpr×0.65 · 3 +bloom off
+export const MAX_STEP = 5; // 0 full · 1 dpr×0.8 · 2 dpr×0.65 · 3 +bloom off · 4 +MSAA off · 5 +sparse tape
 const DOWN_FPS = 40;
 const UP_FPS = 57;
 const DOWN_AFTER = 4; // seconds below DOWN_FPS before stepping down
@@ -46,7 +46,15 @@ export class AutoQuality {
   }
 
   bloomOn(): boolean {
-    return this.step < MAX_STEP;
+    return this.step < 3;
+  }
+
+  msaaOn(): boolean {
+    return this.step < 4;
+  }
+
+  sparseTape(): boolean {
+    return this.step >= MAX_STEP;
   }
 
   reset() {

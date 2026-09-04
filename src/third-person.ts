@@ -1,5 +1,5 @@
 import * as THREE from "three";
-import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
+import { loadNubCat } from "./nubcat";
 import type { Collider } from "./collision";
 
 export type ViewMode = "first" | "third";
@@ -75,6 +75,9 @@ export class ThirdPersonRig {
   private eye = new THREE.Vector3();
   private dir = new THREE.Vector3();
   private look = new THREE.Vector3();
+  private boomEnd = new THREE.Vector3();
+  private boomDir = new THREE.Vector3();
+  private up = new THREE.Vector3();
 
   constructor(private getEyeHeight: () => number) {}
 
@@ -82,16 +85,15 @@ export class ThirdPersonRig {
   load(scene: THREE.Scene): Promise<void> {
     if (this.loaded) return Promise.resolve();
     if (this.loading) return this.loading;
-    this.loading = new GLTFLoader()
-      .loadAsync("models/sillyNubCat.glb")
-      .then((gltf) => {
+    this.loading = loadNubCat()
+      .then((model) => {
         this.avatar = new THREE.Group();
         // Normalize to cat height (~0.55m against the 1.65m eye): the GLB's
         // native units are large (OpenClawWorld renders it at 0.3 scale).
-        const bounds = new THREE.Box3().setFromObject(gltf.scene);
+        const bounds = new THREE.Box3().setFromObject(model);
         const height = Math.max(0.1, bounds.max.y - bounds.min.y);
         const inner = new THREE.Group();
-        inner.add(gltf.scene);
+        inner.add(model);
         inner.scale.setScalar(0.55 / height);
         // Re-seat the normalized model so its feet sit at group origin.
         inner.position.y = -bounds.min.y * (0.55 / height);
@@ -152,15 +154,16 @@ export class ThirdPersonRig {
     if (this.dir.lengthSq() < 1e-6) this.dir.set(0, 0, -1);
     this.dir.normalize();
     // Boom end: behind the head, above it.
-    this.look
+    this.boomEnd
       .copy(this.eye)
-      .addScaledVector(this.dir, -BOOM_DIST)
-      .add(new THREE.Vector3(0, BOOM_UP, 0));
-    const full = this.look.clone().sub(this.eye);
-    const len = full.length();
-    full.normalize();
-    const allowed = Math.min(len, solveBoom(this.eye, full, len, boxes));
-    camera.position.copy(this.eye).addScaledVector(full, allowed);
+      .addScaledVector(this.dir, -BOOM_DIST);
+    this.up.set(0, BOOM_UP, 0);
+    this.boomEnd.add(this.up);
+    this.boomDir.copy(this.boomEnd).sub(this.eye);
+    const len = this.boomDir.length();
+    this.boomDir.normalize();
+    const allowed = Math.min(len, solveBoom(this.eye, this.boomDir, len, boxes));
+    camera.position.copy(this.eye).addScaledVector(this.boomDir, allowed);
     camera.lookAt(this.eye.x, this.eye.y - 0.25, this.eye.z);
   }
 

@@ -28,6 +28,7 @@ export class ExplorationMap {
   private maxMs = 0;
   private breaks = 0;
   private side: number;
+  private lastScan = new THREE.Vector3(Infinity, 0, Infinity);
 
   constructor(private canvas: HTMLCanvasElement, private world: StreamedWorld) {
     this.context = canvas.getContext("2d");
@@ -37,6 +38,7 @@ export class ExplorationMap {
   resetTrail() {
     this.previous = null;
     this.nextUpdate = 0;
+    this.lastScan.set(Infinity, 0, Infinity);
     this.breaks++;
   }
 
@@ -45,6 +47,7 @@ export class ExplorationMap {
     this.patches.clear();
     this.previous = null;
     this.nextUpdate = 0;
+    this.lastScan.set(Infinity, 0, Infinity);
     this.updates = 0;
     this.lastMs = 0;
     this.maxMs = 0;
@@ -87,7 +90,13 @@ export class ExplorationMap {
     this.canvas.hidden = !visible;
     if (!visible) { this.previous = null; this.nextUpdate = 0; return; }
     if (time < this.nextUpdate) return;
-    this.nextUpdate = time + 125;
+    // The full ~20k-cell scan only reveals new floor when the eye moves.
+    // Standing still still redraws (cheap: local viewport only) so the
+    // heading wedge stays live, at a slower cadence.
+    const moved = this.lastScan.distanceToSquared(camera.position);
+    this.nextUpdate = time + (moved > 1 ? 125 : 500);
+    const scanning = moved > 1;
+    if (scanning) this.lastScan.copy(camera.position);
     const started = performance.now();
     this.updates++;
     const size = this.world.kit.cellSize;
@@ -123,6 +132,8 @@ export class ExplorationMap {
 
     // Test floor-cell centers against the rendered frustum and full-height 3D boxes.
     // Unlike a radial reveal, this leaves the unseen floor behind half-walls dark.
+    // Skipped on stationary ticks: nothing new can be revealed from the same eye.
+    if (scanning) {
     const minX = Math.floor((position.x - RANGE) / CELL);
     const maxX = Math.ceil((position.x + RANGE) / CELL);
     const minZ = Math.floor((position.z - RANGE) / CELL);
@@ -149,6 +160,7 @@ export class ExplorationMap {
         const floorDistance = this.ray.direction.y < 0 ? (0.025 - position.y) / this.ray.direction.y : Infinity;
         cast(Math.min(RANGE, floorDistance));
       }
+    }
     }
 
     const previous = this.previous;

@@ -12,6 +12,8 @@ type WorkerReply = {
 export class VhsPlayer {
   preset: VhsPreset = getVhsPreset("clean");
   error: string | null = null;
+  /** Governor-set: halve the tape fps (every other frame) on the weakest step. */
+  throttled = false;
   private worker: Worker | null = null;
   private workerReady = false;
   private generation = 0;
@@ -83,7 +85,8 @@ export class VhsPlayer {
   capture(now: number) {
     if (!this.enabled || !this.workerReady || !this.visible || this.disposed) return;
     if (this.source.width < 2 || this.source.height < 2) return;
-    if (now - this.lastCapture < 1000 / this.preset.fps - 0.5) return;
+    const fps = this.throttled ? this.preset.fps / 2 : this.preset.fps;
+    if (now - this.lastCapture < 1000 / fps - 0.5) return;
     if (this.pending) { this.skipped++; return; }
     const id = ++this.nextId;
     const generation = this.generation;

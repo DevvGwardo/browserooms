@@ -141,6 +141,10 @@ export class Props {
     for (const placement of placements) {
       const source = await this.model(placement.def.file);
       if (!source || source.children.length === 0) continue;
+      // The model fetch is async: by the time it resolves the chunk may have
+      // streamed out (origin shift) or the world may have reseeded (new level).
+      // Parenting to a detached chunk leaks the node and corrupts diagnostics.
+      if (world.loaded.get(chunk.definition.id)?.object !== chunk.object) continue;
       const node = source.clone(true);
       node.position.fromArray(placement.position);
       node.rotation.y = placement.yaw;

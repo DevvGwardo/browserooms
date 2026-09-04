@@ -45,7 +45,8 @@ export async function loadReferenceAssets(kit: ReferenceKit, manager: THREE.Load
       texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
       texture.repeat.set(...scale);
       texture.colorSpace = color ? THREE.SRGBColorSpace : THREE.NoColorSpace;
-      texture.anisotropy = renderer.capabilities.getMaxAnisotropy();
+      // 4x is visually lossless under VHS grain; max (up to 16x) burns bandwidth.
+      texture.anisotropy = Math.min(4, renderer.capabilities.getMaxAnisotropy());
       texture.needsUpdate = true;
       return texture;
     }));
@@ -57,7 +58,7 @@ export async function loadReferenceAssets(kit: ReferenceKit, manager: THREE.Load
       texture.colorSpace = THREE.LinearSRGBColorSpace;
       texture.generateMipmaps = true;
       texture.minFilter = THREE.LinearMipmapLinearFilter;
-      texture.anisotropy = Math.min(8, renderer.capabilities.getMaxAnisotropy());
+      texture.anisotropy = Math.min(4, renderer.capabilities.getMaxAnisotropy());
       texture.needsUpdate = true;
       return texture;
     }));

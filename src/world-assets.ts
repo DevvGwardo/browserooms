@@ -27,7 +27,7 @@ export async function loadWorldAssets(kit: Kit, manager: THREE.LoadingManager, r
       texture.generateMipmaps = true;
       texture.minFilter = THREE.LinearMipmapLinearFilter;
       texture.magFilter = THREE.LinearFilter;
-      texture.anisotropy = Math.min(8, renderer.capabilities.getMaxAnisotropy());
+      texture.anisotropy = Math.min(4, renderer.capabilities.getMaxAnisotropy());
       texture.needsUpdate = true;
       textures.set(atlas.file, texture);
     }),

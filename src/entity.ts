@@ -1,5 +1,5 @@
 import * as THREE from "three";
-import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
+import { loadNubCat } from "./nubcat";
 import type { AudioBus } from "./light-ambience";
 import type { StreamedWorld } from "./streamed-world";
 import { movePlayer } from "./collision";
@@ -73,27 +73,26 @@ export class Entity {
   load(scene: THREE.Scene): Promise<void> {
     if (this.loaded) return Promise.resolve();
     if (this.loading) return this.loading;
-    this.loading = new GLTFLoader()
-      .loadAsync("models/sillyNubCat.glb")
-      .then((gltf) => {
-        const dark = new THREE.MeshStandardMaterial({ color: 0x0b0b0d, roughness: 0.85 });
-        gltf.scene.traverse((node) => {
+    this.loading = loadNubCat()
+      .then((model) => {
+        // The scene is baked MeshBasic, not lit: an unlit body matches and a
+        // PointLight would burn uniforms for zero contribution. Eyes stay
+        // emissive-looking MeshBasic instead of a light source.
+        const dark = new THREE.MeshBasicMaterial({ color: 0x0b0b0d });
+        model.traverse((node) => {
           if (node instanceof THREE.Mesh) {
             node.material = dark;
             node.castShadow = false;
           }
         });
         this.body = new THREE.Group();
-        this.body.add(gltf.scene);
+        this.body.add(model);
         const eyeMat = new THREE.MeshBasicMaterial({ color: 0xff2222 });
         for (const x of [-0.22, 0.22]) {
           const eye = new THREE.Mesh(new THREE.SphereGeometry(0.07, 12, 12), eyeMat);
           eye.position.set(x, 0.72, 0.42);
           this.body.add(eye);
         }
-        const glow = new THREE.PointLight(0xff2222, 6, 8, 1.6);
-        glow.position.set(0, 1, 0.5);
-        this.body.add(glow);
         const s = 1.55;
         this.body.scale.set(s, s * 1.08, s);
         this.root.add(this.body);
