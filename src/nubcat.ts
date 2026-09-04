@@ -3,7 +3,7 @@ import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
 import { clone as cloneSkinned } from "three/addons/utils/SkeletonUtils.js";
 
 /**
- * Single-flight loader for the OpenClawWorld sillyNubCat rig. The Entity and
+ * Single-flight loader for the pink nub rig. The Entity and
  * the third-person avatar both need it; before this module each issued its own
  * fetch + parse + GPU upload (double cost on every boot). Callers get an
  * independent clone (shared geometry/materials, private nodes) and must
@@ -14,8 +14,8 @@ import { clone as cloneSkinned } from "three/addons/utils/SkeletonUtils.js";
  */
 const pending = new Map<string, Promise<{ scene: THREE.Object3D; clips: THREE.AnimationClip[] }>>();
 
-export const NUBCAT_WALK_URL = "models/nakedNUB-walk.glb";
-export const NUBCAT_IDLE_URL = "models/nakedNUB.glb";
+export const NUBCAT_WALK_URL = "models/pinkNUB-walk.glb";
+export const NUBCAT_IDLE_URL = "models/pinkNUB.glb";
 
 export type NubCatModel = {
   /** Independent clone; safe to re-material, re-pose, or attach a mixer to. */
@@ -31,7 +31,7 @@ export function loadNubCat(url: string = NUBCAT_WALK_URL): Promise<NubCatModel> 
       (gltf) => ({ scene: gltf.scene as THREE.Object3D, clips: gltf.animations ?? [] }),
       () => {
         pending.delete(url);
-        throw new Error("sillyNubCat model unavailable.");
+        throw new Error("nub model unavailable.");
       },
     );
     pending.set(url, flight);

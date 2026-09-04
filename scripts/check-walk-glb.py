@@ -12,7 +12,7 @@ import sys
 
 import numpy as np
 
-ORIG = "public/models/nakedNUB.glb"
+ORIG = "public/models/pinkNUB.glb"
 LEG_L = "Leg_L"
 LEG_R = "Leg_R"
 

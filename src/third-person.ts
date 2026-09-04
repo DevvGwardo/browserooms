@@ -90,7 +90,7 @@ export class ThirdPersonRig {
       .then(({ model, clips }) => {
         this.avatar = new THREE.Group();
         // Normalize the avatar against the 1.65m eye. Use TRUE height (Y),
-        // not the longest axis: the nakedNUB quadruped is 2.2m wide but
+        // not the longest axis: the pinkNUB quadruped is 2.2m wide but
         // 1.5m tall, and max-axis normalization shrank it to a 0.38m sliver.
         // Target ~0.9m at the shoulder so it reads against the 1.65m eye.
         const bounds = new THREE.Box3().setFromObject(model, true);
@@ -104,7 +104,7 @@ export class ThirdPersonRig {
         this.avatar.add(inner);
         // The scene is unlit MeshBasic: keep the GLB's MeshStandard materials
         // and the avatar renders near-black. Mirror the entity: artist
-        // blue-grey body, real face texture on the eyes.
+        // pink body, real face texture on the eyes.
         const faceTex = new THREE.TextureLoader().load("models/nubtex/test_face_neutral.png");
         faceTex.colorSpace = THREE.SRGBColorSpace;
         this.avatar.traverse((node) => {
@@ -112,7 +112,7 @@ export class ThirdPersonRig {
             node.castShadow = false;
             node.material = /eye/i.test(node.name)
               ? new THREE.MeshBasicMaterial({ map: faceTex, transparent: true })
-              : new THREE.MeshBasicMaterial({ color: 0x6377b8 });
+              : new THREE.MeshBasicMaterial({ color: 0xffcadc });
           }
         });
         if (clips.length) {

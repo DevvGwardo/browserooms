@@ -18,7 +18,7 @@ test("plain clone shares the skeleton (why the loader must not use it)", () => {
 });
 
 test("loader exposes distinct walk/idle URLs", () => {
-  expect(NUBCAT_WALK_URL).toBe("models/nakedNUB-walk.glb");
-  expect(NUBCAT_IDLE_URL).toBe("models/nakedNUB.glb");
+  expect(NUBCAT_WALK_URL).toBe("models/pinkNUB-walk.glb");
+  expect(NUBCAT_IDLE_URL).toBe("models/pinkNUB.glb");
   expect(NUBCAT_WALK_URL === NUBCAT_IDLE_URL).toBe(false);
 });

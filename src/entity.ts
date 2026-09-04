@@ -29,7 +29,7 @@ function hashRand(text: string): () => number {
 }
 
 /**
- * The Entity — OpenClawWorld's sillyNubCat rig, corrupted: blackened, red-eyed,
+ * The Entity — the pink nub rig, corrupted: blackened, red-eyed,
  * stalking the streamed world. Steering reuses movePlayer wall-sliding; there is
  * no navmesh, so long-range pressure comes from lurk-relocation, not pathfinding.
  */
@@ -78,14 +78,14 @@ export class Entity {
     this.loading = loadNubCat()
       .then(({ model, clips }) => {
         // The scene is baked MeshBasic, not lit: an unlit body matches and a
-        // PointLight would burn uniforms for zero contribution. The nakedNUB
+        // PointLight would burn uniforms for zero contribution. The pinkNUB
         // rig ships its own eye mesh (Nub_eyes) with a real face texture, so:
-        // body keeps the artist's blue-grey, eyes get map + red tint.
+        // body keeps the artist's pink, eyes get map + red tint.
         // Texture base path mirrors the GLB so dev + Vercel agree.
         const loader = new THREE.TextureLoader();
         const faceTex = loader.load("models/nubtex/test_face_neutral.png");
         faceTex.colorSpace = THREE.SRGBColorSpace;
-        const dark = new THREE.MeshBasicMaterial({ color: 0x6377b8 });
+        const dark = new THREE.MeshBasicMaterial({ color: 0xffcadc });
         const eyeMat = new THREE.MeshBasicMaterial({
           map: faceTex, color: 0xff5555, transparent: true,
         });
@@ -104,7 +104,7 @@ export class Entity {
           this.walkAction = this.mixer.clipAction(clips[0]);
           this.walkAction.play();
         }
-        // nakedNUB stands ~1.5m at the head; scale to a ~1.65m stalker so it
+        // pinkNUB stands ~1.5m at the head; scale to a ~1.65m stalker so it
         // reads at eye level down the corridor (old 1.55x was for the smaller rig).
         const s = 1.1;
         this.body.scale.set(s, s, s);
