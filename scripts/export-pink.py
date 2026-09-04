@@ -10,11 +10,12 @@ Defaults suit pink_nub.blend (Nub_rigs.001, Nub_body.001, Nub_eyes.001).
 For naked_NUB.blend pass: Nub_rigs Nub_body Nub_eyes.
 
 Steps: open blend, keep only the armature + body + eyes (drop Cube junk),
-drop unused extra body material slots, drop single-frame dead actions, bake
-object transforms into the data (the FBX-lineage meshes carry a 90deg X
-rotation + 0.01 scale on the object; without baking, the GLB skin collapses
-flat in-engine), export GLB with skins + morphs. Prints NUB-GLB-OK with
-counts and the body base color for the gate evidence.
+drop unused extra body material slots, pose both arms down ~80deg as the new
+rest pose (Shoulder swing, forearm follows rigidly — elbow joint untouched),
+drop single-frame dead actions, bake object transforms into the data (the
+FBX-lineage meshes carry a 90deg X rotation + 0.01 scale on the object;
+without baking, the GLB skin collapses flat in-engine), export GLB with
+skins + morphs. Prints NUB-GLB-OK with counts and the body base color.
 """
 
 import sys
@@ -35,6 +36,42 @@ def main():
     bpy.ops.wm.open_mainfile(filepath=src)
 
     scn = bpy.context.scene
+    # Arms down FIRST, on a pristine context (exact recipe — operator hates
+    # leftover selection state): swing each whole arm ~80deg below horizontal
+    # from the Shoulder as a rest-pose change (forearm follows rigidly,
+    # elbow/Hand untouched). Base GLB and walk bake inherit it.
+    # NOTE: rotating the Arm by the same world swing would double-rotate the
+    # forearm (children inherit the parent swing AND apply their own) — the
+    # forearm must keep its relative pose for the arm to stay straight.
+    import math
+    from mathutils import Quaternion, Vector
+
+    arm = scn.objects.get(arm_name)
+    if arm is None or arm.type != "ARMATURE":
+        print(f"EXPORT-FAIL: armature {arm_name} missing")
+        sys.exit(1)
+    # naked_NUB.blend ships with pose_position=REST (posing disabled: every
+    # pose op silently no-ops). Force POSE or the arms-down bake does nothing.
+    arm.data.pose_position = "POSE"
+    scn.view_layers[0].objects.active = arm
+    bpy.ops.object.mode_set(mode="POSE")
+    arm_swings = {"Shoulder_R": -80.0, "Shoulder_L": 80.0}
+    for bone_name, deg in arm_swings.items():
+        pb = arm.pose.bones.get(bone_name)
+        if pb is None:
+            print(f"EXPORT-FAIL: bone {bone_name} missing")
+            sys.exit(1)
+        q_rest = pb.bone.matrix_local.to_quaternion()
+        swing = Quaternion(Vector((0, 1, 0)), math.radians(deg))
+        pb.rotation_quaternion = q_rest.inverted() @ swing @ q_rest
+    bpy.ops.pose.select_all(action="SELECT")
+    bpy.ops.pose.armature_apply(selected=False)
+    bpy.ops.object.mode_set(mode="OBJECT")
+    # NOTE: pose.armature_apply is unreliable headless (silently no-ops in
+    # some contexts), so this is intentionally NOT verified here. The exporter
+    # preserves the pose as node rotations and scripts/check-arms.py composes
+    # full TRS matrices to verify the net result on the exported file.
+    arm = scn.objects.get(arm_name)
     keep = {arm_name, body_name, eyes_name}
     for o in list(scn.objects):
         if o.name not in keep:
