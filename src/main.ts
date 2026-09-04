@@ -22,6 +22,7 @@ import { Entity } from "./entity";
 import { Props } from "./props";
 import { ExitDoor } from "./exit-door";
 import { ThirdPersonRig } from "./third-person";
+import { AutoQuality } from "./auto-quality";
 import { LEVELS, levelSeed } from "./levels";
 import { VhsPlayer } from "./vhs/player";
 import { getVhsPreset, VHS_PRESETS } from "./vhs/presets";
@@ -51,6 +52,7 @@ const stickInput = new THREE.Vector2();
 let active = false;
 let entered = false;
 let resolution = 1;
+const gov = new AutoQuality();
 let eyeHeight = 1.65;
 let frameTime = 0;
 let frameCount = 0;
@@ -187,7 +189,8 @@ async function boot() {
     // Full-rate pixels scale fragment cost quadratically (bloom + VHS run per pixel).
     // 1.5x is visually lossless under tape grain and halves GPU load vs 2x on HiDPI.
     const nativeRatio = Math.min(devicePixelRatio, 1.5);
-    const ratio = vhs.enabled ? Math.min(nativeRatio, vhs.preset.height / height) : nativeRatio * resolution;
+    const govFactor = gov.enabled ? gov.factor() : 1;
+    const ratio = vhs.enabled ? Math.min(nativeRatio * govFactor, vhs.preset.height / height) : nativeRatio * resolution * govFactor;
     const size = `${width}:${height}:${ratio}`;
     if (size === renderSize) return;
     renderSize = size;
@@ -259,7 +262,8 @@ async function boot() {
   for (const detail of details ?? []) {
     detail.wrapS = detail.wrapT = THREE.RepeatWrapping;
     detail.colorSpace = THREE.NoColorSpace;
-    detail.anisotropy = renderer.capabilities.getMaxAnisotropy();
+    // 4x is visually lossless under VHS grain; max (up to 16x) burns bandwidth.
+    detail.anisotropy = Math.min(4, renderer.capabilities.getMaxAnisotropy());
     detail.needsUpdate = true;
   }
   if (colorBuffer.byteLength !== 64 ** 3 * 8) throw new Error("The Blender color transform is incomplete.");
@@ -414,7 +418,16 @@ async function boot() {
     element("exposure-output").textContent = `${ev > 0 ? "+" : ""}${ev.toFixed(1)} EV`;
   });
   element<HTMLSelectElement>("resolution").addEventListener("change", (event) => { resolution = Number((event.target as HTMLSelectElement).value); resize(); });
-  element<HTMLInputElement>("bloom").addEventListener("change", (event) => { bloom.enabled = (event.target as HTMLInputElement).checked; });
+  const bloomBox = element<HTMLInputElement>("bloom");
+  bloomBox.addEventListener("change", () => {
+    bloom.enabled = bloomBox.checked && gov.bloomOn();
+  });
+  element<HTMLInputElement>("auto-quality").addEventListener("change", (event) => {
+    gov.enabled = (event.target as HTMLInputElement).checked;
+    if (!gov.enabled && gov.step !== 0) gov.reset();
+    bloom.enabled = bloomBox.checked && gov.bloomOn();
+    resize();
+  });
   element<HTMLInputElement>("grain").addEventListener("change", (event) => { grain.enabled = !vhs.enabled && (event.target as HTMLInputElement).checked; });
 
   function setActive(value: boolean, dragMode = touch) {
@@ -616,6 +629,8 @@ async function boot() {
     frameCount++;
     if (frameTime >= 1) {
       averageMs = frameTime * 1000 / frameCount;
+      if (gov.update(1, 1000 / Math.max(1, averageMs))) resize();
+      bloom.enabled = bloomBox.checked && gov.bloomOn();
       performanceLabel.textContent = vhs.enabled
         ? `${vhs.diagnostics.tapeFps > 0 ? `${Math.round(vhs.diagnostics.tapeFps)} fps tape · ` : ""}${Math.round(vhs.diagnostics.latencyMs)} ms processing`
         : `${Math.round(1000 / averageMs)} fps · ${Math.round(canvas.width)} × ${Math.round(canvas.height)}`;
@@ -666,6 +681,7 @@ async function boot() {
       props: props.diagnostics,
       exitDoor: exitDoor?.diagnostics,
       view: rig?.diagnostics,
+      quality: gov.diagnostics,
       levels: { level: levelIndex, levels: LEVELS.map((level) => level.name), deaths },
       music: music.diagnostics,
       flicker: flicker?.diagnostics,

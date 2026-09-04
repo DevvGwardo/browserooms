@@ -72,3 +72,8 @@ Baseline (clean clone, 2026-09-03): `bun test` 63 pass / 1 pre-existing fail
   CHECK: bash -c 'cat /tmp/perf-ab.txt'
   EXPECT: VERDICT
   EVIDENCE: - Third-person rig absolved: early-returns in first-person mode before any work. | VERDICT: post-chain bound; MSAA+DPR fix pushed; prop draw trim already live (G13)
+
+- [ ] G15: Auto-quality governor + anisotropy cap — FPS-triggered step-down (unit-tested), suite green
+  CHECK: bash -c 'bun test tests/auto-quality.test.ts 2>&1 | tail -n 4'
+  EXPECT: 6 pass
+  EVIDENCE: pending
