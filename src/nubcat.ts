@@ -1,5 +1,6 @@
 import * as THREE from "three";
 import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
+import { clone as cloneSkinned } from "three/addons/utils/SkeletonUtils.js";
 
 /**
  * Single-flight loader for the OpenClawWorld sillyNubCat rig. The Entity and
@@ -36,7 +37,10 @@ export function loadNubCat(url: string = NUBCAT_WALK_URL): Promise<NubCatModel> 
     pending.set(url, flight);
   }
   return flight.then(({ scene, clips }) => ({
-    model: scene.clone(true),
+    // Plain Object3D.clone() shares the Skeleton object, so a mixer driving
+    // the clone's bones would never move its skin. SkeletonUtils.clone()
+    // re-binds each clone to its own skeleton (bones + inverse bind matrices).
+    model: cloneSkinned(scene),
     clips: clips.map((clip) => clip.clone()),
   }));
 }
